@@ -1,0 +1,6 @@
+{
+  "name": "Mobile Debt Tracker",
+  "description": "A mobile-first ledger application to track lent money and payments, with Google Sheets synchronization.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
