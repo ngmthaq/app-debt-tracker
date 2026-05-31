@@ -212,6 +212,11 @@ export default function DebtorDetailScreen() {
                         <Calendar className="w-2.5 h-2.5" />
                         {formatDate(tx.createdAt)}
                       </div>
+                      {tx.note && (
+                        <div className="text-[10px] text-slate-500 mt-1 italic line-clamp-1">
+                          {tx.note}
+                        </div>
+                      )}
                     </div>
                   </div>
 

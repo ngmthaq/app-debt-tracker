@@ -85,10 +85,10 @@ interface DebtTrackerState {
   closeHistory: () => void;
   updateSettings: (scriptUrl: string, useLocalFallback: boolean) => Promise<void>;
   
-  addDebt: (name: string, amount: number) => Promise<void>;
-  addPayment: (name: string, amount: number) => Promise<void>;
+  addDebt: (name: string, amount: number, note?: string) => Promise<void>;
+  addPayment: (name: string, amount: number, note?: string) => Promise<void>;
   markFullyPaid: (name: string) => Promise<void>;
-  editTransaction: (id: string, name: string, amount: number, type: 'BORROW' | 'PAYMENT') => Promise<void>;
+  editTransaction: (id: string, name: string, amount: number, type: 'BORROW' | 'PAYMENT', note?: string) => Promise<void>;
   deleteTransaction: (id: string) => Promise<void>;
   
   // Import/Export helpers
@@ -284,6 +284,7 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
           id: item.id || Math.random().toString(),
           name: nameToLoad,
           amount: Number(item.amount),
+          note: item.note || '',
           type: item.type as 'BORROW' | 'PAYMENT',
           createdAt: item.createdAt
         }));
@@ -330,7 +331,7 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
     // ----------------------------------------------------
     // BORROW TRANSACTION (LEND MONEY)
     // ----------------------------------------------------
-    addDebt: async (name: string, amount: number) => {
+    addDebt: async (name: string, amount: number, note?: string) => {
       if (!name.trim()) throw new Error('Person name is required');
       if (amount <= 0) throw new Error('Amount must be a positive number');
 
@@ -344,13 +345,14 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
             id: 'local-' + Date.now() + '-' + Math.random().toString(36).substr(2, 4),
             name: name.trim(),
             amount,
+            note: note || '',
             type: 'BORROW',
             createdAt: new Date().toISOString()
           };
 
           const updated = [newTx, ...localTxs];
           saveLocalTransactions(updated);
-          
+
           await get().loadAllData();
           get().showToast(`Recorded Borrows of ${amount.toLocaleString('vi-VN')} ₫ to ${name}`, 'success');
         } catch (err: any) {
@@ -361,10 +363,10 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
 
       // Sheets mode
       try {
-        await api.addDebt(settings.scriptUrl, name.trim(), amount);
+        await api.addDebt(settings.scriptUrl, name.trim(), amount, note);
         get().showToast(`Saved to Sheets: Lent ${amount.toLocaleString('vi-VN')} ₫ to ${name}`, 'success');
         await get().loadAllData();
-        
+
         // Refresh details screen if viewing this debtor
         if (get().activeDebtorName?.toLowerCase() === name.toLowerCase()) {
           get().loadHistory(get().activeDebtorName!);
@@ -378,6 +380,7 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
           id: 'local-err-' + Date.now(),
           name: name.trim(),
           amount,
+          note: note || '',
           type: 'BORROW',
           createdAt: new Date().toISOString()
         };
@@ -389,7 +392,7 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
     // ----------------------------------------------------
     // PAYMENT TRANSACTION (RECEIVE MONEY)
     // ----------------------------------------------------
-    addPayment: async (name: string, amount: number) => {
+    addPayment: async (name: string, amount: number, note?: string) => {
       if (!name.trim()) throw new Error('Person name is required');
       if (amount <= 0) throw new Error('Amount must be positive');
 
@@ -403,13 +406,14 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
             id: 'local-' + Date.now() + '-' + Math.random().toString(36).substr(2, 4),
             name: name.trim(),
             amount,
+            note: note || '',
             type: 'PAYMENT',
             createdAt: new Date().toISOString()
           };
 
           const updated = [newTx, ...localTxs];
           saveLocalTransactions(updated);
-          
+
           await get().loadAllData();
           get().showToast(`Recorded Payment of ${amount.toLocaleString('vi-VN')} ₫ from ${name}`, 'success');
         } catch (err: any) {
@@ -420,10 +424,10 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
 
       // Sheets mode
       try {
-        await api.addPayment(settings.scriptUrl, name.trim(), amount);
+        await api.addPayment(settings.scriptUrl, name.trim(), amount, note);
         get().showToast(`Saved to Sheets: Received ${amount.toLocaleString('vi-VN')} ₫ from ${name}`, 'success');
         await get().loadAllData();
-        
+
         // Refresh details screen if viewing this debtor
         if (get().activeDebtorName?.toLowerCase() === name.toLowerCase()) {
           get().loadHistory(get().activeDebtorName!);
@@ -436,6 +440,7 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
           id: 'local-err-' + Date.now(),
           name: name.trim(),
           amount,
+          note: note || '',
           type: 'PAYMENT',
           createdAt: new Date().toISOString()
         };
@@ -465,7 +470,7 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
     // ----------------------------------------------------
     // EDIT AN EXISTING TRANSACTION
     // ----------------------------------------------------
-    editTransaction: async (id: string, name: string, amount: number, type: 'BORROW' | 'PAYMENT') => {
+    editTransaction: async (id: string, name: string, amount: number, type: 'BORROW' | 'PAYMENT', note?: string) => {
       if (!name.trim()) throw new Error('Name cannot be empty');
       if (amount <= 0) throw new Error('Amount must be positive');
 
@@ -483,6 +488,7 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
             ...localTxs[targetIndex],
             name: name.trim(),
             amount,
+            note: note || '',
             type
           };
 
@@ -502,7 +508,7 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
 
       // Sheets Mode
       try {
-        await api.editTransaction(settings.scriptUrl, id, name.trim(), amount, type);
+        await api.editTransaction(settings.scriptUrl, id, name.trim(), amount, type, note);
         get().showToast('Transaction updated successfully in Sheets', 'success');
         
         await get().loadAllData();

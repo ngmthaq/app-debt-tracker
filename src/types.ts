@@ -4,6 +4,7 @@ export interface Transaction {
   id: string; // Unique transaction ID
   name: string; // Debtor/Person name
   amount: number; // Positive number
+  note?: string; // Optional note / memo
   type: TransactionType; // BORROW (lent) or PAYMENT (repay)
   createdAt: string; // ISO String or Format "YYYY-MM-DD" / "YYYY-MM-DD HH:mm:ss"
 }

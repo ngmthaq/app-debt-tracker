@@ -1,7 +1,7 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { useDebtStore } from '../store';
 import { Transaction } from '../types';
-import { Trash2, AlertCircle, Save, X, RotateCcw } from 'lucide-react';
+import { Trash2, AlertCircle, Save, X, RotateCcw, StickyNote } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface EditTransactionModalProps {
@@ -17,6 +17,7 @@ export default function EditTransactionModal({ isOpen, transaction, onClose }: E
 
   const [name, setName] = useState('');
   const [amount, setAmount] = useState('');
+  const [note, setNote] = useState('');
   const [type, setType] = useState<'BORROW' | 'PAYMENT'>('BORROW');
   const [isConfirmingDelete, setIsConfirmingDelete] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -25,6 +26,7 @@ export default function EditTransactionModal({ isOpen, transaction, onClose }: E
     if (isOpen && transaction) {
       setName(transaction.name);
       setAmount(String(transaction.amount));
+      setNote(transaction.note || '');
       setType(transaction.type);
       setIsConfirmingDelete(false);
       setError(null);
@@ -48,7 +50,7 @@ export default function EditTransactionModal({ isOpen, transaction, onClose }: E
     }
 
     try {
-      await editTransaction(transaction.id, name.trim(), parsedAmount, type);
+      await editTransaction(transaction.id, name.trim(), parsedAmount, type, note.trim());
       onClose();
     } catch (err: any) {
       setError(err.message || 'Saving failed.');
@@ -206,6 +208,26 @@ export default function EditTransactionModal({ isOpen, transaction, onClose }: E
                   onChange={(e) => setAmount(e.target.value)}
                   className="w-full px-4 py-3 text-xs text-slate-800 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-indigo-500 font-mono transition-all font-semibold"
                 />
+              </div>
+
+              {/* Note field */}
+              <div className="space-y-1.5">
+                <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                  Note <span className="font-normal normal-case tracking-normal text-slate-400">(optional)</span>
+                </label>
+                <div className="relative">
+                  <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                    <StickyNote className="w-4 h-4" />
+                  </span>
+                  <input
+                    id="edit-input-note"
+                    type="text"
+                    placeholder="Add a memo or note..."
+                    value={note}
+                    onChange={(e) => setNote(e.target.value)}
+                    className="w-full pl-10 pr-4 py-3 text-xs text-slate-800 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-indigo-500 transition-all"
+                  />
+                </div>
               </div>
 
               {error && (

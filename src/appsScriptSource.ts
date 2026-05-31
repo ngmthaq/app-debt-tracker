@@ -16,10 +16,10 @@ function getSheet() {
   if (!sheet) {
     sheet = ss.insertSheet("Transactions");
     // Append headers if sheet was just created
-    sheet.appendRow(["ID", "Name", "Amount", "Type", "CreatedAt"]);
+    sheet.appendRow(["ID", "Name", "Amount", "Note", "Type", "CreatedAt"]);
     // Freeze headers
-    sheet.getRange("A1:E1").setFontWeight("bold");
-    sheet.getRange("A1:E1").setBackground("#f1f5f9");
+    sheet.getRange("A1:F1").setFontWeight("bold");
+    sheet.getRange("A1:F1").setBackground("#f1f5f9");
     sheet.setFrozenRows(1);
   }
   return sheet;
@@ -44,8 +44,9 @@ function doGet(e) {
         id: String(r[0]),
         name: String(r[1]),
         amount: Number(r[2]),
-        type: String(r[3]),
-        createdAt: String(r[4])
+        note: String(r[3] || ""),
+        type: String(r[4]),
+        createdAt: String(r[5])
       };
     }).filter(function(t) { return t.id; }); // filter out empty rows
     
@@ -117,6 +118,7 @@ function doGet(e) {
         .map(function(t) {
           return {
             id: t.id,
+            note: t.note,
             type: t.type,
             amount: t.amount,
             createdAt: t.createdAt
@@ -156,17 +158,18 @@ function doPost(e) {
       var type = action === "addDebt" ? "BORROW" : "PAYMENT";
       var name = params.name;
       var amount = Number(params.amount);
-      
+      var note = params.note || "";
+
       if (!name || isNaN(amount) || amount <= 0) {
         return jsonResponse({ error: "Invalid name or positive amount required" }, 400);
       }
-      
+
       var id = Utilities.getUuid();
-      sheet.appendRow([id, name.trim(), amount, type, now]);
-      
+      sheet.appendRow([id, name.trim(), amount, note, type, now]);
+
       return jsonResponse({
         success: true,
-        transaction: { id: id, name: name.trim(), amount: amount, type: type, createdAt: now }
+        transaction: { id: id, name: name.trim(), amount: amount, note: note, type: type, createdAt: now }
       });
     }
     
@@ -174,31 +177,33 @@ function doPost(e) {
       var id = params.id;
       var name = params.name;
       var amount = Number(params.amount);
+      var note = params.note || "";
       var type = params.type; // BORROW or PAYMENT
-      
+
       if (!id || !name || isNaN(amount) || amount <= 0 || (type !== "BORROW" && type !== "PAYMENT")) {
         return jsonResponse({ error: "Missing or invalid parameters for editing" }, 400);
       }
-      
+
       var data = sheet.getDataRange().getValues();
       var foundRowIndex = -1;
-      
+
       for (var i = 1; i < data.length; i++) {
         if (String(data[i][0]) === id) {
           foundRowIndex = i + 1; // 1-based index for sheets
           break;
         }
       }
-      
+
       if (foundRowIndex === -1) {
         return jsonResponse({ error: "Transaction not found" }, 404);
       }
-      
-      // Update cells (ID, Name, Amount, Type, CreatedAt is kept or updated)
+
+      // Update cells: Name(2), Amount(3), Note(4), Type(5)
       sheet.getRange(foundRowIndex, 2).setValue(name.trim());
       sheet.getRange(foundRowIndex, 3).setValue(amount);
-      sheet.getRange(foundRowIndex, 4).setValue(type);
-      
+      sheet.getRange(foundRowIndex, 4).setValue(note);
+      sheet.getRange(foundRowIndex, 5).setValue(type);
+
       return jsonResponse({ success: true });
     }
     

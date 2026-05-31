@@ -91,7 +91,7 @@ export const api = {
   /**
    * Create a BORROW transaction
    */
-  async addDebt(scriptUrl: string, name: string, amount: number): Promise<any> {
+  async addDebt(scriptUrl: string, name: string, amount: number, note?: string): Promise<any> {
     try {
       const response = await fetchWithTimeout(scriptUrl, {
         method: 'POST',
@@ -102,7 +102,8 @@ export const api = {
         body: JSON.stringify({
           action: 'addDebt',
           name,
-          amount
+          amount,
+          note: note || ''
         })
       });
       if (!response.ok) {
@@ -118,7 +119,7 @@ export const api = {
   /**
    * Create a PAYMENT transaction
    */
-  async addPayment(scriptUrl: string, name: string, amount: number): Promise<any> {
+  async addPayment(scriptUrl: string, name: string, amount: number, note?: string): Promise<any> {
     try {
       const response = await fetchWithTimeout(scriptUrl, {
         method: 'POST',
@@ -128,7 +129,8 @@ export const api = {
         body: JSON.stringify({
           action: 'addPayment',
           name,
-          amount
+          amount,
+          note: note || ''
         })
       });
       if (!response.ok) {
@@ -144,7 +146,7 @@ export const api = {
   /**
    * Edit an existing transaction details in Google Sheets
    */
-  async editTransaction(scriptUrl: string, id: string, name: string, amount: number, type: 'BORROW' | 'PAYMENT'): Promise<any> {
+  async editTransaction(scriptUrl: string, id: string, name: string, amount: number, type: 'BORROW' | 'PAYMENT', note?: string): Promise<any> {
     try {
       const response = await fetchWithTimeout(scriptUrl, {
         method: 'POST',
@@ -156,6 +158,7 @@ export const api = {
           id,
           name,
           amount,
+          note: note || '',
           type
         })
       });

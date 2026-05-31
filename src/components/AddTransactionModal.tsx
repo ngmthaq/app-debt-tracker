@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, FormEvent } from 'react';
 import { useDebtStore } from '../store';
-import { Landmark, User, X, Check, ArrowDownLeft, ArrowUpRight } from 'lucide-react';
+import { Landmark, User, X, Check, ArrowDownLeft, ArrowUpRight, StickyNote } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface AddTransactionModalProps {
@@ -24,6 +24,7 @@ export default function AddTransactionModal({
   const [type, setType] = useState<'BORROW' | 'PAYMENT'>(initialType);
   const [name, setName] = useState(initialName);
   const [amount, setAmount] = useState('');
+  const [note, setNote] = useState('');
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [validationError, setValidationError] = useState<string | null>(null);
@@ -36,6 +37,7 @@ export default function AddTransactionModal({
       setType(initialType);
       setName(initialName);
       setAmount('');
+      setNote('');
       setValidationError(null);
       setShowSuggestions(false);
     }
@@ -93,9 +95,9 @@ export default function AddTransactionModal({
 
     try {
       if (type === 'BORROW') {
-        await addDebt(trimmedName, parsedAmount);
+        await addDebt(trimmedName, parsedAmount, note.trim());
       } else {
-        await addPayment(trimmedName, parsedAmount);
+        await addPayment(trimmedName, parsedAmount, note.trim());
       }
       onClose();
     } catch (err: any) {
@@ -240,6 +242,26 @@ export default function AddTransactionModal({
                 }}
                 className="w-full pl-8 pr-4 py-3 text-xs text-slate-800 bg-slate-50/50 border border-slate-200 rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 font-mono transition-all"
                 style={{ contentVisibility: 'auto' }}
+              />
+            </div>
+          </div>
+
+          {/* Note Input */}
+          <div className="space-y-1.5">
+            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+              Note <span className="text-slate-400 font-normal normal-case tracking-normal">(optional)</span>
+            </label>
+            <div className="relative">
+              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                <StickyNote className="w-4 h-4" />
+              </span>
+              <input
+                id="input-tx-note"
+                type="text"
+                placeholder="Add a memo or note..."
+                value={note}
+                onChange={(e) => setNote(e.target.value)}
+                className="w-full pl-10 pr-4 py-3 text-xs text-slate-800 bg-slate-50/50 border border-slate-200 rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
               />
             </div>
           </div>
