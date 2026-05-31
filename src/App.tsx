@@ -151,10 +151,10 @@ export default function App() {
                     </div>
                     <div>
                       <h1 id="app-brand-name" className="font-display font-black text-sm tracking-tight text-white leading-none">
-                        LEDGER
+                        Debt Tracker
                       </h1>
                       <span className="text-[9px] font-mono font-semibold tracking-widest text-indigo-300 uppercase block mt-0.5">
-                        Mobile Ledger
+                        Google Sheets Powered
                       </span>
                     </div>
                   </div>
