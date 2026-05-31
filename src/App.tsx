@@ -28,6 +28,7 @@ import StatusToast from './components/StatusToast';
 import SetupGuideModal from './components/SetupGuideModal';
 import AddTransactionModal from './components/AddTransactionModal';
 import DebtorDetailScreen from './components/DebtorDetailScreen';
+import PWAUpdateBanner from './components/PWAUpdateBanner';
 
 export default function App() {
   const initStore = useDebtStore(state => state.initStore);
@@ -477,6 +478,9 @@ export default function App() {
 
         {/* Dynamic status feedback toast cards */}
         <StatusToast />
+
+        {/* PWA update prompt */}
+        <PWAUpdateBanner />
 
       </div>
     </div>
