@@ -193,7 +193,7 @@ export default function EditTransactionModal({ isOpen, transaction, onClose }: E
               {/* Amount field */}
               <div className="space-y-1.5">
                 <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider">
-                  Amount ($)
+                  Amount (₫)
                 </label>
                 <input
                   id="edit-input-amount"

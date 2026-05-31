@@ -117,7 +117,7 @@ export default function DebtorDetailScreen() {
             Outstanding Balance
           </span>
           <span id="detail-big-balance" className="font-mono text-3xl font-extrabold text-slate-800 tracking-tight block mt-1">
-            ${currentOutstanding.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            {currentOutstanding.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
           </span>
         </div>
 
@@ -220,10 +220,10 @@ export default function DebtorDetailScreen() {
                     <span className={`font-mono font-bold leading-normal ${
                       tx.type === 'BORROW' ? 'text-rose-600' : 'text-emerald-600'
                     }`}>
-                      {tx.type === 'BORROW' ? '+' : '-'}${tx.amount.toFixed(2)}
+                      {tx.type === 'BORROW' ? '+' : '-'}{tx.amount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                     </span>
                     <span className="text-[10px] text-slate-400 font-mono font-medium block leading-none mt-0.5">
-                      Bal: ${tx.runningBalance.toFixed(2)}
+                      Bal: {tx.runningBalance.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                     </span>
                   </div>
                 </div>

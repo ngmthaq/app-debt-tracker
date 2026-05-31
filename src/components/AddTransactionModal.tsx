@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, FormEvent } from 'react';
 import { useDebtStore } from '../store';
-import { Landmark, User, DollarSign, X, Check, ArrowDownLeft, ArrowUpRight } from 'lucide-react';
+import { Landmark, User, X, Check, ArrowDownLeft, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface AddTransactionModalProps {
@@ -220,11 +220,11 @@ export default function AddTransactionModal({
           {/* Amount Input */}
           <div className="space-y-1.5">
             <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
-              Amount ($)
+              Amount (₫)
             </label>
             <div className="relative">
               <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 font-mono text-sm">
-                $
+                ₫
               </span>
               <input
                 id="input-tx-amount"

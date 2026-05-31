@@ -1,17 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useDebtStore } from './store';
-import { 
-  Plus, 
-  Search, 
-  RotateCw, 
-  SlidersHorizontal, 
-  DollarSign, 
-  Users, 
-  CheckCircle, 
-  AlertCircle, 
-  Database, 
-  Settings, 
-  HelpCircle, 
+import {
+  Plus,
+  Search,
+  RotateCw,
+  SlidersHorizontal,
+  Users,
+  CheckCircle,
+  AlertCircle,
+  Database,
+  Settings,
+  HelpCircle,
   TrendingUp,
   UserCheck,
   ChevronRight,
@@ -229,7 +228,7 @@ export default function App() {
                         Total Outstanding Debt
                       </span>
                       <span id="amount-total-outstanding" className="font-mono text-2xl font-extrabold tracking-tight mt-1 block">
-                        ${stats.totalOutstandingAmount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                        {stats.totalOutstandingAmount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                       </span>
                     </div>
                     <div className="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400">
@@ -403,7 +402,7 @@ export default function App() {
                               Balance
                             </span>
                             <span className="font-mono font-black text-[13px] text-slate-800 mt-1 leading-none">
-                              ${debtor.balance.toFixed(2)}
+                              {debtor.balance.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                             </span>
                             <span className="mt-1 block">
                               {debtor.balance > 0 ? (

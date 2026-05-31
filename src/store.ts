@@ -352,7 +352,7 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
           saveLocalTransactions(updated);
           
           await get().loadAllData();
-          get().showToast(`Recorded Borrows of $${amount} to ${name}`, 'success');
+          get().showToast(`Recorded Borrows of ${amount.toLocaleString('vi-VN')} ₫ to ${name}`, 'success');
         } catch (err: any) {
           set({ isLoading: false, error: err.message });
         }
@@ -362,7 +362,7 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
       // Sheets mode
       try {
         await api.addDebt(settings.scriptUrl, name.trim(), amount);
-        get().showToast(`Saved to Sheets: Lent $${amount} to ${name}`, 'success');
+        get().showToast(`Saved to Sheets: Lent ${amount.toLocaleString('vi-VN')} ₫ to ${name}`, 'success');
         await get().loadAllData();
         
         // Refresh details screen if viewing this debtor
@@ -411,7 +411,7 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
           saveLocalTransactions(updated);
           
           await get().loadAllData();
-          get().showToast(`Recorded Payment of $${amount} from ${name}`, 'success');
+          get().showToast(`Recorded Payment of ${amount.toLocaleString('vi-VN')} ₫ from ${name}`, 'success');
         } catch (err: any) {
           set({ isLoading: false, error: err.message });
         }
@@ -421,7 +421,7 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
       // Sheets mode
       try {
         await api.addPayment(settings.scriptUrl, name.trim(), amount);
-        get().showToast(`Saved to Sheets: Received $${amount} from ${name}`, 'success');
+        get().showToast(`Saved to Sheets: Received ${amount.toLocaleString('vi-VN')} ₫ from ${name}`, 'success');
         await get().loadAllData();
         
         // Refresh details screen if viewing this debtor
@@ -457,7 +457,7 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
 
       const balanceToPay = debtor.balance;
       set({ isLoading: true });
-      get().showToast(`Paying off outstanding balance of $${balanceToPay}...`, 'info');
+      get().showToast(`Paying off outstanding balance of ${balanceToPay.toLocaleString('vi-VN')} ₫...`, 'info');
 
       await get().addPayment(name, balanceToPay);
     },
