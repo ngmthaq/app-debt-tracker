@@ -1,29 +1,45 @@
 import { useEffect, useState } from 'react';
 import { useDebtStore } from '../store';
 import { Transaction } from '../types';
-import { ArrowLeft, Plus, Check, Calendar, ArrowUpRight, ArrowDownLeft, ChevronRight, Edit3 } from 'lucide-react';
+import {
+  ArrowLeft,
+  Plus,
+  Check,
+  Calendar,
+  ArrowUpRight,
+  ArrowDownLeft,
+  ChevronRight,
+  Edit3,
+} from 'lucide-react';
 import EditTransactionModal from './EditTransactionModal';
 import AddTransactionModal from './AddTransactionModal';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function DebtorDetailScreen() {
-  const activeDebtorName = useDebtStore(state => state.activeDebtorName);
-  const closeHistory = useDebtStore(state => state.closeHistory);
-  const loadHistory = useDebtStore(state => state.loadHistory);
-  const history = useDebtStore(state => state.history);
-  const isLoadingHistory = useDebtStore(state => state.isLoadingHistory);
-  const debtors = useDebtStore(state => state.debtors);
-  const markFullyPaid = useDebtStore(state => state.markFullyPaid);
-  const isLoadingStore = useDebtStore(state => state.isLoading);
+  const activeDebtorName = useDebtStore((state) => state.activeDebtorName);
+  const closeHistory = useDebtStore((state) => state.closeHistory);
+  const loadHistory = useDebtStore((state) => state.loadHistory);
+  const history = useDebtStore((state) => state.history);
+  const isLoadingHistory = useDebtStore((state) => state.isLoadingHistory);
+  const debtors = useDebtStore((state) => state.debtors);
+  const markFullyPaid = useDebtStore((state) => state.markFullyPaid);
+  const isLoadingStore = useDebtStore((state) => state.isLoading);
 
   const [selectedTx, setSelectedTx] = useState<Transaction | null>(null);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isAddPaymentOpen, setIsAddPaymentOpen] = useState(false);
+  const [isConfirmPaidOpen, setIsConfirmPaidOpen] = useState(false);
+
+  // Lock body scroll when confirm dialog is open
+  useEffect(() => {
+    document.body.style.overflow = isConfirmPaidOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isConfirmPaidOpen]);
 
   // Active debtor info from main debtors array
-  const debtorInfo = debtors.find(
-    d => d.name.toLowerCase() === activeDebtorName?.toLowerCase()
-  );
+  const debtorInfo = debtors.find((d) => d.name.toLowerCase() === activeDebtorName?.toLowerCase());
 
   // Re-fetch history when details screen renders or when transactions mutate
   useEffect(() => {
@@ -36,7 +52,7 @@ export default function DebtorDetailScreen() {
 
   // Calculate chronological running balances
   let runningTotal = 0;
-  const historyWithRunningBalance = [...history].map(tx => {
+  const historyWithRunningBalance = [...history].map((tx) => {
     if (tx.type === 'BORROW') {
       runningTotal += tx.amount;
     } else {
@@ -44,14 +60,14 @@ export default function DebtorDetailScreen() {
     }
     return {
       ...tx,
-      runningBalance: Number(runningTotal.toFixed(2))
+      runningBalance: Number(runningTotal.toFixed(2)),
     };
   });
 
   // Reverse list for UI display (most recent transactions at the top) or keep chronologically sorted?
   // Standard financial ledger display is chronological (to trace the running balance naturally from top to bottom)
   // Let's render chronologically so the running balance logic flows naturally from first to latest transaction!
-  
+
   const formatDate = (isoString: string) => {
     try {
       const d = new Date(isoString);
@@ -59,7 +75,7 @@ export default function DebtorDetailScreen() {
       return d.toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'short',
-        day: '2-digit'
+        day: '2-digit',
       });
     } catch {
       return isoString;
@@ -71,7 +87,10 @@ export default function DebtorDetailScreen() {
   return (
     <div id="debtor-detail-screen" className="flex flex-col min-h-screen bg-slate-50">
       {/* Header Bar */}
-      <div id="detail-header" className="sticky top-0 z-20 bg-white border-b border-slate-100 px-4 py-4 flex items-center justify-between shadow-sm">
+      <div
+        id="detail-header"
+        className="sticky top-0 z-20 bg-white border-b border-slate-100 px-4 py-4 flex items-center justify-between shadow-sm"
+      >
         <button
           id="btn-detail-back"
           onClick={closeHistory}
@@ -80,11 +99,9 @@ export default function DebtorDetailScreen() {
           <ArrowLeft className="w-4 h-4" />
           Back
         </button>
-        
         <h2 id="detail-title" className="font-display font-extrabold text-slate-800 text-sm">
           Account Status
         </h2>
-
         <div className="w-12" /> {/* spacer balance */}
       </div>
 
@@ -116,7 +133,10 @@ export default function DebtorDetailScreen() {
           <span className="text-[11px] font-bold text-slate-400 uppercase tracking-widest block font-sans">
             Outstanding Balance
           </span>
-          <span id="detail-big-balance" className="font-mono text-3xl font-extrabold text-slate-800 tracking-tight block mt-1">
+          <span
+            id="detail-big-balance"
+            className="font-mono text-3xl font-extrabold text-slate-800 tracking-tight block mt-1"
+          >
             {currentOutstanding.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
           </span>
         </div>
@@ -134,7 +154,7 @@ export default function DebtorDetailScreen() {
             </button>
             <button
               id="detail-action-markpaid"
-              onClick={() => markFullyPaid(activeDebtorName)}
+              onClick={() => setIsConfirmPaidOpen(true)}
               disabled={isLoadingStore}
               className="px-4 py-2.5 text-xs font-semibold bg-slate-800 hover:bg-slate-900 text-white rounded-xl shadow-sm transition-all flex items-center justify-center gap-1.5"
             >
@@ -146,7 +166,7 @@ export default function DebtorDetailScreen() {
       </div>
 
       {/* Transaction History Section */}
-      <div className="p-4 flex-grow w-full max-w-lg mx-auto">
+      <div className="p-4 grow w-full max-w-lg mx-auto">
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider font-sans">
             Ledger Entries
@@ -159,24 +179,33 @@ export default function DebtorDetailScreen() {
         {/* Loading History state */}
         {isLoadingHistory ? (
           <div id="history-loading-pulse" className="space-y-3 pt-4">
-            {[1, 2, 3].map(n => (
-              <div key={n} className="bg-white p-4 rounded-xl border border-slate-100 animate-pulse space-y-2">
+            {[1, 2, 3].map((n) => (
+              <div
+                key={n}
+                className="bg-white p-4 rounded-xl border border-slate-100 animate-pulse space-y-2"
+              >
                 <div className="h-4 bg-slate-100 rounded w-1/3" />
                 <div className="h-3 bg-slate-100 rounded w-2/3" />
               </div>
             ))}
           </div>
         ) : history.length === 0 ? (
-          <div id="history-empty-state" className="bg-white rounded-xl p-8 text-center border border-slate-150 py-12 space-y-2">
+          <div
+            id="history-empty-state"
+            className="bg-white rounded-xl p-8 text-center border border-slate-150 py-12 space-y-2"
+          >
             <Calendar className="w-8 h-8 text-slate-300 mx-auto" />
             <h4 className="text-xs font-bold text-slate-700">No Transactions Recorded</h4>
-            <p className="text-[11px] text-slate-400 leading-relaxed max-w-[200px] mx-auto">
+            <p className="text-[11px] text-slate-400 leading-relaxed max-w-50 mx-auto">
               This person currently has no registered balance sheet activities.
             </p>
           </div>
         ) : (
           /* Actual Ledger Table List */
-          <div id="tx-history-list" className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+          <div
+            id="tx-history-list"
+            className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm"
+          >
             <div className="divide-y divide-slate-100">
               {historyWithRunningBalance.map((tx) => (
                 <div
@@ -189,11 +218,13 @@ export default function DebtorDetailScreen() {
                 >
                   <div className="flex items-start gap-3">
                     {/* Icon indicator */}
-                    <div className={`mt-0.5 w-7 h-7 rounded-lg flex items-center justify-center ${
-                      tx.type === 'BORROW' 
-                        ? 'bg-rose-50 text-rose-600' 
-                        : 'bg-emerald-50 text-emerald-600'
-                    }`}>
+                    <div
+                      className={`mt-0.5 w-7 h-7 rounded-lg flex items-center justify-center ${
+                        tx.type === 'BORROW'
+                          ? 'bg-rose-50 text-rose-600'
+                          : 'bg-emerald-50 text-emerald-600'
+                      }`}
+                    >
                       {tx.type === 'BORROW' ? (
                         <ArrowUpRight className="w-4 h-4" />
                       ) : (
@@ -222,13 +253,20 @@ export default function DebtorDetailScreen() {
 
                   {/* Pricing Balance right aligned */}
                   <div className="text-right flex flex-col justify-end">
-                    <span className={`font-mono font-bold leading-normal ${
-                      tx.type === 'BORROW' ? 'text-rose-600' : 'text-emerald-600'
-                    }`}>
-                      {tx.type === 'BORROW' ? '+' : '-'}{tx.amount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+                    <span
+                      className={`font-mono font-bold leading-normal ${
+                        tx.type === 'BORROW' ? 'text-rose-600' : 'text-emerald-600'
+                      }`}
+                    >
+                      {tx.type === 'BORROW' ? '+' : '-'}
+                      {tx.amount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
                     </span>
                     <span className="text-[10px] text-slate-400 font-mono font-medium block leading-none mt-0.5">
-                      Bal: {tx.runningBalance.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+                      Bal:{' '}
+                      {tx.runningBalance.toLocaleString('vi-VN', {
+                        style: 'currency',
+                        currency: 'VND',
+                      })}
                     </span>
                   </div>
                 </div>
@@ -257,6 +295,53 @@ export default function DebtorDetailScreen() {
         initialType="PAYMENT"
         initialName={activeDebtorName}
       />
+
+      {/* Confirm Mark Fully Paid dialog */}
+      <AnimatePresence>
+        {isConfirmPaidOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-6"
+            onClick={() => setIsConfirmPaidOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              className="bg-white rounded-2xl shadow-xl p-6 w-full max-w-xs"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h3 className="text-sm font-bold text-slate-800 mb-2">Mark Fully Paid?</h3>
+              <p className="text-xs text-slate-500 mb-5">
+                This will record a payment that clears the entire outstanding balance for{' '}
+                <span className="font-semibold text-slate-700">{activeDebtorName}</span>. This
+                action cannot be undone.
+              </p>
+              <div className="flex gap-2 justify-end">
+                <button
+                  onClick={() => setIsConfirmPaidOpen(false)}
+                  className="px-4 py-2 text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={() => {
+                    setIsConfirmPaidOpen(false);
+                    markFullyPaid(activeDebtorName);
+                  }}
+                  disabled={isLoadingStore}
+                  className="px-4 py-2 text-xs font-semibold text-white bg-slate-800 hover:bg-slate-900 rounded-xl transition-all"
+                >
+                  Confirm
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

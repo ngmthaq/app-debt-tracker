@@ -15,21 +15,28 @@ export class ApiError extends Error {
 /**
  * Execute a fetch block with timeout
  */
-async function fetchWithTimeout(url: string, options: RequestInit = {}, timeout = 10000): Promise<Response> {
+async function fetchWithTimeout(
+  url: string,
+  options: RequestInit = {},
+  timeout = 10000
+): Promise<Response> {
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeout);
-  
+
   try {
     const response = await fetch(url, {
       ...options,
-      signal: controller.signal
+      signal: controller.signal,
     });
     clearTimeout(id);
     return response;
   } catch (error: any) {
     clearTimeout(id);
     if (error.name === 'AbortError') {
-      throw new ApiError('Request timed out. Please check your network connection and Apps Script URL.', 408);
+      throw new ApiError(
+        'Request timed out. Please check your network connection and Apps Script URL.',
+        408
+      );
     }
     throw error;
   }
@@ -44,12 +51,17 @@ export const api = {
       const url = `${scriptUrl}?action=getDebts&t=${Date.now()}`;
       const response = await fetchWithTimeout(url);
       if (!response.ok) {
-        throw new ApiError(`Failed to fetch debts. Server responded with ${response.status}`, response.status);
+        throw new ApiError(
+          `Failed to fetch debts. Server responded with ${response.status}`,
+          response.status
+        );
       }
       return await response.json();
     } catch (err: any) {
       if (err instanceof ApiError) throw err;
-      throw new ApiError(`Network Connection Error: ${err.message || 'Make sure your Google Script Deployment URL is correct and accepts permissions.'}`);
+      throw new ApiError(
+        `Network Connection Error: ${err.message || 'Make sure your Google Script Deployment URL is correct and accepts permissions.'}`
+      );
     }
   },
 
@@ -61,12 +73,17 @@ export const api = {
       const url = `${scriptUrl}?action=getNames&t=${Date.now()}`;
       const response = await fetchWithTimeout(url);
       if (!response.ok) {
-        throw new ApiError(`Failed to fetch names. Server responded with ${response.status}`, response.status);
+        throw new ApiError(
+          `Failed to fetch names. Server responded with ${response.status}`,
+          response.status
+        );
       }
       return await response.json();
     } catch (err: any) {
       if (err instanceof ApiError) throw err;
-      throw new ApiError(`Network Connection Error: ${err.message || 'Unable to fetch autocomplete suggestions.'}`);
+      throw new ApiError(
+        `Network Connection Error: ${err.message || 'Unable to fetch autocomplete suggestions.'}`
+      );
     }
   },
 
@@ -79,12 +96,17 @@ export const api = {
       const url = `${scriptUrl}?action=getHistory&name=${encodedName}&t=${Date.now()}`;
       const response = await fetchWithTimeout(url);
       if (!response.ok) {
-        throw new ApiError(`Failed to fetch history. Server responded with ${response.status}`, response.status);
+        throw new ApiError(
+          `Failed to fetch history. Server responded with ${response.status}`,
+          response.status
+        );
       }
       return await response.json();
     } catch (err: any) {
       if (err instanceof ApiError) throw err;
-      throw new ApiError(`Network Connection Error: ${err.message || 'Unable to fetch debtor history.'}`);
+      throw new ApiError(
+        `Network Connection Error: ${err.message || 'Unable to fetch debtor history.'}`
+      );
     }
   },
 
@@ -103,16 +125,21 @@ export const api = {
           action: 'addDebt',
           name,
           amount,
-          note: note || ''
-        })
+          note: note || '',
+        }),
       });
       if (!response.ok) {
-        throw new ApiError(`Failed to add debt. Server responded with ${response.status}`, response.status);
+        throw new ApiError(
+          `Failed to add debt. Server responded with ${response.status}`,
+          response.status
+        );
       }
       return await response.json();
     } catch (err: any) {
       if (err instanceof ApiError) throw err;
-      throw new ApiError(`Network Connection Error: ${err.message || 'Unable to save borrow transaction.'}`);
+      throw new ApiError(
+        `Network Connection Error: ${err.message || 'Unable to save borrow transaction.'}`
+      );
     }
   },
 
@@ -130,23 +157,35 @@ export const api = {
           action: 'addPayment',
           name,
           amount,
-          note: note || ''
-        })
+          note: note || '',
+        }),
       });
       if (!response.ok) {
-        throw new ApiError(`Failed to add payment. Server responded with ${response.status}`, response.status);
+        throw new ApiError(
+          `Failed to add payment. Server responded with ${response.status}`,
+          response.status
+        );
       }
       return await response.json();
     } catch (err: any) {
       if (err instanceof ApiError) throw err;
-      throw new ApiError(`Network Connection Error: ${err.message || 'Unable to save payment transaction.'}`);
+      throw new ApiError(
+        `Network Connection Error: ${err.message || 'Unable to save payment transaction.'}`
+      );
     }
   },
 
   /**
    * Edit an existing transaction details in Google Sheets
    */
-  async editTransaction(scriptUrl: string, id: string, name: string, amount: number, type: 'BORROW' | 'PAYMENT', note?: string): Promise<any> {
+  async editTransaction(
+    scriptUrl: string,
+    id: string,
+    name: string,
+    amount: number,
+    type: 'BORROW' | 'PAYMENT',
+    note?: string
+  ): Promise<any> {
     try {
       const response = await fetchWithTimeout(scriptUrl, {
         method: 'POST',
@@ -159,16 +198,21 @@ export const api = {
           name,
           amount,
           note: note || '',
-          type
-        })
+          type,
+        }),
       });
       if (!response.ok) {
-        throw new ApiError(`Failed to edit transaction. Server responded with ${response.status}`, response.status);
+        throw new ApiError(
+          `Failed to edit transaction. Server responded with ${response.status}`,
+          response.status
+        );
       }
       return await response.json();
     } catch (err: any) {
       if (err instanceof ApiError) throw err;
-      throw new ApiError(`Network Connection Error: ${err.message || 'Unable to update transaction details.'}`);
+      throw new ApiError(
+        `Network Connection Error: ${err.message || 'Unable to update transaction details.'}`
+      );
     }
   },
 
@@ -184,16 +228,21 @@ export const api = {
         },
         body: JSON.stringify({
           action: 'deleteTransaction',
-          id
-        })
+          id,
+        }),
       });
       if (!response.ok) {
-        throw new ApiError(`Failed to delete transaction. Server responded with ${response.status}`, response.status);
+        throw new ApiError(
+          `Failed to delete transaction. Server responded with ${response.status}`,
+          response.status
+        );
       }
       return await response.json();
     } catch (err: any) {
       if (err instanceof ApiError) throw err;
-      throw new ApiError(`Network Connection Error: ${err.message || 'Unable to delete transaction.'}`);
+      throw new ApiError(
+        `Network Connection Error: ${err.message || 'Unable to delete transaction.'}`
+      );
     }
-  }
+  },
 };

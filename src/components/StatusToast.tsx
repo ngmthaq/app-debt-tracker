@@ -4,8 +4,8 @@ import { CheckCircle2, AlertTriangle, Info, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 
 export default function StatusToast() {
-  const notification = useDebtStore(state => state.notification);
-  const clearNotification = useDebtStore(state => state.clearNotification);
+  const notification = useDebtStore((state) => state.notification);
+  const clearNotification = useDebtStore((state) => state.clearNotification);
 
   useEffect(() => {
     if (notification) {
@@ -33,11 +33,9 @@ export default function StatusToast() {
           {notification.type === 'error' && (
             <AlertTriangle id="icon-error" className="w-5 h-5 text-rose-600" />
           )}
-          {notification.type === 'info' && (
-            <Info id="icon-info" className="w-5 h-5 text-sky-600" />
-          )}
+          {notification.type === 'info' && <Info id="icon-info" className="w-5 h-5 text-sky-600" />}
         </div>
-        
+
         <div className="flex-grow text-xs font-medium text-slate-800 leading-snug">
           {notification.message}
         </div>

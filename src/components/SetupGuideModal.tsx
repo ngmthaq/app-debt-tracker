@@ -10,10 +10,10 @@ interface SetupGuideModalProps {
 }
 
 export default function SetupGuideModal({ isOpen, onClose }: SetupGuideModalProps) {
-  const settings = useDebtStore(state => state.settings);
-  const updateSettings = useDebtStore(state => state.updateSettings);
-  const syncLocalToSheets = useDebtStore(state => state.syncLocalToSheets);
-  const isLoading = useDebtStore(state => state.isLoading);
+  const settings = useDebtStore((state) => state.settings);
+  const updateSettings = useDebtStore((state) => state.updateSettings);
+  const syncLocalToSheets = useDebtStore((state) => state.syncLocalToSheets);
+  const isLoading = useDebtStore((state) => state.isLoading);
 
   const [scriptUrl, setScriptUrl] = useState(settings.scriptUrl);
   const [useLocal, setUseLocal] = useState(settings.useLocalFallback);
@@ -36,7 +36,7 @@ export default function SetupGuideModal({ isOpen, onClose }: SetupGuideModalProp
       alert('Please provide your Google Apps Script Web App URL or use local storage.');
       return;
     }
-    
+
     await updateSettings(scriptUrl.trim(), useLocal);
     onClose();
   };
@@ -55,7 +55,10 @@ export default function SetupGuideModal({ isOpen, onClose }: SetupGuideModalProp
         {/* Header */}
         <div className="sticky top-0 bg-white p-5 border-b border-slate-100 flex items-center justify-between z-10">
           <div>
-            <h3 id="setup-title" className="font-display text-lg font-bold text-slate-800 flex items-center gap-2">
+            <h3
+              id="setup-title"
+              className="font-display text-lg font-bold text-slate-800 flex items-center gap-2"
+            >
               <Database className="w-5 h-5 text-indigo-600" />
               Database Options
             </h3>
@@ -67,7 +70,12 @@ export default function SetupGuideModal({ isOpen, onClose }: SetupGuideModalProp
             className="p-1 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </button>
         </div>
@@ -105,8 +113,10 @@ export default function SetupGuideModal({ isOpen, onClose }: SetupGuideModalProp
             <div className="space-y-4">
               {/* Local vs Sheets Toggle Card */}
               <div className="p-4 rounded-xl border border-slate-100 bg-indigo-50/30 space-y-3">
-                <span className="text-[11px] font-bold text-indigo-700 tracking-wider uppercase">Storage Strategy</span>
-                
+                <span className="text-[11px] font-bold text-indigo-700 tracking-wider uppercase">
+                  Storage Strategy
+                </span>
+
                 <div id="toggle-container" className="flex flex-col gap-2.5">
                   <label className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-white hover:shadow-sm transition-all cursor-pointer">
                     <input
@@ -122,7 +132,8 @@ export default function SetupGuideModal({ isOpen, onClose }: SetupGuideModalProp
                         Demo Ledger Mode (Local Storage)
                       </span>
                       <p className="text-[11px] text-slate-500 mt-0.5 leading-relaxed">
-                        Data is cached locally in your browser. Perfect for testing and viewing immediately.
+                        Data is cached locally in your browser. Perfect for testing and viewing
+                        immediately.
                       </p>
                     </div>
                   </label>
@@ -141,7 +152,8 @@ export default function SetupGuideModal({ isOpen, onClose }: SetupGuideModalProp
                         Google Sheets Live Sync Mode
                       </span>
                       <p className="text-[11px] text-slate-500 mt-0.5 leading-relaxed">
-                        Read/write values securely to your private Google Sheets database in real-time.
+                        Read/write values securely to your private Google Sheets database in
+                        real-time.
                       </p>
                     </div>
                   </label>
@@ -196,7 +208,9 @@ export default function SetupGuideModal({ isOpen, onClose }: SetupGuideModalProp
               <div className="flex gap-2 p-3 bg-slate-50 rounded-xl border border-slate-100 text-[11px] text-slate-500 leading-relaxed">
                 <Info className="w-4 h-4 text-indigo-500 flex-shrink-0 mt-0.5" />
                 <span>
-                  By default, you are in <strong>Demo Mode</strong> where operations are fast and do not require external configuration. Ready to use Google Sheets? Click the <strong>&quot;Apps Script Code&quot;</strong> tab to easily configure it.
+                  By default, you are in <strong>Demo Mode</strong> where operations are fast and do
+                  not require external configuration. Ready to use Google Sheets? Click the{' '}
+                  <strong>&quot;Apps Script Code&quot;</strong> tab to easily configure it.
                 </span>
               </div>
             </div>
@@ -211,18 +225,35 @@ export default function SetupGuideModal({ isOpen, onClose }: SetupGuideModalProp
                   Quick Installation Guide (5 Steps)
                 </h4>
                 <ol className="list-decimal pl-4.5 space-y-1.5 font-sans leading-normal">
-                  <li>Create a new spreadsheet in <strong>Google Sheets</strong>.</li>
-                  <li>In the top menu, go to <strong>Extensions &gt; Apps Script</strong>.</li>
-                  <li>Click the <strong>&quot;Copy Code&quot;</strong> button below. Delete any boilerplate, and paste this script there.</li>
-                  <li>In the top right, click <strong>Deploy &gt; New deployment</strong>. Select <strong>&quot;Web App&quot;</strong>. Execute as: <strong>&quot;Me&quot;</strong>, Who has access: <strong>&quot;Anyone&quot;</strong>. Click deploy.</li>
-                  <li>Authorize Google permissions. Copy your unique <strong>Web App URL</strong> and paste it in the <strong>Settings tab</strong>!</li>
+                  <li>
+                    Create a new spreadsheet in <strong>Google Sheets</strong>.
+                  </li>
+                  <li>
+                    In the top menu, go to <strong>Extensions &gt; Apps Script</strong>.
+                  </li>
+                  <li>
+                    Click the <strong>&quot;Copy Code&quot;</strong> button below. Delete any
+                    boilerplate, and paste this script there.
+                  </li>
+                  <li>
+                    In the top right, click <strong>Deploy &gt; New deployment</strong>. Select{' '}
+                    <strong>&quot;Web App&quot;</strong>. Execute as:{' '}
+                    <strong>&quot;Me&quot;</strong>, Who has access:{' '}
+                    <strong>&quot;Anyone&quot;</strong>. Click deploy.
+                  </li>
+                  <li>
+                    Authorize Google permissions. Copy your unique <strong>Web App URL</strong> and
+                    paste it in the <strong>Settings tab</strong>!
+                  </li>
                 </ol>
               </div>
 
               {/* Code display Box */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest font-mono">gas_code.js</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest font-mono">
+                    gas_code.js
+                  </span>
                   <button
                     id="btn-copy-code"
                     onClick={handleCopyCode}

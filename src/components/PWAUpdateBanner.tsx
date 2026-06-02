@@ -3,7 +3,10 @@ import { RefreshCw } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function PWAUpdateBanner() {
-  const { needRefresh: [needRefresh], updateServiceWorker } = useRegisterSW();
+  const {
+    needRefresh: [needRefresh],
+    updateServiceWorker,
+  } = useRegisterSW();
 
   return (
     <AnimatePresence>
@@ -17,7 +20,9 @@ export default function PWAUpdateBanner() {
           <div className="bg-slate-900 text-white rounded-2xl shadow-2xl px-4 py-3 flex items-center justify-between gap-3">
             <div>
               <p className="text-xs font-bold text-white leading-none">Update Available</p>
-              <p className="text-[10px] text-slate-400 mt-0.5">A new version is ready to install.</p>
+              <p className="text-[10px] text-slate-400 mt-0.5">
+                A new version is ready to install.
+              </p>
             </div>
             <button
               onClick={() => updateServiceWorker(true)}

@@ -10,10 +10,14 @@ interface EditTransactionModalProps {
   onClose: () => void;
 }
 
-export default function EditTransactionModal({ isOpen, transaction, onClose }: EditTransactionModalProps) {
-  const editTransaction = useDebtStore(state => state.editTransaction);
-  const deleteTransaction = useDebtStore(state => state.deleteTransaction);
-  const isLoading = useDebtStore(state => state.isLoading);
+export default function EditTransactionModal({
+  isOpen,
+  transaction,
+  onClose,
+}: EditTransactionModalProps) {
+  const editTransaction = useDebtStore((state) => state.editTransaction);
+  const deleteTransaction = useDebtStore((state) => state.deleteTransaction);
+  const isLoading = useDebtStore((state) => state.isLoading);
 
   const [name, setName] = useState('');
   const [amount, setAmount] = useState('');
@@ -105,12 +109,13 @@ export default function EditTransactionModal({ isOpen, transaction, onClose }: E
               className="space-y-4"
             >
               <div className="p-4 rounded-xl bg-rose-50 border border-rose-100 flex gap-3 text-rose-800">
-                <AlertCircle className="w-5 h-5 text-rose-600 flex-shrink-0 mt-0.5" />
+                <AlertCircle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
                 <div>
                   <h4 className="text-xs font-bold uppercase tracking-wide">Confirm Deletion</h4>
                   <p className="text-xs mt-1 leading-relaxed text-rose-700 font-medium">
-                    Are you sure you want to permanently delete this transaction? 
-                    This will recalculate the debtor&apos;s outstanding balance and sync with Sheets. This action cannot be undone.
+                    Are you sure you want to permanently delete this transaction? This will
+                    recalculate the debtor&apos;s outstanding balance and sync with Sheets. This
+                    action cannot be undone.
                   </p>
                 </div>
               </div>
@@ -213,7 +218,10 @@ export default function EditTransactionModal({ isOpen, transaction, onClose }: E
               {/* Note field */}
               <div className="space-y-1.5">
                 <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider">
-                  Note <span className="font-normal normal-case tracking-normal text-slate-400">(optional)</span>
+                  Note{' '}
+                  <span className="font-normal normal-case tracking-normal text-slate-400">
+                    (optional)
+                  </span>
                 </label>
                 <div className="relative">
                   <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
@@ -231,7 +239,10 @@ export default function EditTransactionModal({ isOpen, transaction, onClose }: E
               </div>
 
               {error && (
-                <div id="edit-error-alert" className="p-3 text-xs text-rose-700 bg-rose-50 rounded-xl font-medium border border-rose-100">
+                <div
+                  id="edit-error-alert"
+                  className="p-3 text-xs text-rose-700 bg-rose-50 rounded-xl font-medium border border-rose-100"
+                >
                   {error}
                 </div>
               )}
@@ -254,7 +265,7 @@ export default function EditTransactionModal({ isOpen, transaction, onClose }: E
                   id="btn-edit-save"
                   type="submit"
                   disabled={isLoading}
-                  className="flex-grow bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs py-3 rounded-xl shadow-md shadow-indigo-100 active:scale-95 transition-all text-center flex items-center justify-center gap-1.5 disabled:opacity-50"
+                  className="grow bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs py-3 rounded-xl shadow-md shadow-indigo-100 active:scale-95 transition-all text-center flex items-center justify-center gap-1.5 disabled:opacity-50"
                 >
                   {isLoading ? (
                     'Saving changes...'

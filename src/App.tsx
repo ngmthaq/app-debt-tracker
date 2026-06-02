@@ -19,7 +19,7 @@ import {
   ArrowDownLeft,
   X,
   FileSpreadsheet,
-  Terminal
+  Terminal,
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 
@@ -31,21 +31,22 @@ import DebtorDetailScreen from './components/DebtorDetailScreen';
 import PWAUpdateBanner from './components/PWAUpdateBanner';
 
 export default function App() {
-  const initStore = useDebtStore(state => state.initStore);
-  const loadAllData = useDebtStore(state => state.loadAllData);
-  const debtors = useDebtStore(state => state.debtors);
-  const isLoading = useDebtStore(state => state.isLoading);
-  const settings = useDebtStore(state => state.settings);
-  const activeDebtorName = useDebtStore(state => state.activeDebtorName);
-  const markFullyPaid = useDebtStore(state => state.markFullyPaid);
-  const loadHistory = useDebtStore(state => state.loadHistory);
-  const getStats = useDebtStore(state => state.getStats);
+  const initStore = useDebtStore((state) => state.initStore);
+  const loadAllData = useDebtStore((state) => state.loadAllData);
+  const debtors = useDebtStore((state) => state.debtors);
+  const isLoading = useDebtStore((state) => state.isLoading);
+  const settings = useDebtStore((state) => state.settings);
+  const activeDebtorName = useDebtStore((state) => state.activeDebtorName);
+  const markFullyPaid = useDebtStore((state) => state.markFullyPaid);
+  const loadHistory = useDebtStore((state) => state.loadHistory);
+  const getStats = useDebtStore((state) => state.getStats);
 
   // Modal open states
   const [isSetupOpen, setIsSetupOpen] = useState(false);
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [addModalType, setAddModalType] = useState<'BORROW' | 'PAYMENT'>('BORROW');
   const [addModalPrefilledName, setAddModalPrefilledName] = useState('');
+  const [confirmFullyPaidName, setConfirmFullyPaidName] = useState<string | null>(null);
 
   // Filtering / Searching states
   const [searchQuery, setSearchQuery] = useState('');
@@ -55,6 +56,14 @@ export default function App() {
   useEffect(() => {
     initStore();
   }, [initStore]);
+
+  // Lock body scroll when confirm dialog is open
+  useEffect(() => {
+    document.body.style.overflow = confirmFullyPaidName ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [confirmFullyPaidName]);
 
   // Derived dashboard stats
   const stats = getStats();
@@ -71,7 +80,7 @@ export default function App() {
     try {
       const date = new Date(isoString);
       if (isNaN(date.getTime())) return isoString.split('T')[0];
-      
+
       const now = new Date();
       const diffMs = now.getTime() - date.getTime();
       const diffMins = Math.floor(diffMs / 60000);
@@ -83,7 +92,7 @@ export default function App() {
       if (diffHours < 24) return `${diffHours}h ago`;
       if (diffDays === 1) return 'Yesterday';
       if (diffDays < 7) return `${diffDays} days ago`;
-      
+
       return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
     } catch {
       return isoString;
@@ -92,10 +101,10 @@ export default function App() {
 
   // Filter and sort debtors active list
   const filteredDebtors = debtors
-    .filter(d => {
+    .filter((d) => {
       // 1. Search Query filter (name matching case-insensitive)
       const matchesSearch = d.name.toLowerCase().includes(searchQuery.toLowerCase().trim());
-      
+
       // 2. Filter tabs
       if (activeFilter === 'UNPAID') return matchesSearch && d.balance > 0;
       if (activeFilter === 'PAID') return matchesSearch && d.balance <= 0;
@@ -113,10 +122,11 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-900 flex justify-center text-slate-800 font-sans selection:bg-indigo-100 select-none">
-      
       {/* Constraints container simulating standalone app boundaries centered gracefully on ultra wide desktop */}
-      <div id="app-container" className="w-full max-w-md bg-slate-50 min-h-screen shadow-2xl relative flex flex-col no-scrollbar">
-        
+      <div
+        id="app-container"
+        className="w-full max-w-md bg-slate-50 min-h-screen shadow-2xl relative flex flex-col no-scrollbar"
+      >
         {/* Render Details Screen overlay if selected */}
         <AnimatePresence mode="wait">
           {activeDebtorName ? (
@@ -137,9 +147,11 @@ export default function App() {
               exit={{ opacity: 0 }}
               className="flex flex-col flex-grow pb-24"
             >
-              
               {/* Top Banner App Branding */}
-              <header id="dashboard-header" className="bg-slate-900 text-white px-5 pt-6 pb-20 rounded-b-[2rem] shadow-md relative overflow-hidden">
+              <header
+                id="dashboard-header"
+                className="bg-slate-900 text-white px-5 pt-6 pb-20 rounded-b-[2rem] shadow-md relative overflow-hidden"
+              >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-600/20 rounded-full blur-2xl pointer-events-none" />
                 <div className="absolute -bottom-10 -left-10 w-44 h-44 bg-rose-500/15 rounded-full blur-3xl pointer-events-none" />
 
@@ -150,7 +162,10 @@ export default function App() {
                       <HandCoins className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <h1 id="app-brand-name" className="font-display font-black text-sm tracking-tight text-white leading-none">
+                      <h1
+                        id="app-brand-name"
+                        className="font-display font-black text-sm tracking-tight text-white leading-none"
+                      >
                         Debt Tracker
                       </h1>
                       <span className="text-[9px] font-mono font-semibold tracking-widest text-indigo-300 uppercase block mt-0.5">
@@ -168,7 +183,10 @@ export default function App() {
                       className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white/90 hover:text-white transition-all active:scale-95 disabled:opacity-50"
                       title="Sync spreadsheet values"
                     >
-                      <RotateCw id="icon-reload" className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
+                      <RotateCw
+                        id="icon-reload"
+                        className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`}
+                      />
                     </button>
                     <button
                       id="btn-settings-setup"
@@ -228,8 +246,14 @@ export default function App() {
                       <span className="text-[10px] font-bold text-indigo-300 tracking-wider uppercase block">
                         Total Outstanding Debt
                       </span>
-                      <span id="amount-total-outstanding" className="font-mono text-2xl font-extrabold tracking-tight mt-1 block">
-                        {stats.totalOutstandingAmount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+                      <span
+                        id="amount-total-outstanding"
+                        className="font-mono text-2xl font-extrabold tracking-tight mt-1 block"
+                      >
+                        {stats.totalOutstandingAmount.toLocaleString('vi-VN', {
+                          style: 'currency',
+                          currency: 'VND',
+                        })}
                       </span>
                     </div>
                     <div className="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400">
@@ -240,16 +264,22 @@ export default function App() {
                   {/* Smaller sub cards */}
                   <div className="grid grid-cols-3 gap-2.5">
                     <div className="p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-center">
-                      <span id="label-debtor-count" className="font-mono text-base font-extrabold text-slate-800 tracking-tight block">
+                      <span
+                        id="label-debtor-count"
+                        className="font-mono text-base font-extrabold text-slate-800 tracking-tight block"
+                      >
                         {stats.totalDebtors}
                       </span>
                       <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wide block mt-1">
                         Active debtors
                       </span>
                     </div>
-                    
+
                     <div className="p-2.5 bg-rose-50/50 border border-rose-100/50 rounded-xl text-center">
-                      <span id="label-unpaid-count" className="font-mono text-base font-extrabold text-rose-600 tracking-tight block">
+                      <span
+                        id="label-unpaid-count"
+                        className="font-mono text-base font-extrabold text-rose-600 tracking-tight block"
+                      >
                         {stats.unpaidDebtors}
                       </span>
                       <span className="text-[9px] font-bold text-rose-450 uppercase tracking-wide block mt-1">
@@ -258,7 +288,10 @@ export default function App() {
                     </div>
 
                     <div className="p-2.5 bg-emerald-50/50 border border-emerald-100/50 rounded-xl text-center">
-                      <span id="label-paid-count" className="font-mono text-base font-extrabold text-emerald-600 tracking-tight block">
+                      <span
+                        id="label-paid-count"
+                        className="font-mono text-base font-extrabold text-emerald-600 tracking-tight block"
+                      >
                         {stats.fullyPaidDebtors}
                       </span>
                       <span className="text-[9px] font-bold text-emerald-450 uppercase tracking-wide block mt-1">
@@ -271,7 +304,6 @@ export default function App() {
 
               {/* Filtering and search core UI */}
               <section id="debts-listing-filters" className="px-4 space-y-3">
-                
                 {/* Search Bar */}
                 <div className="relative">
                   <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
@@ -343,8 +375,11 @@ export default function App() {
               <main id="debtors-active-list" className="px-4 mt-4 space-y-3.5 flex-grow">
                 {isLoading ? (
                   <div id="debts-loading-placeholder" className="space-y-3">
-                    {[1, 2, 3].map(item => (
-                      <div key={item} className="h-28 bg-white border border-slate-100 rounded-2xl p-4 animate-pulse space-y-3">
+                    {[1, 2, 3].map((item) => (
+                      <div
+                        key={item}
+                        className="h-28 bg-white border border-slate-100 rounded-2xl p-4 animate-pulse space-y-3"
+                      >
                         <div className="flex justify-between">
                           <div className="h-4 bg-slate-100 rounded w-1/3" />
                           <div className="h-4 bg-slate-100 rounded w-1/4" />
@@ -355,7 +390,10 @@ export default function App() {
                     ))}
                   </div>
                 ) : filteredDebtors.length === 0 ? (
-                  <div id="debts-empty-view" className="bg-white rounded-2xl border border-slate-200 p-8 text-center py-12 space-y-2">
+                  <div
+                    id="debts-empty-view"
+                    className="bg-white rounded-2xl border border-slate-200 p-8 text-center py-12 space-y-2"
+                  >
                     <SlidersHorizontal className="w-8 h-8 text-slate-300 mx-auto" />
                     <h4 className="text-xs font-bold text-slate-700">No Matching Debts found</h4>
                     <p className="text-[11px] text-slate-400 leading-relaxed max-w-[200px] mx-auto">
@@ -382,7 +420,7 @@ export default function App() {
                           <div className="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center font-display font-semibold text-slate-700">
                             {debtor.name.charAt(0).toUpperCase()}
                           </div>
-                          
+
                           <div className="space-y-0.5">
                             <h3 className="font-display font-medium text-slate-800 text-[12.5px] line-clamp-1 pr-2">
                               {debtor.name}
@@ -403,7 +441,10 @@ export default function App() {
                               Balance
                             </span>
                             <span className="font-mono font-black text-[13px] text-slate-800 mt-1 leading-none">
-                              {debtor.balance.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+                              {debtor.balance.toLocaleString('vi-VN', {
+                                style: 'currency',
+                                currency: 'VND',
+                              })}
                             </span>
                             <span className="mt-1 block">
                               {debtor.balance > 0 ? (
@@ -423,7 +464,10 @@ export default function App() {
 
                       {/* Sticky action row below card */}
                       {debtor.balance > 0 && (
-                        <div id={`debtor-card-actions-${debtor.name.replace(/\s+/g, '-')}`} className="flex border-t border-slate-100 bg-slate-50/40 p-2 gap-2">
+                        <div
+                          id={`debtor-card-actions-${debtor.name.replace(/\s+/g, '-')}`}
+                          className="flex border-t border-slate-100 bg-slate-50/40 p-2 gap-2"
+                        >
                           <button
                             onClick={() => openAddModal('PAYMENT', debtor.name)}
                             className="flex-1 py-2 text-[11px] font-bold text-emerald-700 hover:bg-emerald-50 bg-white border border-emerald-100 rounded-xl transition-all shadow-sm flex items-center justify-center gap-1"
@@ -431,9 +475,9 @@ export default function App() {
                             <HandCoins className="w-3.5 h-3.5" />
                             Record Payment
                           </button>
-                          
+
                           <button
-                            onClick={() => markFullyPaid(debtor.name)}
+                            onClick={() => setConfirmFullyPaidName(debtor.name)}
                             disabled={isLoading}
                             className="flex-1 py-2 text-[11px] font-bold text-slate-700 hover:bg-slate-100 bg-white border border-slate-150 rounded-xl transition-all shadow-sm flex items-center justify-center gap-1 disabled:opacity-50"
                           >
@@ -458,16 +502,12 @@ export default function App() {
                   Lend Money (Add Debt)
                 </button>
               </div>
-
             </motion.div>
           )}
         </AnimatePresence>
 
         {/* Global modals rendering stack */}
-        <SetupGuideModal
-          isOpen={isSetupOpen}
-          onClose={() => setIsSetupOpen(false)}
-        />
+        <SetupGuideModal isOpen={isSetupOpen} onClose={() => setIsSetupOpen(false)} />
 
         <AddTransactionModal
           isOpen={isAddOpen}
@@ -476,12 +516,64 @@ export default function App() {
           initialName={addModalPrefilledName}
         />
 
+        {/* Confirm Mark Fully Paid dialog */}
+        <AnimatePresence>
+          {confirmFullyPaidName && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm px-4"
+              onClick={() => setConfirmFullyPaidName(null)}
+            >
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.95, opacity: 0 }}
+                onClick={(e) => e.stopPropagation()}
+                className="w-full bg-white rounded-2xl shadow-2xl p-5 space-y-4"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center">
+                    <CheckCircle className="w-5 h-5 text-emerald-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-display font-bold text-slate-800 text-sm">
+                      Mark Fully Paid?
+                    </h3>
+                    <p className="text-[11px] text-slate-500 mt-0.5">
+                      This will zero out the balance for{' '}
+                      <span className="font-semibold text-slate-700">{confirmFullyPaidName}</span>.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setConfirmFullyPaidName(null)}
+                    className="flex-1 py-2.5 text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={() => {
+                      markFullyPaid(confirmFullyPaidName);
+                      setConfirmFullyPaidName(null);
+                    }}
+                    className="flex-1 py-2.5 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl transition-all"
+                  >
+                    Confirm
+                  </button>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         {/* Dynamic status feedback toast cards */}
         <StatusToast />
 
         {/* PWA update prompt */}
         <PWAUpdateBanner />
-
       </div>
     </div>
   );

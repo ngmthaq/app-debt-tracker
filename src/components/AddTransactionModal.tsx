@@ -14,12 +14,12 @@ export default function AddTransactionModal({
   isOpen,
   onClose,
   initialType = 'BORROW',
-  initialName = ''
+  initialName = '',
 }: AddTransactionModalProps) {
-  const addDebt = useDebtStore(state => state.addDebt);
-  const addPayment = useDebtStore(state => state.addPayment);
-  const namesList = useDebtStore(state => state.namesList);
-  const isLoading = useDebtStore(state => state.isLoading);
+  const addDebt = useDebtStore((state) => state.addDebt);
+  const addPayment = useDebtStore((state) => state.addPayment);
+  const namesList = useDebtStore((state) => state.namesList);
+  const isLoading = useDebtStore((state) => state.isLoading);
 
   const [type, setType] = useState<'BORROW' | 'PAYMENT'>(initialType);
   const [name, setName] = useState(initialName);
@@ -64,7 +64,7 @@ export default function AddTransactionModal({
       return;
     }
 
-    const filtered = namesList.filter(nameItem =>
+    const filtered = namesList.filter((nameItem) =>
       nameItem.toLowerCase().includes(val.toLowerCase())
     );
     setSuggestions(filtered);
@@ -135,7 +135,6 @@ export default function AddTransactionModal({
 
         {/* Form Container */}
         <form onSubmit={handleFormSubmit} className="space-y-4">
-          
           {/* Borrow vs Payment Selector Pill */}
           <div className="grid grid-cols-2 gap-2 p-1 bg-slate-100 rounded-xl">
             <button
@@ -211,7 +210,9 @@ export default function AddTransactionModal({
                       className="w-full text-left px-4 py-2.5 text-xs text-slate-700 hover:bg-slate-50 transition-colors flex items-center justify-between border-b border-slate-50 last:border-0"
                     >
                       <span>{s}</span>
-                      <span className="text-[9px] text-slate-400 uppercase font-mono tracking-wider">Recent</span>
+                      <span className="text-[9px] text-slate-400 uppercase font-mono tracking-wider">
+                        Recent
+                      </span>
                     </button>
                   ))}
                 </motion.div>
@@ -249,7 +250,10 @@ export default function AddTransactionModal({
           {/* Note Input */}
           <div className="space-y-1.5">
             <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
-              Note <span className="text-slate-400 font-normal normal-case tracking-normal">(optional)</span>
+              Note{' '}
+              <span className="text-slate-400 font-normal normal-case tracking-normal">
+                (optional)
+              </span>
             </label>
             <div className="relative">
               <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
@@ -268,7 +272,10 @@ export default function AddTransactionModal({
 
           {/* Validation Alert */}
           {validationError && (
-            <div id="form-error-alert" className="p-3 text-[11px] text-rose-700 bg-rose-50 rounded-xl font-medium border border-rose-100">
+            <div
+              id="form-error-alert"
+              className="p-3 text-[11px] text-rose-700 bg-rose-50 rounded-xl font-medium border border-rose-100"
+            >
               {validationError}
             </div>
           )}
@@ -279,8 +286,8 @@ export default function AddTransactionModal({
             type="submit"
             disabled={isLoading}
             className={`w-full py-3 h-11 text-xs font-semibold rounded-xl text-white shadow-md active:scale-95 transition-all text-center flex items-center justify-center gap-1.5 ${
-              type === 'BORROW' 
-                ? 'bg-rose-500 hover:bg-rose-600 shadow-rose-100' 
+              type === 'BORROW'
+                ? 'bg-rose-500 hover:bg-rose-600 shadow-rose-100'
                 : 'bg-emerald-500 hover:bg-emerald-600 shadow-emerald-100'
             } disabled:opacity-50`}
           >
