@@ -145,7 +145,7 @@ export default function App() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="flex flex-col flex-grow pb-24"
+              className="flex flex-col grow pb-24"
             >
               {/* Top Banner App Branding */}
               <header
@@ -372,7 +372,7 @@ export default function App() {
               </section>
 
               {/* Debtors list container */}
-              <main id="debtors-active-list" className="px-4 mt-4 space-y-3.5 flex-grow">
+              <main id="debtors-active-list" className="px-4 mt-4 space-y-3.5 grow">
                 {isLoading ? (
                   <div id="debts-loading-placeholder" className="space-y-3">
                     {[1, 2, 3].map((item) => (
@@ -496,7 +496,7 @@ export default function App() {
                 <button
                   id="btn-sticky-add"
                   onClick={() => openAddModal('BORROW')}
-                  className="flex-grow bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs py-3.5 rounded-2xl shadow-xl shadow-indigo-600/30 active:scale-95 transition-all text-center flex items-center justify-center gap-1.5"
+                  className="grow bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs py-3.5 rounded-2xl shadow-xl shadow-indigo-600/30 active:scale-95 transition-all text-center flex items-center justify-center gap-1.5"
                 >
                   <Plus className="w-4 h-4" />
                   Lend Money (Add Debt)

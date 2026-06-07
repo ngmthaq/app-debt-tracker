@@ -26,7 +26,7 @@ export default function StatusToast() {
         exit={{ opacity: 0, y: -20, scale: 0.95 }}
         className="pointer-events-auto flex items-center gap-3 p-4 rounded-xl shadow-xl border backdrop-blur-md bg-white/95 border-slate-200"
       >
-        <div className="flex-shrink-0">
+        <div className="shrink-0">
           {notification.type === 'success' && (
             <CheckCircle2 id="icon-success" className="w-5 h-5 text-emerald-600" />
           )}
@@ -36,14 +36,14 @@ export default function StatusToast() {
           {notification.type === 'info' && <Info id="icon-info" className="w-5 h-5 text-sky-600" />}
         </div>
 
-        <div className="flex-grow text-xs font-medium text-slate-800 leading-snug">
+        <div className="grow text-xs font-medium text-slate-800 leading-snug">
           {notification.message}
         </div>
 
         <button
           id="btn-close-toast"
           onClick={clearNotification}
-          className="flex-shrink-0 p-1 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+          className="shrink-0 p-1 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
         >
           <X className="w-4 h-4" />
         </button>

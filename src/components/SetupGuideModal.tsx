@@ -108,7 +108,7 @@ export default function SetupGuideModal({ isOpen, onClose }: SetupGuideModalProp
         </div>
 
         {/* Content */}
-        <div className="p-5 overflow-y-auto flex-grow space-y-5">
+        <div className="p-5 overflow-y-auto grow space-y-5">
           {activeTab === 'config' && (
             <div className="space-y-4">
               {/* Local vs Sheets Toggle Card */}
@@ -206,7 +206,7 @@ export default function SetupGuideModal({ isOpen, onClose }: SetupGuideModalProp
 
               {/* Helper text */}
               <div className="flex gap-2 p-3 bg-slate-50 rounded-xl border border-slate-100 text-[11px] text-slate-500 leading-relaxed">
-                <Info className="w-4 h-4 text-indigo-500 flex-shrink-0 mt-0.5" />
+                <Info className="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" />
                 <span>
                   By default, you are in <strong>Demo Mode</strong> where operations are fast and do
                   not require external configuration. Ready to use Google Sheets? Click the{' '}
@@ -277,7 +277,7 @@ export default function SetupGuideModal({ isOpen, onClose }: SetupGuideModalProp
                   <pre className="text-[10.5px] font-mono text-indigo-100 leading-relaxed overflow-auto max-h-48 no-scrollbar scroll-smooth">
                     {APPS_SCRIPT_CODE}
                   </pre>
-                  <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-slate-950 to-transparent pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 right-0 h-10 bg-linear-to-t from-slate-950 to-transparent pointer-events-none" />
                 </div>
               </div>
             </div>
