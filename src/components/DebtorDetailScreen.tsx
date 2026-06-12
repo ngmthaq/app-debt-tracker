@@ -89,7 +89,7 @@ export default function DebtorDetailScreen() {
       {/* Header Bar */}
       <div
         id="detail-header"
-        className="sticky top-0 z-20 bg-white border-b border-slate-100 px-4 py-4 flex items-center justify-between shadow-sm"
+        className="sticky top-0 z-20 bg-white border-b border-slate-100 px-4 md:px-8 lg:px-10 py-4 flex items-center justify-between shadow-sm"
       >
         <button
           id="btn-detail-back"
@@ -166,7 +166,7 @@ export default function DebtorDetailScreen() {
       </div>
 
       {/* Transaction History Section */}
-      <div className="p-4 grow w-full max-w-lg mx-auto">
+      <div className="p-4 md:p-6 grow w-full max-w-lg lg:max-w-3xl mx-auto">
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider font-sans">
             Ledger Entries

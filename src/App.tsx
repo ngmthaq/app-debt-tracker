@@ -125,7 +125,7 @@ export default function App() {
       {/* Constraints container simulating standalone app boundaries centered gracefully on ultra wide desktop */}
       <div
         id="app-container"
-        className="w-full max-w-md bg-slate-50 min-h-screen shadow-2xl relative flex flex-col no-scrollbar"
+        className="w-full max-w-md md:max-w-3xl lg:max-w-5xl bg-slate-50 min-h-screen shadow-2xl relative flex flex-col no-scrollbar"
       >
         {/* Render Details Screen overlay if selected */}
         <AnimatePresence mode="wait">
@@ -135,7 +135,7 @@ export default function App() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
-              className="absolute inset-0 z-40 bg-slate-50 flex flex-col"
+              className="flex flex-col grow bg-slate-50"
             >
               <DebtorDetailScreen />
             </motion.div>
@@ -150,7 +150,7 @@ export default function App() {
               {/* Top Banner App Branding */}
               <header
                 id="dashboard-header"
-                className="bg-slate-900 text-white px-5 pt-6 pb-20 rounded-b-[2rem] shadow-md relative overflow-hidden"
+                className="bg-slate-900 text-white px-5 pt-6 pb-20 md:px-8 md:pt-8 lg:px-10 rounded-b-[2rem] shadow-md relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-600/20 rounded-full blur-2xl pointer-events-none" />
                 <div className="absolute -bottom-10 -left-10 w-44 h-44 bg-rose-500/15 rounded-full blur-3xl pointer-events-none" />
@@ -238,10 +238,13 @@ export default function App() {
               </header>
 
               {/* KPI Summary Cards Grid - Overlap layout floating above header */}
-              <section id="kpi-scorecard" className="mx-4 -mt-14 mb-6 relative z-30 select-none">
-                <div className="bg-white rounded-2xl shadow-xl border border-slate-100 p-4 space-y-4">
+              <section
+                id="kpi-scorecard"
+                className="mx-4 md:mx-8 lg:mx-10 -mt-14 mb-6 relative z-30 select-none"
+              >
+                <div className="bg-white rounded-2xl shadow-xl border border-slate-100 p-4 space-y-4 md:p-5 md:space-y-0 md:flex md:items-stretch md:gap-4">
                   {/* Big Total card */}
-                  <div className="flex items-center justify-between p-3.5 bg-slate-900 rounded-xl text-white">
+                  <div className="flex items-center justify-between p-3.5 bg-slate-900 rounded-xl text-white md:flex-1">
                     <div>
                       <span className="text-[10px] font-bold text-indigo-300 tracking-wider uppercase block">
                         Total Outstanding Debt
@@ -262,8 +265,8 @@ export default function App() {
                   </div>
 
                   {/* Smaller sub cards */}
-                  <div className="grid grid-cols-3 gap-2.5">
-                    <div className="p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-center">
+                  <div className="grid grid-cols-3 gap-2.5 md:flex-[1.4] md:gap-3">
+                    <div className="p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-center flex flex-col justify-center">
                       <span
                         id="label-debtor-count"
                         className="font-mono text-base font-extrabold text-slate-800 tracking-tight block"
@@ -275,7 +278,7 @@ export default function App() {
                       </span>
                     </div>
 
-                    <div className="p-2.5 bg-rose-50/50 border border-rose-100/50 rounded-xl text-center">
+                    <div className="p-2.5 bg-rose-50/50 border border-rose-100/50 rounded-xl text-center flex flex-col justify-center">
                       <span
                         id="label-unpaid-count"
                         className="font-mono text-base font-extrabold text-rose-600 tracking-tight block"
@@ -287,7 +290,7 @@ export default function App() {
                       </span>
                     </div>
 
-                    <div className="p-2.5 bg-emerald-50/50 border border-emerald-100/50 rounded-xl text-center">
+                    <div className="p-2.5 bg-emerald-50/50 border border-emerald-100/50 rounded-xl text-center flex flex-col justify-center">
                       <span
                         id="label-paid-count"
                         className="font-mono text-base font-extrabold text-emerald-600 tracking-tight block"
@@ -303,7 +306,7 @@ export default function App() {
               </section>
 
               {/* Filtering and search core UI */}
-              <section id="debts-listing-filters" className="px-4 space-y-3">
+              <section id="debts-listing-filters" className="px-4 md:px-8 lg:px-10 space-y-3">
                 {/* Search Bar */}
                 <div className="relative">
                   <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
@@ -372,10 +375,16 @@ export default function App() {
               </section>
 
               {/* Debtors list container */}
-              <main id="debtors-active-list" className="px-4 mt-4 space-y-3.5 grow">
+              <main
+                id="debtors-active-list"
+                className="px-4 md:px-8 lg:px-10 mt-4 grow grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3.5 items-start content-start"
+              >
                 {isLoading ? (
-                  <div id="debts-loading-placeholder" className="space-y-3">
-                    {[1, 2, 3].map((item) => (
+                  <div
+                    id="debts-loading-placeholder"
+                    className="col-span-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3.5"
+                  >
+                    {[1, 2, 3, 4, 5, 6].map((item) => (
                       <div
                         key={item}
                         className="h-28 bg-white border border-slate-100 rounded-2xl p-4 animate-pulse space-y-3"
@@ -392,7 +401,7 @@ export default function App() {
                 ) : filteredDebtors.length === 0 ? (
                   <div
                     id="debts-empty-view"
-                    className="bg-white rounded-2xl border border-slate-200 p-8 text-center py-12 space-y-2"
+                    className="col-span-full bg-white rounded-2xl border border-slate-200 p-8 text-center py-12 space-y-2"
                   >
                     <SlidersHorizontal className="w-8 h-8 text-slate-300 mx-auto" />
                     <h4 className="text-xs font-bold text-slate-700">No Matching Debts found</h4>
@@ -462,30 +471,29 @@ export default function App() {
                         </div>
                       </div>
 
-                      {/* Sticky action row below card */}
-                      {debtor.balance > 0 && (
-                        <div
-                          id={`debtor-card-actions-${debtor.name.replace(/\s+/g, '-')}`}
-                          className="flex border-t border-slate-100 bg-slate-50/40 p-2 gap-2"
+                      {/* Sticky action row below card — always shown, disabled when settled */}
+                      <div
+                        id={`debtor-card-actions-${debtor.name.replace(/\s+/g, '-')}`}
+                        className="flex border-t border-slate-100 bg-slate-50/40 p-2 gap-2"
+                      >
+                        <button
+                          onClick={() => openAddModal('PAYMENT', debtor.name)}
+                          disabled={debtor.balance <= 0}
+                          className="flex-1 py-2 text-[11px] font-bold text-emerald-700 hover:bg-emerald-50 bg-white border border-emerald-100 rounded-xl transition-all shadow-sm flex items-center justify-center gap-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white"
                         >
-                          <button
-                            onClick={() => openAddModal('PAYMENT', debtor.name)}
-                            className="flex-1 py-2 text-[11px] font-bold text-emerald-700 hover:bg-emerald-50 bg-white border border-emerald-100 rounded-xl transition-all shadow-sm flex items-center justify-center gap-1"
-                          >
-                            <HandCoins className="w-3.5 h-3.5" />
-                            Record Payment
-                          </button>
+                          <HandCoins className="w-3.5 h-3.5" />
+                          Record Payment
+                        </button>
 
-                          <button
-                            onClick={() => setConfirmFullyPaidName(debtor.name)}
-                            disabled={isLoading}
-                            className="flex-1 py-2 text-[11px] font-bold text-slate-700 hover:bg-slate-100 bg-white border border-slate-150 rounded-xl transition-all shadow-sm flex items-center justify-center gap-1 disabled:opacity-50"
-                          >
-                            <CheckCircle className="w-3.5 h-3.5 text-slate-400" />
-                            {isLoading ? 'Processing...' : 'Mark Fully Paid'}
-                          </button>
-                        </div>
-                      )}
+                        <button
+                          onClick={() => setConfirmFullyPaidName(debtor.name)}
+                          disabled={debtor.balance <= 0 || isLoading}
+                          className="flex-1 py-2 text-[11px] font-bold text-slate-700 hover:bg-slate-100 bg-white border border-slate-150 rounded-xl transition-all shadow-sm flex items-center justify-center gap-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white"
+                        >
+                          <CheckCircle className="w-3.5 h-3.5 text-slate-400" />
+                          {isLoading ? 'Processing...' : 'Mark Fully Paid'}
+                        </button>
+                      </div>
                     </motion.div>
                   ))
                 )}
