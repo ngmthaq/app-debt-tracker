@@ -186,7 +186,7 @@ export default function SetupGuideModal({ isOpen, onClose }: SetupGuideModalProp
                   id="btn-save-database"
                   onClick={handleSaveSettings}
                   disabled={isLoading}
-                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-xs py-3 rounded-lg shadow-sm hover:shadow active:scale-[0.98] transition-all disabled:opacity-50"
+                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-xs py-3 rounded-lg shadow-sm hover:shadow active:scale-98 transition-all disabled:opacity-50"
                 >
                   {isLoading ? 'Updating...' : 'Save Storage Configuration'}
                 </button>
@@ -197,7 +197,7 @@ export default function SetupGuideModal({ isOpen, onClose }: SetupGuideModalProp
                     id="btn-migrate-sheets"
                     onClick={syncLocalToSheets}
                     disabled={isLoading}
-                    className="w-full border border-dashed border-emerald-300 text-emerald-700 hover:bg-emerald-50/50 bg-emerald-50/20 font-medium text-xs py-2.5 rounded-lg active:scale-[0.98] transition-all"
+                    className="w-full border border-dashed border-emerald-300 text-emerald-700 hover:bg-emerald-50/50 bg-emerald-50/20 font-medium text-xs py-2.5 rounded-lg active:scale-98 transition-all"
                   >
                     Sync Offline Transactions to Sheets
                   </button>

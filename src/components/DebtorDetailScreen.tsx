@@ -89,20 +89,22 @@ export default function DebtorDetailScreen() {
       {/* Header Bar */}
       <div
         id="detail-header"
-        className="sticky top-0 z-20 bg-white border-b border-slate-100 px-4 md:px-8 lg:px-10 py-4 flex items-center justify-between shadow-sm"
+        className="sticky top-0 z-20 bg-white border-b border-slate-100 px-4 md:px-8 lg:px-10 py-4 shadow-sm"
       >
-        <button
-          id="btn-detail-back"
-          onClick={closeHistory}
-          className="p-1 px-2.5 -ml-1 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors flex items-center gap-1.5 text-xs font-semibold"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Back
-        </button>
-        <h2 id="detail-title" className="font-display font-extrabold text-slate-800 text-sm">
-          Account Status
-        </h2>
-        <div className="w-12" /> {/* spacer balance */}
+        <div className="max-w-300 mx-auto flex items-center justify-between">
+          <button
+            id="btn-detail-back"
+            onClick={closeHistory}
+            className="p-1 px-2.5 -ml-1 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors flex items-center gap-1.5 text-xs font-semibold"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back
+          </button>
+          <h2 id="detail-title" className="font-display font-extrabold text-slate-800 text-sm">
+            Account Status
+          </h2>
+          <div className="w-12" /> {/* spacer balance */}
+        </div>
       </div>
 
       {/* Main Stats Core */}
