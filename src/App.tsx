@@ -20,6 +20,8 @@ import {
   X,
   FileSpreadsheet,
   Terminal,
+  ClipboardCopy,
+  Check,
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 
@@ -40,6 +42,7 @@ export default function App() {
   const markFullyPaid = useDebtStore((state) => state.markFullyPaid);
   const loadHistory = useDebtStore((state) => state.loadHistory);
   const getStats = useDebtStore((state) => state.getStats);
+  const showToast = useDebtStore((state) => state.showToast);
 
   // Modal open states
   const [isSetupOpen, setIsSetupOpen] = useState(false);
@@ -47,6 +50,7 @@ export default function App() {
   const [addModalType, setAddModalType] = useState<'BORROW' | 'PAYMENT'>('BORROW');
   const [addModalPrefilledName, setAddModalPrefilledName] = useState('');
   const [confirmFullyPaidName, setConfirmFullyPaidName] = useState<string | null>(null);
+  const [justCopied, setJustCopied] = useState(false);
 
   // Filtering / Searching states
   const [searchQuery, setSearchQuery] = useState('');
@@ -65,8 +69,20 @@ export default function App() {
     };
   }, [confirmFullyPaidName]);
 
+  // Revert the copy button back to its idle label shortly after a copy
+  useEffect(() => {
+    if (!justCopied) return;
+    const timer = setTimeout(() => setJustCopied(false), 2000);
+    return () => clearTimeout(timer);
+  }, [justCopied]);
+
   // Derived dashboard stats
   const stats = getStats();
+
+  // Single source of truth for money rendering, shared by the cards and the
+  // clipboard summary so the pasted text always matches what's on screen.
+  const formatCurrency = (amount: number) =>
+    amount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
 
   // Helper trigger to open Add Modal prefilled
   const openAddModal = (mode: 'BORROW' | 'PAYMENT', prefilledName = '') => {
@@ -120,6 +136,50 @@ export default function App() {
       return new Date(b.lastUpdated).getTime() - new Date(a.lastUpdated).getTime();
     });
 
+  // Plain-text summary of whatever the search box and tabs currently show,
+  // shaped for pasting straight into a chat.
+  const buildSummaryText = () => {
+    const lines = filteredDebtors.map((d) => `${d.name}: ${formatCurrency(d.balance)}`);
+    // Only outstanding balances count toward the total, matching the KPI card
+    const total = filteredDebtors.reduce((sum, d) => (d.balance > 0 ? sum + d.balance : sum), 0);
+    return `Debt Summary\n\n${lines.join('\n')}\n\nTotal: ${formatCurrency(total)}`;
+  };
+
+  const copySummaryToClipboard = async () => {
+    if (filteredDebtors.length === 0) {
+      showToast('Nothing to copy — no debtors match the current filter.', 'info');
+      return;
+    }
+
+    const text = buildSummaryText();
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        // navigator.clipboard needs a secure context; this keeps the button
+        // working when the app is opened over plain http on a LAN address.
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', '');
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      }
+
+      setJustCopied(true);
+      showToast(
+        `Copied ${filteredDebtors.length} ${filteredDebtors.length === 1 ? 'entry' : 'entries'} to clipboard`,
+        'success'
+      );
+    } catch {
+      showToast('Could not reach the clipboard. Your browser blocked the copy.', 'error');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-slate-900 flex justify-center text-slate-800 font-sans selection:bg-indigo-100 select-none">
       {/* Constraints container simulating standalone app boundaries centered gracefully on ultra wide desktop */}
@@ -150,91 +210,91 @@ export default function App() {
               {/* Top Banner App Branding */}
               <header id="dashboard-header">
                 <div className="max-w-300 mx-auto bg-slate-900 text-white px-5 pt-6 pb-20 md:px-8 md:pt-8 lg:px-10 rounded-b-4xl shadow-md relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-600/20 rounded-full blur-2xl pointer-events-none" />
-                <div className="absolute -bottom-10 -left-10 w-44 h-44 bg-rose-500/15 rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-600/20 rounded-full blur-2xl pointer-events-none" />
+                  <div className="absolute -bottom-10 -left-10 w-44 h-44 bg-rose-500/15 rounded-full blur-3xl pointer-events-none" />
 
-                <div className="relative z-10">
-                {/* Brand Line */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-xl bg-indigo-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
-                      <HandCoins className="w-4 h-4 text-white" />
-                    </div>
-                    <div>
-                      <h1
-                        id="app-brand-name"
-                        className="font-display font-black text-sm tracking-tight text-white leading-none"
-                      >
-                        Debt Tracker
-                      </h1>
-                      <span className="text-[9px] font-mono font-semibold tracking-widest text-indigo-300 uppercase block mt-0.5">
-                        Google Sheets Powered
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Actions Right */}
-                  <div className="flex items-center gap-2">
-                    <button
-                      id="btn-sync-reload"
-                      onClick={() => loadAllData()}
-                      disabled={isLoading}
-                      className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white/90 hover:text-white transition-all active:scale-95 disabled:opacity-50"
-                      title="Sync spreadsheet values"
-                    >
-                      <RotateCw
-                        id="icon-reload"
-                        className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`}
-                      />
-                    </button>
-                    <button
-                      id="btn-settings-setup"
-                      onClick={() => setIsSetupOpen(true)}
-                      className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white/90 hover:text-white transition-all active:scale-95 flex items-center gap-1 text-[11px] font-medium"
-                      title="Storage configurations"
-                    >
-                      <Settings className="w-4 h-4" />
-                      <span>Configs</span>
-                    </button>
-                  </div>
-                </div>
-
-                {/* Connection Indicator Banner */}
-                <div
-                  id="connection-indicator-card"
-                  onClick={() => setIsSetupOpen(true)}
-                  className="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 select-none cursor-pointer group transition-all mt-4 relative z-10"
-                >
-                  <div className="flex items-center gap-2.5">
-                    {settings.useLocalFallback || !settings.scriptUrl ? (
-                      <>
-                        <div className="w-2 h-2 rounded-full bg-amber-400 animate-pulse mt-0.5" />
+                  <div className="relative z-10">
+                    {/* Brand Line */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-xl bg-indigo-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                          <HandCoins className="w-4 h-4 text-white" />
+                        </div>
                         <div>
-                          <span className="text-xs font-bold text-slate-100 flex items-center gap-1">
-                            Demo Cash Ledger Mode
+                          <h1
+                            id="app-brand-name"
+                            className="font-display font-black text-sm tracking-tight text-white leading-none"
+                          >
+                            Debt Tracker
+                          </h1>
+                          <span className="text-[9px] font-mono font-semibold tracking-widest text-indigo-300 uppercase block mt-0.5">
+                            Google Sheets Powered
                           </span>
-                          <p className="text-[10px] text-indigo-200 mt-0.5 leading-none">
-                            Saved locally. Click to sync to Google Sheet
-                          </p>
                         </div>
-                      </>
-                    ) : (
-                      <>
-                        <div className="w-2 h-2 rounded-full bg-emerald-400 mt-0.5" />
-                        <div className="max-w-50 overflow-hidden">
-                          <span className="text-xs font-bold text-slate-100 flex items-center gap-1">
-                            Sheets Live Connected
-                          </span>
-                          <p className="text-[10px] text-slate-300 mt-0.5 no-scrollbar overflow-x-auto whitespace-nowrap font-mono">
-                            {settings.scriptUrl.substring(0, 30)}...
-                          </p>
-                        </div>
-                      </>
-                    )}
+                      </div>
+
+                      {/* Actions Right */}
+                      <div className="flex items-center gap-2">
+                        <button
+                          id="btn-sync-reload"
+                          onClick={() => loadAllData()}
+                          disabled={isLoading}
+                          className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white/90 hover:text-white transition-all active:scale-95 disabled:opacity-50"
+                          title="Sync spreadsheet values"
+                        >
+                          <RotateCw
+                            id="icon-reload"
+                            className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`}
+                          />
+                        </button>
+                        <button
+                          id="btn-settings-setup"
+                          onClick={() => setIsSetupOpen(true)}
+                          className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white/90 hover:text-white transition-all active:scale-95 flex items-center gap-1 text-[11px] font-medium"
+                          title="Storage configurations"
+                        >
+                          <Settings className="w-4 h-4" />
+                          <span>Configs</span>
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Connection Indicator Banner */}
+                    <div
+                      id="connection-indicator-card"
+                      onClick={() => setIsSetupOpen(true)}
+                      className="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 select-none cursor-pointer group transition-all mt-4 relative z-10"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        {settings.useLocalFallback || !settings.scriptUrl ? (
+                          <>
+                            <div className="w-2 h-2 rounded-full bg-amber-400 animate-pulse mt-0.5" />
+                            <div>
+                              <span className="text-xs font-bold text-slate-100 flex items-center gap-1">
+                                Demo Cash Ledger Mode
+                              </span>
+                              <p className="text-[10px] text-indigo-200 mt-0.5 leading-none">
+                                Saved locally. Click to sync to Google Sheet
+                              </p>
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <div className="w-2 h-2 rounded-full bg-emerald-400 mt-0.5" />
+                            <div className="max-w-50 overflow-hidden">
+                              <span className="text-xs font-bold text-slate-100 flex items-center gap-1">
+                                Sheets Live Connected
+                              </span>
+                              <p className="text-[10px] text-slate-300 mt-0.5 no-scrollbar overflow-x-auto whitespace-nowrap font-mono">
+                                {settings.scriptUrl.substring(0, 30)}...
+                              </p>
+                            </div>
+                          </>
+                        )}
+                      </div>
+                      <ChevronRight className="w-4 h-4 text-white/40 group-hover:text-white transition-colors" />
+                    </div>
                   </div>
-                  <ChevronRight className="w-4 h-4 text-white/40 group-hover:text-white transition-colors" />
-                </div>
-                </div>
                 </div>
               </header>
 
@@ -254,10 +314,7 @@ export default function App() {
                         id="amount-total-outstanding"
                         className="font-mono text-2xl font-extrabold tracking-tight mt-1 block"
                       >
-                        {stats.totalOutstandingAmount.toLocaleString('vi-VN', {
-                          style: 'currency',
-                          currency: 'VND',
-                        })}
+                        {formatCurrency(stats.totalOutstandingAmount)}
                       </span>
                     </div>
                     <div className="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400">
@@ -336,7 +393,7 @@ export default function App() {
                 </div>
 
                 {/* Filter tabs */}
-                <div className="flex border-b border-slate-200">
+                <div className="flex items-center border-b border-slate-200">
                   <button
                     id="filter-all"
                     onClick={() => setActiveFilter('ALL')}
@@ -374,6 +431,22 @@ export default function App() {
                     }`}
                   >
                     Fully Paid
+                  </button>
+
+                  {/* Copies exactly what the tabs and search box leave visible */}
+                  <button
+                    id="btn-copy-summary"
+                    onClick={copySummaryToClipboard}
+                    disabled={isLoading || filteredDebtors.length === 0}
+                    title="Copy the visible list as text you can paste into a chat"
+                    className="ml-auto mb-2 flex shrink-0 items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-[11px] font-bold text-slate-600 shadow-sm transition-all hover:bg-slate-50 hover:text-slate-800 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white"
+                  >
+                    {justCopied ? (
+                      <Check className="w-3.5 h-3.5 text-emerald-600" />
+                    ) : (
+                      <ClipboardCopy className="w-3.5 h-3.5" />
+                    )}
+                    {justCopied ? 'Copied' : 'Copy List'}
                   </button>
                 </div>
               </section>
@@ -454,10 +527,7 @@ export default function App() {
                               Balance
                             </span>
                             <span className="font-mono font-black text-[13px] text-slate-800 mt-1 leading-none">
-                              {debtor.balance.toLocaleString('vi-VN', {
-                                style: 'currency',
-                                currency: 'VND',
-                              })}
+                              {formatCurrency(debtor.balance)}
                             </span>
                             <span className="mt-1 block">
                               {debtor.balance > 0 ? (
