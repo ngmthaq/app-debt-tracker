@@ -96,6 +96,7 @@ interface DebtTrackerState {
     note?: string
   ) => Promise<void>;
   deleteTransaction: (id: string) => Promise<void>;
+  clearAllRecords: () => Promise<void>;
 
   // Import/Export helpers
   syncLocalToSheets: () => Promise<void>;
@@ -104,6 +105,7 @@ interface DebtTrackerState {
 
   // Derived state computed dynamically
   getStats: () => DashboardStats;
+  getRecordCount: () => number;
 }
 
 export const useDebtStore = create<DebtTrackerState>((set, get) => {
@@ -632,6 +634,74 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
     },
 
     // ----------------------------------------------------
+    // DELETE EVERY RECORD (DESTRUCTIVE, NOT UNDOABLE)
+    // ----------------------------------------------------
+    clearAllRecords: async () => {
+      const { settings } = get();
+      set({ isLoading: true });
+
+      // Local ledger
+      if (settings.useLocalFallback || !settings.scriptUrl) {
+        const removed = getLocalTransactions().length;
+        saveLocalTransactions([]);
+        set({ activeDebtorName: null, history: [] });
+        await get().loadAllData();
+        get().showToast(
+          `Cleared ${removed} record${removed === 1 ? '' : 's'} from local ledger`,
+          'success'
+        );
+        return;
+      }
+
+      // Sheets mode
+      try {
+        const result = await api.clearAll(settings.scriptUrl);
+        const removed = result?.deleted ?? sheetTransactions.length;
+        set({ activeDebtorName: null, history: [] });
+        await get().loadAllData();
+        get().showToast(
+          `Cleared ${removed} record${removed === 1 ? '' : 's'} from Google Sheet`,
+          'success'
+        );
+      } catch (err: any) {
+        // A deployment older than this client has no clearAll action. Falling
+        // back to per-row deletes keeps the button working without forcing a
+        // re-paste of the script, at the cost of one request per record.
+        if (err?.code !== 'UNSUPPORTED_ACTION') {
+          set({ isLoading: false });
+          get().showToast(`Failed to clear the sheet: ${err.message}`, 'error');
+          return;
+        }
+
+        const targets = [...sheetTransactions];
+        get().showToast(
+          `Your Apps Script predates one-shot clearing. Deleting ${targets.length} records one by one — this will take a while.`,
+          'info'
+        );
+
+        let deleted = 0;
+        let failed = 0;
+        for (const t of targets) {
+          try {
+            await api.deleteTransaction(settings.scriptUrl, t.id);
+            deleted++;
+          } catch {
+            failed++;
+          }
+        }
+
+        set({ activeDebtorName: null, history: [] });
+        await get().loadAllData();
+        get().showToast(
+          failed > 0
+            ? `Deleted ${deleted} records, ${failed} failed. Re-paste the Apps Script from Configs for reliable clearing.`
+            : `Cleared ${deleted} records. Re-paste the Apps Script from Configs to make this instant next time.`,
+          failed > 0 ? 'error' : 'success'
+        );
+      }
+    },
+
+    // ----------------------------------------------------
     // COPY LOCAL TRANSACTIONS TO SHEETS (MIGRATION SYNC)
     // ----------------------------------------------------
     syncLocalToSheets: async () => {
@@ -693,6 +763,19 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
 
     clearNotification: () => {
       set({ notification: null });
+    },
+
+    // ----------------------------------------------------
+    // RECORD COUNT OF THE ACTIVE BACKEND
+    // ----------------------------------------------------
+    // Rows, not debtors — the destructive confirm dialog needs to name exactly
+    // what is about to be deleted.
+    getRecordCount: () => {
+      const { settings } = get();
+      if (settings.useLocalFallback || !settings.scriptUrl) {
+        return getLocalTransactions().length;
+      }
+      return sheetTransactions.length;
     },
 
     // ----------------------------------------------------

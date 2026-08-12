@@ -22,6 +22,8 @@ import {
   Terminal,
   ClipboardCopy,
   Check,
+  Trash2,
+  AlertTriangle,
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 
@@ -43,6 +45,8 @@ export default function App() {
   const loadHistory = useDebtStore((state) => state.loadHistory);
   const getStats = useDebtStore((state) => state.getStats);
   const showToast = useDebtStore((state) => state.showToast);
+  const getRecordCount = useDebtStore((state) => state.getRecordCount);
+  const clearAllRecords = useDebtStore((state) => state.clearAllRecords);
 
   // Modal open states
   const [isSetupOpen, setIsSetupOpen] = useState(false);
@@ -50,6 +54,7 @@ export default function App() {
   const [addModalType, setAddModalType] = useState<'BORROW' | 'PAYMENT'>('BORROW');
   const [addModalPrefilledName, setAddModalPrefilledName] = useState('');
   const [confirmFullyPaidName, setConfirmFullyPaidName] = useState<string | null>(null);
+  const [isConfirmClearOpen, setIsConfirmClearOpen] = useState(false);
   const [justCopied, setJustCopied] = useState(false);
 
   // Filtering / Searching states
@@ -61,13 +66,13 @@ export default function App() {
     initStore();
   }, [initStore]);
 
-  // Lock body scroll when confirm dialog is open
+  // Lock body scroll when a confirm dialog is open
   useEffect(() => {
-    document.body.style.overflow = confirmFullyPaidName ? 'hidden' : '';
+    document.body.style.overflow = confirmFullyPaidName || isConfirmClearOpen ? 'hidden' : '';
     return () => {
       document.body.style.overflow = '';
     };
-  }, [confirmFullyPaidName]);
+  }, [confirmFullyPaidName, isConfirmClearOpen]);
 
   // Revert the copy button back to its idle label shortly after a copy
   useEffect(() => {
@@ -78,6 +83,10 @@ export default function App() {
 
   // Derived dashboard stats
   const stats = getStats();
+
+  // Rows in the active backend, not debtors — the clear dialog names the exact
+  // number of records it is about to destroy.
+  const recordCount = getRecordCount();
 
   // Single source of truth for money rendering, shared by the cards and the
   // clipboard summary so the pasted text always matches what's on screen.
@@ -432,22 +441,6 @@ export default function App() {
                   >
                     Fully Paid
                   </button>
-
-                  {/* Copies exactly what the tabs and search box leave visible */}
-                  <button
-                    id="btn-copy-summary"
-                    onClick={copySummaryToClipboard}
-                    disabled={isLoading || filteredDebtors.length === 0}
-                    title="Copy the visible list as text you can paste into a chat"
-                    className="ml-auto mb-2 flex shrink-0 items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-[11px] font-bold text-slate-600 shadow-sm transition-all hover:bg-slate-50 hover:text-slate-800 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white"
-                  >
-                    {justCopied ? (
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    ) : (
-                      <ClipboardCopy className="w-3.5 h-3.5" />
-                    )}
-                    {justCopied ? 'Copied' : 'Copy List'}
-                  </button>
                 </div>
               </section>
 
@@ -573,16 +566,49 @@ export default function App() {
                 )}
               </main>
 
-              {/* Floating sticky add buttons for standard mobile targets */}
-              <div className="fixed bottom-6 right-4 left-4 max-w-sm mx-auto flex gap-3 z-30 select-none">
-                <button
-                  id="btn-sticky-add"
-                  onClick={() => openAddModal('BORROW')}
-                  className="grow bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs py-3.5 rounded-2xl shadow-xl shadow-indigo-600/30 active:scale-95 transition-all text-center flex items-center justify-center gap-1.5"
-                >
-                  <Plus className="w-4 h-4" />
-                  Lend Money (Add Debt)
-                </button>
+              {/* Floating action dock — the primary action plus the two
+                  ledger-wide tools, grouped so they read as one control. */}
+              <div
+                id="action-dock"
+                className="fixed bottom-6 right-4 left-4 max-w-sm mx-auto z-30 select-none"
+              >
+                <div className="flex items-center gap-2 rounded-2xl border border-slate-200/80 bg-white/95 p-2 shadow-xl shadow-slate-900/10 backdrop-blur-md">
+                  <button
+                    id="btn-sticky-add"
+                    onClick={() => openAddModal('BORROW')}
+                    className="flex grow items-center justify-center gap-1.5 rounded-xl bg-indigo-600 py-3 text-xs font-semibold text-white shadow-lg shadow-indigo-600/30 transition-all hover:bg-indigo-700 active:scale-95"
+                  >
+                    <Plus className="w-4 h-4" />
+                    Lend Money
+                  </button>
+
+                  {/* Copies exactly what the tabs and search box leave visible */}
+                  <button
+                    id="btn-copy-summary"
+                    onClick={copySummaryToClipboard}
+                    disabled={isLoading || filteredDebtors.length === 0}
+                    title="Copy the visible list as text you can paste into a chat"
+                    aria-label="Copy visible list to clipboard"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:bg-slate-50 hover:text-slate-900 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-white"
+                  >
+                    {justCopied ? (
+                      <Check className="w-4 h-4 text-emerald-600" />
+                    ) : (
+                      <ClipboardCopy className="w-4 h-4" />
+                    )}
+                  </button>
+
+                  <button
+                    id="btn-clear-all"
+                    onClick={() => setIsConfirmClearOpen(true)}
+                    disabled={isLoading || recordCount === 0}
+                    title="Delete every record from the ledger"
+                    aria-label="Delete every record"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-rose-200 bg-white text-rose-600 transition-all hover:bg-rose-50 hover:text-rose-700 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-white"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
             </motion.div>
           )}
@@ -597,6 +623,67 @@ export default function App() {
           initialType={addModalType}
           initialName={addModalPrefilledName}
         />
+
+        {/* Confirm Clear All dialog — irreversible, so it names the exact
+            number of rows and the backend they will disappear from. */}
+        <AnimatePresence>
+          {isConfirmClearOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm px-4"
+              onClick={() => setIsConfirmClearOpen(false)}
+            >
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.95, opacity: 0 }}
+                onClick={(e) => e.stopPropagation()}
+                className="w-full max-w-sm bg-white rounded-2xl shadow-2xl p-5 space-y-4"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 shrink-0 rounded-xl bg-rose-50 flex items-center justify-center">
+                    <AlertTriangle className="w-5 h-5 text-rose-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-display font-bold text-slate-800 text-sm">
+                      Delete every record?
+                    </h3>
+                    <p className="text-[11px] text-slate-500 mt-0.5 leading-relaxed">
+                      This permanently removes{' '}
+                      <span className="font-bold text-rose-600">
+                        all {recordCount} transaction{recordCount === 1 ? '' : 's'}
+                      </span>{' '}
+                      {settings.useLocalFallback || !settings.scriptUrl
+                        ? 'from your local ledger'
+                        : 'from your Google Sheet'}
+                      , across every debtor. This cannot be undone.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setIsConfirmClearOpen(false)}
+                    className="flex-1 py-2.5 text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    id="btn-confirm-clear-all"
+                    onClick={() => {
+                      setIsConfirmClearOpen(false);
+                      clearAllRecords();
+                    }}
+                    className="flex-1 py-2.5 text-xs font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-xl transition-all"
+                  >
+                    Delete All
+                  </button>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Confirm Mark Fully Paid dialog */}
         <AnimatePresence>

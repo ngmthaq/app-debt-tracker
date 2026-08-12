@@ -213,6 +213,18 @@ function doPost(e) {
       return jsonResponse({ success: true });
     }
     
+    if (action === "clearAll") {
+      // Wipe every record in one call. Deleting row by row over the network
+      // would cost one request per transaction, which Apps Script is far too
+      // slow to absorb. The header row is preserved.
+      var lastRow = sheet.getLastRow();
+      var removed = Math.max(0, lastRow - 1);
+      if (removed > 0) {
+        sheet.deleteRows(2, removed);
+      }
+      return jsonResponse({ success: true, deleted: removed });
+    }
+
     if (action === "deleteTransaction") {
       var id = params.id;
       if (!id) {

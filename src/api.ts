@@ -5,10 +5,13 @@ import { Transaction, Debtor } from './types';
  */
 export class ApiError extends Error {
   status?: number;
-  constructor(message: string, status?: number) {
+  code?: 'UNSUPPORTED_ACTION';
+
+  constructor(message: string, status?: number, code?: 'UNSUPPORTED_ACTION') {
     super(message);
     this.name = 'ApiError';
     this.status = status;
+    this.code = code;
   }
 }
 
@@ -72,7 +75,14 @@ function parsePayload<T>(body: string, context: string): T {
   }
 
   if (parsed && !Array.isArray(parsed) && typeof parsed.error === 'string') {
-    throw new ApiError(`${context}: ${parsed.error}`);
+    // A deployment predating this client rejects actions it has never heard
+    // of. Tag it so callers can fall back instead of surfacing a dead end.
+    const unsupported = /action not supported/i.test(parsed.error);
+    throw new ApiError(
+      `${context}: ${parsed.error}`,
+      undefined,
+      unsupported ? 'UNSUPPORTED_ACTION' : undefined
+    );
   }
 
   return parsed as T;
@@ -258,6 +268,20 @@ export const api = {
       );
     } catch (err: any) {
       throw toApiError(err, 'Unable to delete transaction.');
+    }
+  },
+
+  /**
+   * Delete every transaction in the sheet in a single request.
+   *
+   * Throws an ApiError with code UNSUPPORTED_ACTION against a deployment that
+   * predates this action, which lets the caller fall back to per-row deletes.
+   */
+  async clearAll(scriptUrl: string): Promise<{ deleted?: number }> {
+    try {
+      return await postJson(scriptUrl, { action: 'clearAll' }, 'Failed to clear records');
+    } catch (err: any) {
+      throw toApiError(err, 'Unable to clear the sheet.');
     }
   },
 };
