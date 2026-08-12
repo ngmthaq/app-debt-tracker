@@ -107,6 +107,11 @@ interface DebtTrackerState {
 }
 
 export const useDebtStore = create<DebtTrackerState>((set, get) => {
+  // Last full ledger pulled from Sheets. Debtors, autocomplete names and every
+  // debtor's history are all derived from this, so one request per refresh is
+  // enough — Apps Script is far too slow to ask it the same question twice.
+  let sheetTransactions: Transaction[] = [];
+
   // Helper to load transactions from localStorage
   const getLocalTransactions = (): Transaction[] => {
     const raw = localStorage.getItem('debt_tracker_local_transactions');
@@ -129,8 +134,8 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
     localStorage.setItem('debt_tracker_local_transactions', JSON.stringify(txs));
   };
 
-  // Helper to aggregate debtors list from local transactions
-  const computeDebtorsFromLocal = (txs: Transaction[]): Debtor[] => {
+  // Helper to aggregate a debtors list from a flat transaction ledger
+  const computeDebtors = (txs: Transaction[]): Debtor[] => {
     const map: Record<
       string,
       { name: string; borrows: number; payments: number; lastUpdated: string }
@@ -209,7 +214,7 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
       if (settings.useLocalFallback || !settings.scriptUrl) {
         try {
           const localTxs = getLocalTransactions();
-          const debtors = computeDebtorsFromLocal(localTxs);
+          const debtors = computeDebtors(localTxs);
 
           // Compute unique names list for autocomplete
           const uniqueNames = Array.from(new Set(localTxs.map((t) => t.name.trim()))).filter(
@@ -233,19 +238,20 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
         return;
       }
 
-      // Sheets mode
+      // Sheets mode: one round trip for the whole ledger, everything else derived
       try {
-        const [debtors, namesList] = await Promise.all([
-          api.getDebts(settings.scriptUrl),
-          api.getNames(settings.scriptUrl),
-        ]);
+        const txs = await api.getTransactions(settings.scriptUrl);
+        sheetTransactions = txs;
+
+        const uniqueNames = Array.from(new Set(txs.map((t) => t.name.trim()))).filter(Boolean);
 
         set({
-          debtors,
-          namesList,
+          debtors: computeDebtors(txs),
+          namesList: uniqueNames,
           isLoading: false,
         });
       } catch (err: any) {
+        sheetTransactions = [];
         set({
           error: err.message,
           isLoading: false,
@@ -258,7 +264,7 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
 
         // Load local ledger as safe fallback
         const localTxs = getLocalTransactions();
-        const debtors = computeDebtorsFromLocal(localTxs);
+        const debtors = computeDebtors(localTxs);
         const uniqueNames = Array.from(new Set(localTxs.map((t) => t.name.trim()))).filter(Boolean);
         set({ debtors, namesList: uniqueNames });
       }
@@ -290,7 +296,21 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
         return;
       }
 
-      // Sheets mode
+      // Sheets mode: the ledger fetched by loadAllData already holds every
+      // transaction, so filtering it beats paying for another Apps Script call.
+      const cached = sheetTransactions.filter(
+        (t) => t.name.trim().toLowerCase() === nameToLoad.trim().toLowerCase()
+      );
+      if (cached.length > 0) {
+        set({
+          history: [...cached].sort(
+            (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+          ),
+          isLoadingHistory: false,
+        });
+        return;
+      }
+
       try {
         const payload = await api.getHistory(settings.scriptUrl, nameToLoad);
         // Map GAS response to Client Transaction

@@ -105,6 +105,12 @@ function doGet(e) {
       return jsonResponse(uniqueNames);
     }
     
+    if (action === "getAll") {
+      // Whole ledger in one response. The client derives balances, the name
+      // list and per-person history from this, so a refresh costs one call.
+      return jsonResponse(transactions);
+    }
+
     if (action === "getHistory") {
       var targetName = e.parameter.name;
       if (!targetName) {
@@ -238,9 +244,17 @@ function doPost(e) {
   }
 }
 
+/**
+ * ContentService cannot set an HTTP status code - every response leaves here
+ * as a 200. The optional status is therefore echoed into the JSON body so the
+ * client can tell a real payload apart from a failure.
+ */
 function jsonResponse(data, status) {
-  var jsonString = JSON.stringify(data);
-  return ContentService.createTextOutput(jsonString)
+  var body = data;
+  if (status && status >= 400 && body && body.error) {
+    body = { error: body.error, status: status };
+  }
+  return ContentService.createTextOutput(JSON.stringify(body))
     .setMimeType(ContentService.MimeType.JSON);
 }
 `;
