@@ -8,7 +8,6 @@ import {
   Calendar,
   ArrowUpRight,
   ArrowDownLeft,
-  ChevronRight,
   Edit3,
 } from 'lucide-react';
 import EditTransactionModal from './EditTransactionModal';

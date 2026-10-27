@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDebtStore } from '../hooks/useDebtStore';
 import { APPS_SCRIPT_CODE } from '../configs/appsScriptSource';
 import { Database, Copy, Check, Info, FileSpreadsheet, Play, Power, Layers } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 
 interface SetupGuideModalProps {
   isOpen: boolean;

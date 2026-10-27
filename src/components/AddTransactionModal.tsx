@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, FormEvent } from 'react';
 import { useDebtStore } from '../hooks/useDebtStore';
 import {
-  Landmark,
   User,
   Plus,
   X,

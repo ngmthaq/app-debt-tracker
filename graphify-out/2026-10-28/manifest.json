@@ -78,10 +78,10 @@
     "semantic_hash": ""
   },
   "src/main.tsx": {
-    "mtime": 1780826656.5831316,
-    "seen": 1793141737.404333,
-    "ast_hash": "9f8e590bb2f9a9ea14c6caa449254147",
-    "semantic_hash": "9f8e590bb2f9a9ea14c6caa449254147"
+    "mtime": 1793142675.7820482,
+    "seen": 1793142683.750725,
+    "ast_hash": "993ca0f58f5e355f529376c61e1f667c",
+    "semantic_hash": ""
   },
   "src/vite-env.d.ts": {
     "mtime": 1780189105.7905498,
@@ -228,9 +228,9 @@
     "semantic_hash": ""
   },
   ".claude/references/CODING_CONVENTIONS.md": {
-    "mtime": 1793142660.361721,
-    "seen": 1793142662.331079,
-    "ast_hash": "d18df7a44190fe8085ccb36aff5c02f4",
+    "mtime": 1793142675.7853515,
+    "seen": 1793142683.750756,
+    "ast_hash": "c8847b2f26484b536c9fe6cd7f93c0ab",
     "semantic_hash": ""
   },
   ".claude/references/PROJECT_OVERVIEW.md": {
@@ -612,9 +612,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1793142660.3631625,
-    "seen": 1793142662.331158,
-    "ast_hash": "d97654b382c27473fe1d4aec32143cca",
+    "mtime": 1793142675.7877417,
+    "seen": 1793142683.750834,
+    "ast_hash": "d080552cdb0fd486e695ec4ac5c1955d",
     "semantic_hash": ""
   },
   "docs/2026-10-28-06-05-04-history-desc-multi-amount-accent-search.md": {

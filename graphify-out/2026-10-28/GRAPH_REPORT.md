@@ -6,7 +6,7 @@
 - Unclassified: 6 file(s) not represented in the graph (top: (none) 5, .css 1)
 
 ## Summary
-- 685 nodes · 805 edges · 70 communities (59 shown, 11 thin omitted)
+- 686 nodes · 805 edges · 65 communities (54 shown, 11 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.93)
 - Token cost: 0 input · 0 output
 
@@ -20,7 +20,7 @@
 - App.tsx
 - agile-planning/SKILL.md
 - compilerOptions
-- Language & Framework Patterns
+- SECURITY_SCANNER/ENTRY_POINT.md
 - onboarding/SKILL.md
 - Coding Conventions
 - scan-secrets.sh
@@ -44,7 +44,7 @@
 - SOLID
 - Step 1 — Brainstorming (Root Agent)
 - Step 6 — Reply to and Resolve Threads
-- Vulnerable Package Watchlist
+- src_index
 - Additional Information
 - Step 6 — Review (Root Agent)
 - Step 1 — Choose the Access Method
@@ -62,15 +62,12 @@
 - Step 10 — Offer to Post Review (File + Line Comments)
 - Step 3 — Fetch the Code Diff
 - Step 2 — Find the Target PR
-- SECURITY_SCANNER/ENTRY_POINT.md
 - Graphify Setup
 - graphify reference: add a URL and watch a folder
 - graphify reference: commit hook and native CLAUDE.md integration
 - graphify reference: incremental update and cluster-only
 - Step 7 — Summary Report to User
 - RTK Setup
-- AI / LLM Security
-- Report Format
 - DRY.md
 - KISS.md
 - SEPARATION_OF_CONCERNS.md
@@ -80,8 +77,6 @@
 - resolve/step-7-summary-report.md
 - CLAUDE
 - extraction-spec.md
-- Security Scanner
-- Secret Patterns
 - Project Onboarding
 - AGENT_RULES.md
 
@@ -112,7 +107,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (70 total, 11 thin omitted)
+## Communities (65 total, 11 thin omitted)
 
 ### Community 0 - "package.json"
 Cohesion: 0.04
@@ -120,7 +115,7 @@ Nodes (46): dependencies, lucide-react, motion, react, react-dom, @tailwindcss/v
 
 ### Community 1 - "App.tsx"
 Cohesion: 0.13
-Nodes (26): lucide-react, motion, react, ref_virtual_pwa_register, App(), AddTransactionModal(), AddTransactionModalProps, DebtorDetailScreen() (+18 more)
+Nodes (26): lucide-react, motion, react, ref_virtual_pwa_register, App(), src_assets_css_index, AddTransactionModal(), AddTransactionModalProps (+18 more)
 
 ### Community 2 - "agile-planning/SKILL.md"
 Cohesion: 0.05
@@ -130,9 +125,9 @@ Nodes (38): 1a. Find the input source, 1b. Find the input type, 1c. Show what yo
 Cohesion: 0.12
 Nodes (15): compilerOptions, allowImportingTsExtensions, allowJs, experimentalDecorators, isolatedModules, jsx, lib, module (+7 more)
 
-### Community 4 - "Language & Framework Patterns"
-Cohesion: 0.22
-Nodes (9): Go, Java, JavaScript / TypeScript, Language & Framework Patterns, .NET / C#, PHP, Python, Ruby (+1 more)
+### Community 4 - "SECURITY_SCANNER/ENTRY_POINT.md"
+Cohesion: 0.05
+Nodes (36): AI / LLM Security, Data Leakage via Prompts, Indirect Prompt Injection (RAG / Agentic), Insecure Tool Use, Model & Infrastructure Basics, Prompt Injection (CWE-1336), Go, Java (+28 more)
 
 ### Community 6 - "Coding Conventions"
 Cohesion: 0.10
@@ -163,8 +158,8 @@ Cohesion: 0.12
 Nodes (16): Additional Skill References, Code-First, Constraints, Delegation Prompt Template, Failure Modes, Inputs, Note for Code-First and Test-First, Outputs (+8 more)
 
 ### Community 14 - "Execution Workflow"
-Cohesion: 0.18
-Nodes (11): Execution Workflow, Step 10 — Propose Patches, Step 1 — Find the Scope and Look Around, Step 2 — Dependency Audit (SCA), Step 3 — Secrets & Exposure Scan, Step 4 — Static Analysis (SAST), Step 5 — Vulnerability Deep Scan, Step 6 — AI / LLM Security (+3 more)
+Cohesion: 0.12
+Nodes (16): Execution Workflow, Reference Files, Rules, Security Scanner, Severity Guide, Step 10 — Propose Patches, Step 1 — Find the Scope and Look Around, Step 2 — Dependency Audit (SCA) (+8 more)
 
 ### Community 15 - "pull-request/SKILL.md"
 Cohesion: 0.16
@@ -221,10 +216,6 @@ Nodes (8): Brainstorming Dialogue, Bug, Check Task Complexity, Classify the Inte
 ### Community 29 - "Step 6 — Reply to and Resolve Threads"
 Cohesion: 0.25
 Nodes (7): Do not resolve when, Push the changes first, Reply, then resolve — per accepted thread, Step 6 — Reply to and Resolve Threads, Using MCP, Using the browser, Using the CLI
-
-### Community 30 - "Vulnerable Package Watchlist"
-Cohesion: 0.22
-Nodes (9): Cargo, Go Modules, Maven / Gradle, npm, pip, Reporting Format, RubyGems, Triage Rules (+1 more)
 
 ### Community 31 - "Additional Information"
 Cohesion: 0.25
@@ -318,14 +309,6 @@ Nodes (3): Step 7 — Summary Report to User, Summary Report Template, Usage Not
 Cohesion: 0.29
 Nodes (6): Add to Claude Code, Check savings, Common commands, Install, Notes, RTK Setup
 
-### Community 55 - "AI / LLM Security"
-Cohesion: 0.33
-Nodes (6): AI / LLM Security, Data Leakage via Prompts, Indirect Prompt Injection (RAG / Agentic), Insecure Tool Use, Model & Infrastructure Basics, Prompt Injection (CWE-1336)
-
-### Community 56 - "Report Format"
-Cohesion: 0.33
-Nodes (6): 1. Scan Summary, 2. Finding Cards, 3. Dependency Audit, 4. Secrets Scan, 5. Proposed Patches, Report Format
-
 ### Community 62 - "Step 5 — Sub-Agent Result Return"
 Cohesion: 0.67
 Nodes (3): Step 5 — Sub-Agent Result Return, Sub-Agent Result Template, Usage Notes
@@ -333,14 +316,6 @@ Nodes (3): Step 5 — Sub-Agent Result Return, Sub-Agent Result Template, Usage 
 ### Community 64 - "CLAUDE"
 Cohesion: 0.40
 Nodes (5): AGENT RULES, CLAUDE, CODING CONVENTIONS, GRAPHIFY, PROJECT OVERVIEW
-
-### Community 66 - "Security Scanner"
-Cohesion: 0.40
-Nodes (5): Reference Files, Rules, Security Scanner, Severity Guide, When to Use
-
-### Community 67 - "Secret Patterns"
-Cohesion: 0.40
-Nodes (5): Detected Patterns, How to Fix, Running the Scanner, Secret Patterns, What the Script Cannot Find — Check by Hand
 
 ### Community 68 - "Project Onboarding"
 Cohesion: 0.40
@@ -352,14 +327,14 @@ Nodes (3): AGENT RULES, DO, DO NOT
 
 ## Knowledge Gaps
 - **435 isolated node(s):** `$schema`, `PreToolUse`, `name`, `private`, `version` (+430 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 457 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 458 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Coding Conventions` connect `Coding Conventions` to `onboarding/SKILL.md`?**
-  _High betweenness centrality (0.240) - this node is a cross-community bridge._
+  _High betweenness centrality (0.239) - this node is a cross-community bridge._
 - **Why does `ErrorBoundary` connect `Coding Conventions` to `App.tsx`?**
   _High betweenness centrality (0.152) - this node is a cross-community bridge._
 - **What connects `$schema`, `PreToolUse`, `name` to the rest of the system?**

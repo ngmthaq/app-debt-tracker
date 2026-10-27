@@ -1,7 +1,7 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { useDebtStore } from '../hooks/useDebtStore';
 import { Transaction } from '../configs/types';
-import { Trash2, AlertCircle, Save, X, RotateCcw, StickyNote } from 'lucide-react';
+import { Trash2, AlertCircle, Save, X, StickyNote } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface EditTransactionModalProps {

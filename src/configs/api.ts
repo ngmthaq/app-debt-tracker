@@ -1,4 +1,4 @@
-import { Transaction, Debtor } from './types';
+import { Transaction } from './types';
 
 /**
  * Custom error class for API failures
@@ -161,33 +161,6 @@ export const api = {
         err,
         'Make sure your Google Script Deployment URL is correct and accepts permissions.'
       );
-    }
-  },
-
-  /**
-   * Get all debtors status and balance
-   */
-  async getDebts(scriptUrl: string): Promise<Debtor[]> {
-    try {
-      const url = `${scriptUrl}?action=getDebts&t=${Date.now()}`;
-      return await getJson<Debtor[]>(url, 'Failed to fetch debts');
-    } catch (err: any) {
-      throw toApiError(
-        err,
-        'Make sure your Google Script Deployment URL is correct and accepts permissions.'
-      );
-    }
-  },
-
-  /**
-   * Get all unique names for autocomplete suggestions
-   */
-  async getNames(scriptUrl: string): Promise<string[]> {
-    try {
-      const url = `${scriptUrl}?action=getNames&t=${Date.now()}`;
-      return await getJson<string[]>(url, 'Failed to fetch names');
-    } catch (err: any) {
-      throw toApiError(err, 'Unable to fetch autocomplete suggestions.');
     }
   },
 

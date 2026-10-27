@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDebtStore } from '../hooks/useDebtStore';
 import { CheckCircle2, AlertTriangle, Info, X } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
+import { motion } from 'motion/react';
 
 export default function StatusToast() {
   const notification = useDebtStore((state) => state.notification);

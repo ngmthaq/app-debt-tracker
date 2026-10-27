@@ -17,40 +17,34 @@
     "ast_hash": "646a279d69e23e4164c4b01f6fa2c3c9",
     "semantic_hash": "646a279d69e23e4164c4b01f6fa2c3c9"
   },
-  "metadata.json": {
-    "mtime": 1780188175.5516808,
-    "seen": 1793141737.404321,
-    "ast_hash": "4f6535536a433898aedecaa69be58cb8",
-    "semantic_hash": "4f6535536a433898aedecaa69be58cb8"
-  },
   "package.json": {
-    "mtime": 1793141925.1268291,
-    "seen": 1793142368.816981,
-    "ast_hash": "45cf6f3ccbf03ea0d823feb28ad7a231",
+    "mtime": 1793143058.7439103,
+    "seen": 1793143067.927325,
+    "ast_hash": "e4daabad6626a1b236696eb23003ce07",
     "semantic_hash": ""
   },
   "src/App.tsx": {
-    "mtime": 1793142640.886086,
-    "seen": 1793142662.331019,
-    "ast_hash": "a97ff1cee0251548c1e4e56ce18e833a",
+    "mtime": 1793143056.9220338,
+    "seen": 1793143067.927326,
+    "ast_hash": "4c7fdc53dcc0d3a81e80465e1c0b14f5",
     "semantic_hash": ""
   },
   "src/components/AddTransactionModal.tsx": {
-    "mtime": 1793142640.8894842,
-    "seen": 1793142662.33102,
-    "ast_hash": "008c6f0590c2ee9b74e67a1ee3c54c68",
+    "mtime": 1793143056.9243956,
+    "seen": 1793143067.927327,
+    "ast_hash": "97bf28a14bd6421ab149647773eed512",
     "semantic_hash": ""
   },
   "src/components/DebtorDetailScreen.tsx": {
-    "mtime": 1793142640.8906946,
-    "seen": 1793142662.331022,
-    "ast_hash": "8c7f85a0d0fb80306000eb75237f97a6",
+    "mtime": 1793143056.9270484,
+    "seen": 1793143067.927328,
+    "ast_hash": "9b2020b1511416cd51737a882457261f",
     "semantic_hash": ""
   },
   "src/components/EditTransactionModal.tsx": {
-    "mtime": 1793142640.89226,
-    "seen": 1793142662.3310232,
-    "ast_hash": "8aeb2c9e7bed3fb34a8396213bdad062",
+    "mtime": 1793143056.9295242,
+    "seen": 1793143067.927329,
+    "ast_hash": "a0e42417d1ac2efeab4e7427dab2e7ab",
     "semantic_hash": ""
   },
   "src/components/ErrorBoundary.tsx": {
@@ -66,20 +60,20 @@
     "semantic_hash": "47f2e23c03c36b668541450d88e5f47a"
   },
   "src/components/SetupGuideModal.tsx": {
-    "mtime": 1793142640.8948855,
-    "seen": 1793142662.3310258,
-    "ast_hash": "ef60204603a49fbecbb0619f6109189b",
+    "mtime": 1793143056.932253,
+    "seen": 1793143067.927333,
+    "ast_hash": "5165f93aa0c63e7735be58577f03aee2",
     "semantic_hash": ""
   },
   "src/components/StatusToast.tsx": {
-    "mtime": 1793142640.896073,
-    "seen": 1793142662.331027,
-    "ast_hash": "9619f035b9689c668dbf6f24ce978848",
+    "mtime": 1793143056.9344945,
+    "seen": 1793143067.9273338,
+    "ast_hash": "124eaf3fb68276c2c2e8003b19df9f16",
     "semantic_hash": ""
   },
   "src/main.tsx": {
-    "mtime": 1793142675.7820482,
-    "seen": 1793142683.750725,
+    "mtime": 1793142769.2138605,
+    "seen": 1793143067.927339,
     "ast_hash": "993ca0f58f5e355f529376c61e1f667c",
     "semantic_hash": ""
   },
@@ -90,20 +84,20 @@
     "semantic_hash": "11ecfcbd6f7344db8ce9e9ae76e70a6c"
   },
   "tsconfig.json": {
-    "mtime": 1780188175.5553052,
-    "seen": 1793141737.404337,
-    "ast_hash": "8827451c4e35790dd3f3538c265e7d15",
-    "semantic_hash": "8827451c4e35790dd3f3538c265e7d15"
+    "mtime": 1793143057.2240398,
+    "seen": 1793143067.9273431,
+    "ast_hash": "900bbb0f6e5c0f0c582c6cd94f6ac3f1",
+    "semantic_hash": ""
   },
   "vite.config.ts": {
-    "mtime": 1780410452.9345725,
-    "seen": 1793141737.404338,
-    "ast_hash": "d0201734eff8dd8546acc877e4833df6",
-    "semantic_hash": "d0201734eff8dd8546acc877e4833df6"
+    "mtime": 1793143057.2231565,
+    "seen": 1793143067.927344,
+    "ast_hash": "8b7d2dd8d1b9b080d57c8f88a153cd5b",
+    "semantic_hash": ""
   },
   "src/utils/normalizeText.ts": {
-    "mtime": 1793142453.1368165,
-    "seen": 1793142662.3310342,
+    "mtime": 1793142769.2140508,
+    "seen": 1793143067.927341,
     "ast_hash": "78078954892cf448a6c7e1f99fdfe49c",
     "semantic_hash": ""
   },
@@ -228,14 +222,14 @@
     "semantic_hash": ""
   },
   ".claude/references/CODING_CONVENTIONS.md": {
-    "mtime": 1793142675.7853515,
-    "seen": 1793142683.750756,
+    "mtime": 1793142769.1871548,
+    "seen": 1793143067.9273689,
     "ast_hash": "c8847b2f26484b536c9fe6cd7f93c0ab",
     "semantic_hash": ""
   },
   ".claude/references/PROJECT_OVERVIEW.md": {
-    "mtime": 1793142660.3624227,
-    "seen": 1793142662.331081,
+    "mtime": 1793142769.1873333,
+    "seen": 1793143067.92737,
     "ast_hash": "da1fd3abe941e82856567a11ecd83ffc",
     "semantic_hash": ""
   },
@@ -612,14 +606,14 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1793142675.7877417,
-    "seen": 1793142683.750834,
+    "mtime": 1793142769.1875117,
+    "seen": 1793143067.927445,
     "ast_hash": "d080552cdb0fd486e695ec4ac5c1955d",
     "semantic_hash": ""
   },
   "docs/2026-10-28-06-05-04-history-desc-multi-amount-accent-search.md": {
-    "mtime": 1793142482.9627733,
-    "seen": 1793142662.331159,
+    "mtime": 1793142769.1876929,
+    "seen": 1793143067.927447,
     "ast_hash": "7d8d548967f2a2fdf4f51922d82d4b6a",
     "semantic_hash": ""
   },
@@ -648,27 +642,33 @@
     "semantic_hash": ""
   },
   "src/configs/api.ts": {
-    "mtime": 1786544926.5763588,
-    "seen": 1793142662.331028,
-    "ast_hash": "887eed02dc6411534efe6c89433ccb6d",
+    "mtime": 1793143056.938422,
+    "seen": 1793143067.927335,
+    "ast_hash": "7d611c046fb67e5e0ef3fb7132bc394b",
     "semantic_hash": ""
   },
   "src/configs/appsScriptSource.ts": {
-    "mtime": 1786544889.242466,
-    "seen": 1793142662.3310301,
+    "mtime": 1793142769.21331,
+    "seen": 1793143067.927336,
     "ast_hash": "fe702861cfb71fdd6660c35453121fb4",
     "semantic_hash": ""
   },
   "src/configs/types.ts": {
-    "mtime": 1780190344.1146045,
-    "seen": 1793142662.331031,
+    "mtime": 1793142769.2134483,
+    "seen": 1793143067.927337,
     "ast_hash": "d69e433bd4cb154e2c6bb029fbd98a22",
     "semantic_hash": ""
   },
   "src/hooks/useDebtStore.ts": {
-    "mtime": 1793142640.8991709,
-    "seen": 1793142662.331032,
+    "mtime": 1793142769.2136765,
+    "seen": 1793143067.927338,
     "ast_hash": "80b4fb791cec10d698e14314623b3c33",
+    "semantic_hash": ""
+  },
+  "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md": {
+    "mtime": 1793143037.6602335,
+    "seen": 1793143067.927448,
+    "ast_hash": "4d517c9e2c3dca7c45a498a4aac11160",
     "semantic_hash": ""
   }
 }

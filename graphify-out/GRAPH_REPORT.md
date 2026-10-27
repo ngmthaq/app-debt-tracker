@@ -1,17 +1,17 @@
 # Graph Report - app-debt-tracker  (2026-10-28)
 
 ## Corpus Check
-- 106 files · ~84,272 words
+- 106 files · ~84,563 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 6 file(s) not represented in the graph (top: (none) 5, .css 1)
 
 ## Summary
-- 686 nodes · 805 edges · 65 communities (54 shown, 11 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.93)
+- 691 nodes · 809 edges · 69 communities (57 shown, 12 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.94)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `74f30acc`
+- Built from commit: `6fe69415`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -52,7 +52,7 @@
 - Step 2 — Planning (Root Agent)
 - Party-Mode
 - Step 4 — Triage and Group Comments
-- web-test/SKILL.md
+- Step 5 — Run Tests in the Browser
 - Clean Code
 - Step 3 — User Approval Gate
 - Step 4 — Delegation to Sub-Agents
@@ -62,12 +62,15 @@
 - Step 10 — Offer to Post Review (File + Line Comments)
 - Step 3 — Fetch the Code Diff
 - Step 2 — Find the Target PR
-- Graphify Setup
+- Title: Plan — Remove unused code and imports
+- web-test/SKILL.md
 - graphify reference: add a URL and watch a folder
 - graphify reference: commit hook and native CLAUDE.md integration
 - graphify reference: incremental update and cluster-only
 - Step 7 — Summary Report to User
-- RTK Setup
+- Step 1 — Check Browser Permission
+- Step 2 — Brainstorming
+- Step 3 — Test Plan
 - DRY.md
 - KISS.md
 - SEPARATION_OF_CONCERNS.md
@@ -75,13 +78,14 @@
 - graphify reference: transcribe video and audio
 - Step 5 — Sub-Agent Result Return
 - resolve/step-7-summary-report.md
-- CLAUDE
+- Step 4 — Approval Gate
 - extraction-spec.md
-- Project Onboarding
-- AGENT_RULES.md
+- step-6-test-report.md
+- Web Test
+- ref_path
 
 ## God Nodes (most connected - your core abstractions)
-1. `compilerOptions` - 15 edges
+1. `compilerOptions` - 14 edges
 2. `useDebtStore` - 13 edges
 3. `Coding Conventions` - 12 edges
 4. `What You Must Do When Invoked` - 12 edges
@@ -93,25 +97,25 @@
 10. `Step 1 — Project Overview` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `Functional Requirements` --references--> `Debtor`  [INFERRED]
+  docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md → src/configs/types.ts
+- `Task List` --references--> `Debtor`  [INFERRED]
+  docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md → src/configs/types.ts
 - `Approach Summary / Goal` --references--> `DebtorDetailScreen()`  [INFERRED]
   docs/2026-10-28-06-05-04-history-desc-multi-amount-accent-search.md → src/components/DebtorDetailScreen.tsx
 - `React and State` --references--> `ErrorBoundary`  [INFERRED]
   .claude/references/CODING_CONVENTIONS.md → src/components/ErrorBoundary.tsx
 - `Errors` --references--> `ApiError`  [INFERRED]
   .claude/references/CODING_CONVENTIONS.md → src/configs/api.ts
-- `Errors` --references--> `parsePayload()`  [INFERRED]
-  .claude/references/CODING_CONVENTIONS.md → src/configs/api.ts
-- `Naming` --references--> `TransactionType`  [INFERRED]
-  .claude/references/CODING_CONVENTIONS.md → src/configs/types.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (65 total, 11 thin omitted)
+## Communities (69 total, 12 thin omitted)
 
 ### Community 0 - "package.json"
-Cohesion: 0.04
-Nodes (46): dependencies, lucide-react, motion, react, react-dom, @tailwindcss/vite, vite, @vitejs/plugin-react (+38 more)
+Cohesion: 0.05
+Nodes (41): dependencies, lucide-react, motion, react, react-dom, @tailwindcss/vite, vite, @vitejs/plugin-react (+33 more)
 
 ### Community 1 - "App.tsx"
 Cohesion: 0.13
@@ -122,12 +126,16 @@ Cohesion: 0.05
 Nodes (38): 1a. Find the input source, 1b. Find the input type, 1c. Show what you got, Phase 1 — Take Input, 2a. Ask clarifying questions first, 2b. Look at the codebase (read-only), 2c. Write the analysis, Phase 2 — Brainstorm (+30 more)
 
 ### Community 3 - "compilerOptions"
-Cohesion: 0.12
-Nodes (15): compilerOptions, allowImportingTsExtensions, allowJs, experimentalDecorators, isolatedModules, jsx, lib, module (+7 more)
+Cohesion: 0.13
+Nodes (14): compilerOptions, allowImportingTsExtensions, allowJs, experimentalDecorators, isolatedModules, jsx, lib, module (+6 more)
 
 ### Community 4 - "SECURITY_SCANNER/ENTRY_POINT.md"
 Cohesion: 0.05
 Nodes (36): AI / LLM Security, Data Leakage via Prompts, Indirect Prompt Injection (RAG / Agentic), Insecure Tool Use, Model & Infrastructure Basics, Prompt Injection (CWE-1336), Go, Java (+28 more)
+
+### Community 5 - "onboarding/SKILL.md"
+Cohesion: 0.06
+Nodes (28): AGENT RULES, CLAUDE, CODING CONVENTIONS, GRAPHIFY, PROJECT OVERVIEW, AGENT RULES, DO, DO NOT (+20 more)
 
 ### Community 6 - "Coding Conventions"
 Cohesion: 0.10
@@ -218,8 +226,8 @@ Cohesion: 0.25
 Nodes (7): Do not resolve when, Push the changes first, Reply, then resolve — per accepted thread, Step 6 — Reply to and Resolve Threads, Using MCP, Using the browser, Using the CLI
 
 ### Community 31 - "Additional Information"
-Cohesion: 0.25
-Nodes (8): Additional Information, Apps Script backend, Commands, Hosting and CI, Notes, PROJECT OVERVIEW, Two storage modes, What the app does
+Cohesion: 0.29
+Nodes (7): Additional Information, Apps Script backend, Commands, Hosting and CI, Notes, Two storage modes, What the app does
 
 ### Community 32 - "Step 6 — Review (Root Agent)"
 Cohesion: 0.29
@@ -245,9 +253,9 @@ Nodes (6): Common Rules, Constraints, Loop Guard, Party-Mode, Step-by-Step Instr
 Cohesion: 0.33
 Nodes (5): Classify each comment that needs work, Group related comments, Remove comments that need no work, Step 4 — Triage and Group Comments, Write the triage table
 
-### Community 38 - "web-test/SKILL.md"
-Cohesion: 0.06
-Nodes (28): 1. Check that the user allows the browser, 2. Check that a browser tool is available, 3. Get the target, Step 1 — Check Browser Permission, Brainstorming Dialogue, Check the Test Scope, Classify the Intent, Step 2 — Brainstorming (+20 more)
+### Community 38 - "Step 5 — Run Tests in the Browser"
+Cohesion: 0.33
+Nodes (5): 1. Start the browser, 2. Run each test case, 3. Browser safety rules, 4. Finish, Step 5 — Run Tests in the Browser
 
 ### Community 39 - "Clean Code"
 Cohesion: 0.40
@@ -285,9 +293,9 @@ Nodes (4): Step 3 — Fetch the Code Diff, Using MCP, Using the browser, Using t
 Cohesion: 0.40
 Nodes (5): Step 2 — Find the Target PR, Using MCP, Using the browser, Using the CLI, What to get from the PR
 
-### Community 49 - "Graphify Setup"
-Cohesion: 0.25
-Nodes (7): Add to Claude Code, Build the graph, Graphify Setup, Install, Keep it up to date (optional), Search the graph, What you need
+### Community 48 - "Title: Plan — Remove unused code and imports"
+Cohesion: 0.20
+Nodes (9): Approach Summary / Goal, Files in Scope, Functional Requirements, Non-Functional Requirements, Open Questions / Blockers, Risks & Assumptions, Status, Task List (+1 more)
 
 ### Community 50 - "graphify reference: add a URL and watch a folder"
 Cohesion: 0.50
@@ -305,45 +313,53 @@ Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphif
 Cohesion: 0.50
 Nodes (3): Step 7 — Summary Report to User, Summary Report Template, Usage Notes
 
-### Community 54 - "RTK Setup"
-Cohesion: 0.29
-Nodes (6): Add to Claude Code, Check savings, Common commands, Install, Notes, RTK Setup
+### Community 54 - "Step 1 — Check Browser Permission"
+Cohesion: 0.40
+Nodes (4): 1. Check that the user allows the browser, 2. Check that a browser tool is available, 3. Get the target, Step 1 — Check Browser Permission
+
+### Community 55 - "Step 2 — Brainstorming"
+Cohesion: 0.40
+Nodes (5): Brainstorming Dialogue, Check the Test Scope, Classify the Intent, Step 2 — Brainstorming, Usage Notes
+
+### Community 56 - "Step 3 — Test Plan"
+Cohesion: 0.50
+Nodes (4): Planning Rules, Step 3 — Test Plan, Test Plan Template, Usage Notes
 
 ### Community 62 - "Step 5 — Sub-Agent Result Return"
 Cohesion: 0.67
 Nodes (3): Step 5 — Sub-Agent Result Return, Sub-Agent Result Template, Usage Notes
 
-### Community 64 - "CLAUDE"
-Cohesion: 0.40
-Nodes (5): AGENT RULES, CLAUDE, CODING CONVENTIONS, GRAPHIFY, PROJECT OVERVIEW
-
-### Community 68 - "Project Onboarding"
-Cohesion: 0.40
-Nodes (5): How to Use This Skill, Onboarding Workflow, Override Notice, Project Onboarding, Purpose
-
-### Community 69 - "AGENT_RULES.md"
+### Community 64 - "Step 4 — Approval Gate"
 Cohesion: 0.50
-Nodes (3): AGENT RULES, DO, DO NOT
+Nodes (4): Approved, Cancels, Requests Changes, Step 4 — Approval Gate
+
+### Community 66 - "step-6-test-report.md"
+Cohesion: 0.50
+Nodes (3): Step 6 — Test Report, Test Report Template, Usage Notes
+
+### Community 67 - "Web Test"
+Cohesion: 0.67
+Nodes (3): Constraints, Step-by-Step Instructions, Web Test
 
 ## Knowledge Gaps
-- **435 isolated node(s):** `$schema`, `PreToolUse`, `name`, `private`, `version` (+430 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 458 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **436 isolated node(s):** `$schema`, `PreToolUse`, `name`, `private`, `version` (+431 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 460 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Coding Conventions` connect `Coding Conventions` to `onboarding/SKILL.md`?**
-  _High betweenness centrality (0.239) - this node is a cross-community bridge._
+  _High betweenness centrality (0.245) - this node is a cross-community bridge._
 - **Why does `ErrorBoundary` connect `Coding Conventions` to `App.tsx`?**
-  _High betweenness centrality (0.152) - this node is a cross-community bridge._
+  _High betweenness centrality (0.140) - this node is a cross-community bridge._
 - **What connects `$schema`, `PreToolUse`, `name` to the rest of the system?**
-  _435 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _436 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.044326241134751775 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.04983388704318937 - nodes in this community are weakly interconnected._
 - **Should `App.tsx` be split into smaller, more focused modules?**
   _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
 - **Should `agile-planning/SKILL.md` be split into smaller, more focused modules?**
   _Cohesion score 0.045454545454545456 - nodes in this community are weakly interconnected._
 - **Should `compilerOptions` be split into smaller, more focused modules?**
-  _Cohesion score 0.125 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
