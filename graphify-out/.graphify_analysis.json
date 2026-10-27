@@ -1,0 +1,291 @@
+{
+  "communities": {
+    "0": [
+      "package",
+      "package_name",
+      "package_private",
+      "package_type",
+      "package_version",
+      "ref_autoprefixer",
+      "ref_dotenv",
+      "ref_esbuild",
+      "ref_express",
+      "ref_firebase",
+      "ref_google_genai",
+      "ref_path",
+      "ref_prettier",
+      "ref_tailwindcss",
+      "ref_tailwindcss_vite",
+      "ref_tsx",
+      "ref_types_express",
+      "ref_types_node",
+      "ref_types_react",
+      "ref_typescript",
+      "ref_vite",
+      "ref_vite_plugin_pwa",
+      "ref_vitejs_plugin_react",
+      "ref_zustand",
+      "vite_config"
+    ],
+    "1": [
+      "ref_lucide_react",
+      "ref_motion",
+      "ref_react",
+      "ref_virtual_pwa_register",
+      "src_app",
+      "src_app_app",
+      "src_appsscriptsource",
+      "src_appsscriptsource_apps_script_code",
+      "src_components_addtransactionmodal",
+      "src_components_addtransactionmodal_addtransactionmodal",
+      "src_components_addtransactionmodal_addtransactionmodal_handleclickoutside",
+      "src_components_addtransactionmodal_addtransactionmodalprops",
+      "src_components_debtordetailscreen",
+      "src_components_debtordetailscreen_debtordetailscreen",
+      "src_components_edittransactionmodal",
+      "src_components_edittransactionmodal_edittransactionmodal",
+      "src_components_pwaupdatebanner",
+      "src_components_pwaupdatebanner_pwaupdatebanner",
+      "src_components_setupguidemodal",
+      "src_components_setupguidemodal_setupguidemodal",
+      "src_components_setupguidemodal_setupguidemodalprops",
+      "src_components_statustoast",
+      "src_components_statustoast_statustoast",
+      "src_store_usedebtstore"
+    ],
+    "2": [
+      "src_api",
+      "src_api_api",
+      "src_api_apierror",
+      "src_api_apierror_constructor",
+      "src_api_fetchwithtimeout",
+      "src_api_getjson",
+      "src_api_parsepayload",
+      "src_api_postjson",
+      "src_api_toapierror",
+      "src_components_edittransactionmodal_edittransactionmodalprops",
+      "src_store",
+      "src_store_debttrackerstate",
+      "src_store_initial_demo_transactions",
+      "src_types",
+      "src_types_connectionsettings",
+      "src_types_dashboardstats",
+      "src_types_debtor",
+      "src_types_transaction",
+      "src_types_transactiontype"
+    ],
+    "3": [
+      "tsconfig",
+      "tsconfig_compileroptions",
+      "tsconfig_compileroptions_allowimportingtsextensions",
+      "tsconfig_compileroptions_allowjs",
+      "tsconfig_compileroptions_experimentaldecorators",
+      "tsconfig_compileroptions_isolatedmodules",
+      "tsconfig_compileroptions_jsx",
+      "tsconfig_compileroptions_lib",
+      "tsconfig_compileroptions_module",
+      "tsconfig_compileroptions_moduledetection",
+      "tsconfig_compileroptions_moduleresolution",
+      "tsconfig_compileroptions_noemit",
+      "tsconfig_compileroptions_paths",
+      "tsconfig_compileroptions_skiplibcheck",
+      "tsconfig_compileroptions_target",
+      "tsconfig_compileroptions_usedefineforclassfields"
+    ],
+    "4": [
+      "package_dependencies",
+      "package_dependencies_dotenv",
+      "package_dependencies_express",
+      "package_dependencies_firebase",
+      "package_dependencies_google_genai",
+      "package_dependencies_lucide_react",
+      "package_dependencies_motion",
+      "package_dependencies_react",
+      "package_dependencies_react_dom",
+      "package_dependencies_tailwindcss_vite",
+      "package_dependencies_vite",
+      "package_dependencies_vitejs_plugin_react",
+      "package_dependencies_zustand"
+    ],
+    "5": [
+      "package_devdependencies",
+      "package_devdependencies_autoprefixer",
+      "package_devdependencies_esbuild",
+      "package_devdependencies_prettier",
+      "package_devdependencies_tailwindcss",
+      "package_devdependencies_tsx",
+      "package_devdependencies_types_express",
+      "package_devdependencies_types_node",
+      "package_devdependencies_types_react",
+      "package_devdependencies_typescript",
+      "package_devdependencies_vite",
+      "package_devdependencies_vite_plugin_pwa"
+    ],
+    "6": [
+      "ref_react_dom",
+      "src_components_errorboundary",
+      "src_components_errorboundary_errorboundary",
+      "src_components_errorboundary_errorboundary_componentdidcatch",
+      "src_components_errorboundary_errorboundary_getderivedstatefromerror",
+      "src_components_errorboundary_errorboundary_render",
+      "src_components_errorboundary_props",
+      "src_components_errorboundary_state",
+      "src_index",
+      "src_main"
+    ],
+    "7": [
+      "claude_guides_security_scanner_scripts_scan_secrets",
+      "claude_guides_security_scanner_scripts_scan_secrets_main",
+      "claude_guides_security_scanner_scripts_scan_secrets_report",
+      "claude_guides_security_scanner_scripts_scan_secrets_scan_diff",
+      "claude_guides_security_scanner_scripts_scan_secrets_scan_files",
+      "claude_guides_security_scanner_scripts_scan_secrets_scan_line",
+      "claude_guides_security_scanner_scripts_scan_secrets_severity_color",
+      "claude_guides_security_scanner_scripts_scan_secrets_sh__entry"
+    ],
+    "8": [
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_clean",
+      "package_scripts_dev",
+      "package_scripts_format",
+      "package_scripts_lint",
+      "package_scripts_preview"
+    ],
+    "9": [
+      "claude_settings",
+      "claude_settings_hooks",
+      "claude_settings_hooks_pretooluse",
+      "claude_settings_schema"
+    ],
+    "10": [
+      "src_vite_env_d"
+    ]
+  },
+  "cohesion": {
+    "0": 0.09,
+    "1": 0.21739130434782608,
+    "2": 0.21637426900584794,
+    "3": 0.125,
+    "4": 0.15384615384615385,
+    "5": 0.16666666666666666,
+    "6": 0.2222222222222222,
+    "7": 0.5,
+    "8": 0.2857142857142857,
+    "9": 0.5,
+    "10": 1.0
+  },
+  "gods": [
+    {
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 15
+    },
+    {
+      "id": "src_store_usedebtstore",
+      "label": "useDebtStore",
+      "degree": 13
+    },
+    {
+      "id": "ref_lucide_react",
+      "label": "lucide-react",
+      "degree": 9
+    },
+    {
+      "id": "ref_react",
+      "label": "react",
+      "degree": 9
+    },
+    {
+      "id": "ref_motion",
+      "label": "motion",
+      "degree": 8
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "degree": 7
+    },
+    {
+      "id": "src_types_transaction",
+      "label": "Transaction",
+      "degree": 7
+    },
+    {
+      "id": "src_api_apierror",
+      "label": "ApiError",
+      "degree": 5
+    },
+    {
+      "id": "src_components_addtransactionmodal_addtransactionmodal",
+      "label": "AddTransactionModal()",
+      "degree": 5
+    },
+    {
+      "id": "src_components_errorboundary_errorboundary",
+      "label": "ErrorBoundary",
+      "degree": 5
+    }
+  ],
+  "surprises": [
+    {
+      "source": "EditTransactionModalProps",
+      "target": "Transaction",
+      "source_files": [
+        "src/components/EditTransactionModal.tsx",
+        "src/types.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "peripheral node `EditTransactionModalProps` unexpectedly reaches hub `Transaction`"
+    },
+    {
+      "source": "App()",
+      "target": "useDebtStore",
+      "source_files": [
+        "src/App.tsx",
+        "src/store.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    },
+    {
+      "source": "AddTransactionModal()",
+      "target": "useDebtStore",
+      "source_files": [
+        "src/components/AddTransactionModal.tsx",
+        "src/store.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    },
+    {
+      "source": "DebtorDetailScreen()",
+      "target": "useDebtStore",
+      "source_files": [
+        "src/components/DebtorDetailScreen.tsx",
+        "src/store.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    },
+    {
+      "source": "EditTransactionModal()",
+      "target": "useDebtStore",
+      "source_files": [
+        "src/components/EditTransactionModal.tsx",
+        "src/store.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}
