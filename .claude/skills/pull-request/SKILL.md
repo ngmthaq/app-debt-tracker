@@ -1,0 +1,102 @@
+---
+name: pull-request
+description: "Work with a pull request (PR) or merge request (MR) in one of three modes: create, review, or resolve. Create — open a PR/MR with a fully filled template from git changes, a ticket, or a plan. Review — fetch a PR's description and diff, then apply clean-code, security-scanner, and aaa-testing (when tests are present) checks, and post file + line comments. Resolve — fetch the reviewer comments, hand the fixes to party-mode, then reply to and resolve each fixed thread. Uses MCP, or the gh / glab / Bitbucket CLI when no MCP is available, or Claude browser control when neither is available. Use when: opening a PR, creating a MR, writing a PR description, reviewing a PR, code review, MR review, auditing a PR for security, reviewing test quality, resolving PR comments, addressing review feedback, fixing review comments, /pull-request."
+---
+
+# Pull Request
+
+> **Writing style:** Follow the writing rules in [AGENT_RULES](../../references/AGENT_RULES.md) for all text you write — chat messages, questions, plans, reports, and generated docs.
+
+One skill for pull requests (PRs) and merge requests (MRs). It has three modes:
+
+| Mode      | What it does                                                                                | Changes code?                |
+| --------- | ------------------------------------------------------------------------------------------- | ---------------------------- |
+| `create`  | Fills the PR template from git changes, tickets, and plans. Then creates the PR.            | No                           |
+| `review`  | Reads the PR and its diff. Writes a review report. Then, if the user wants, posts comments. | No                           |
+| `resolve` | Reads the reviewer comments. Hands the fixes to party-mode. Then replies to the threads.    | Yes, only through party-mode |
+
+---
+
+## Step 0 — Get the Mode
+
+The user gives the mode as the first word after the command:
+
+```
+/pull-request create
+/pull-request review [PR number or URL]
+/pull-request resolve [PR number or URL]
+```
+
+The user can also name the mode in words, for example "review PR #12" or "resolve the comments on this PR".
+
+**If the user does not give a mode, ask them. Do not guess it.** Ask:
+
+> "What do you want to do with the pull request?
+>
+> - **create** — open a new PR
+> - **review** — review a PR
+> - **resolve** — fix the reviewer comments on a PR"
+
+Wait for the answer. Then load only the steps for that mode.
+
+---
+
+## Workflows
+
+Load the step files of the chosen mode in order. Do not skip them or only skim them.
+
+### `create`
+
+1. [Step 1 — Choose the Access Method](./references/shared/step-1-choose-access-method.md)
+2. [Step 2 — Find the PR Template](./references/create/step-2-find-template.md)
+3. [Step 3 — Choose the Target Branch](./references/create/step-3-determine-target-branch.md)
+4. [Step 4 — Collect Context](./references/create/step-4-gather-context.md)
+5. [Step 5 — Fill the Template](./references/create/step-5-fill-template.md)
+6. [Step 6 — Create the PR](./references/create/step-6-submit-or-return.md)
+
+### `review`
+
+1. [Step 1 — Choose the Access Method](./references/shared/step-1-choose-access-method.md)
+2. [Step 2 — Find the Target PR](./references/shared/step-2-find-the-target-pr.md)
+3. [Step 3 — Fetch the Code Diff](./references/review/step-3-fetch-the-code-diff.md)
+4. [Step 4 — Check That the Code Matches the Requirements](./references/review/step-4-check-requirements-conformance.md)
+5. [Step 5 — Load Guides](./references/review/step-5-load-guides.md)
+6. [Step 6 — Apply Clean Code Review](./references/review/step-6-apply-clean-code-review.md)
+7. [Step 7 — Apply Security Scanner Review](./references/review/step-7-apply-security-scanner-review.md)
+8. [Step 8 — Apply AAA Testing Review](./references/review/step-8-apply-aaa-testing-review.md)
+9. [Step 9 — Write the Review Report](./references/review/step-9-produce-the-review-report.md)
+10. [Step 10 — Offer to Post Review (File + Line Comments)](./references/review/step-10-offer-to-post-review-via-mcp.md)
+
+### `resolve`
+
+1. [Step 1 — Choose the Access Method](./references/shared/step-1-choose-access-method.md)
+2. [Step 2 — Find the Target PR](./references/shared/step-2-find-the-target-pr.md)
+3. [Step 3 — Fetch Reviewer Comments](./references/resolve/step-3-fetch-reviewer-comments.md)
+4. [Step 4 — Triage and Group Comments](./references/resolve/step-4-triage-and-group-comments.md)
+5. [Step 5 — Resolve via Party-Mode](./references/resolve/step-5-resolve-via-party-mode.md)
+6. [Step 6 — Reply to and Resolve Threads](./references/resolve/step-6-reply-and-resolve-threads.md)
+7. [Step 7 — Summary Report](./references/resolve/step-7-summary-report.md)
+
+---
+
+## Rules for All Modes
+
+- Never show secrets, credentials, or internal environment values. Replace them with `[REDACTED]`.
+- Never add AI/agent attribution to a PR title, description, comment, or reply (no "Generated by", "Created by Claude", "Reviewed by Claude", "Co-Authored-By: Claude", or similar lines).
+
+## Rules for `create`
+
+- The user **must** commit their changes first, because this mode uses `git diff` to collect context.
+- Always use the target branch the user chose in Step 3 as the base branch for the diff and the PR.
+- If the git diff is very large (more than 300 lines), sum it up by file or module. Do not list every line.
+
+## Rules for `review`
+
+- This mode is read-only by default. It does not change any files unless the user clearly asks for fixes.
+- If the PR description is empty or very short, note this in the Summary as a process issue.
+
+## Rules for `resolve`
+
+- This mode **changes code**, but never directly. Party-mode's developer/tester sub-agents do all the coding. The Root Agent never edits files itself.
+- The party-mode **approval gate is required**. No fix is made until the user approves the plan.
+- Only act on comments that point to a real file + line and ask for a clear change. Skip resolved threads, outdated comments, praise, and unclear notes. Report why you skipped each one.
