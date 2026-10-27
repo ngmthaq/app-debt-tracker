@@ -1,17 +1,17 @@
 # Graph Report - app-debt-tracker  (2026-10-28)
 
 ## Corpus Check
-- 106 files · ~84,563 words
+- 107 files · ~85,915 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 6 file(s) not represented in the graph (top: (none) 5, .css 1)
 
 ## Summary
-- 691 nodes · 809 edges · 69 communities (57 shown, 12 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.94)
+- 701 nodes · 820 edges · 75 communities (62 shown, 13 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 10 edges (avg confidence: 0.94)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `6fe69415`
+- Built from commit: `0c368dce`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -20,7 +20,7 @@
 - App.tsx
 - agile-planning/SKILL.md
 - compilerOptions
-- SECURITY_SCANNER/ENTRY_POINT.md
+- Language & Framework Patterns
 - onboarding/SKILL.md
 - Coding Conventions
 - scan-secrets.sh
@@ -83,6 +83,12 @@
 - step-6-test-report.md
 - Web Test
 - ref_path
+- Vulnerable Package Watchlist
+- SECURITY_SCANNER/ENTRY_POINT.md
+- AI / LLM Security
+- Report Format
+- Security Scanner
+- Secret Patterns
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 14 edges
@@ -101,25 +107,25 @@
   docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md → src/configs/types.ts
 - `Task List` --references--> `Debtor`  [INFERRED]
   docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md → src/configs/types.ts
-- `Approach Summary / Goal` --references--> `DebtorDetailScreen()`  [INFERRED]
-  docs/2026-10-28-06-05-04-history-desc-multi-amount-accent-search.md → src/components/DebtorDetailScreen.tsx
 - `React and State` --references--> `ErrorBoundary`  [INFERRED]
   .claude/references/CODING_CONVENTIONS.md → src/components/ErrorBoundary.tsx
+- `Approach Summary / Goal` --references--> `DebtorDetailScreen()`  [INFERRED]
+  docs/2026-10-28-06-05-04-history-desc-multi-amount-accent-search.md → src/components/DebtorDetailScreen.tsx
 - `Errors` --references--> `ApiError`  [INFERRED]
   .claude/references/CODING_CONVENTIONS.md → src/configs/api.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (69 total, 12 thin omitted)
+## Communities (75 total, 13 thin omitted)
 
 ### Community 0 - "package.json"
 Cohesion: 0.05
-Nodes (41): dependencies, lucide-react, motion, react, react-dom, @tailwindcss/vite, vite, @vitejs/plugin-react (+33 more)
+Nodes (40): dependencies, lucide-react, motion, react, react-dom, @tailwindcss/vite, vite, @vitejs/plugin-react (+32 more)
 
 ### Community 1 - "App.tsx"
-Cohesion: 0.13
-Nodes (26): lucide-react, motion, react, ref_virtual_pwa_register, App(), src_assets_css_index, AddTransactionModal(), AddTransactionModalProps (+18 more)
+Cohesion: 0.10
+Nodes (30): React and State, Approach Summary / Goal, lucide-react, motion, react, react-dom, ref_virtual_pwa_register, App() (+22 more)
 
 ### Community 2 - "agile-planning/SKILL.md"
 Cohesion: 0.05
@@ -129,17 +135,17 @@ Nodes (38): 1a. Find the input source, 1b. Find the input type, 1c. Show what yo
 Cohesion: 0.13
 Nodes (14): compilerOptions, allowImportingTsExtensions, allowJs, experimentalDecorators, isolatedModules, jsx, lib, module (+6 more)
 
-### Community 4 - "SECURITY_SCANNER/ENTRY_POINT.md"
-Cohesion: 0.05
-Nodes (36): AI / LLM Security, Data Leakage via Prompts, Indirect Prompt Injection (RAG / Agentic), Insecure Tool Use, Model & Infrastructure Basics, Prompt Injection (CWE-1336), Go, Java (+28 more)
+### Community 4 - "Language & Framework Patterns"
+Cohesion: 0.22
+Nodes (9): Go, Java, JavaScript / TypeScript, Language & Framework Patterns, .NET / C#, PHP, Python, Ruby (+1 more)
 
 ### Community 5 - "onboarding/SKILL.md"
 Cohesion: 0.06
 Nodes (28): AGENT RULES, CLAUDE, CODING CONVENTIONS, GRAPHIFY, PROJECT OVERVIEW, AGENT RULES, DO, DO NOT (+20 more)
 
 ### Community 6 - "Coding Conventions"
-Cohesion: 0.10
-Nodes (21): Backend Connection, Code Order in a File, Coding Conventions, Comments, Errors, Folders, Format (Prettier), Imports (+13 more)
+Cohesion: 0.08
+Nodes (28): Backend Connection, Code Order in a File, Coding Conventions, Comments, Errors, Folders, Format (Prettier), Imports (+20 more)
 
 ### Community 7 - "scan-secrets.sh"
 Cohesion: 0.50
@@ -166,8 +172,8 @@ Cohesion: 0.12
 Nodes (16): Additional Skill References, Code-First, Constraints, Delegation Prompt Template, Failure Modes, Inputs, Note for Code-First and Test-First, Outputs (+8 more)
 
 ### Community 14 - "Execution Workflow"
-Cohesion: 0.12
-Nodes (16): Execution Workflow, Reference Files, Rules, Security Scanner, Severity Guide, Step 10 — Propose Patches, Step 1 — Find the Scope and Look Around, Step 2 — Dependency Audit (SCA) (+8 more)
+Cohesion: 0.18
+Nodes (11): Execution Workflow, Step 10 — Propose Patches, Step 1 — Find the Scope and Look Around, Step 2 — Dependency Audit (SCA), Step 3 — Secrets & Exposure Scan, Step 4 — Static Analysis (SAST), Step 5 — Vulnerability Deep Scan, Step 6 — AI / LLM Security (+3 more)
 
 ### Community 15 - "pull-request/SKILL.md"
 Cohesion: 0.16
@@ -194,8 +200,8 @@ Cohesion: 0.20
 Nodes (10): `create`, Pull Request, `resolve`, `review`, Rules for All Modes, Rules for `create`, Rules for `resolve`, Rules for `review` (+2 more)
 
 ### Community 22 - "Title: Plan — History newest-first, many amounts in Add form, accent-free name search"
-Cohesion: 0.20
-Nodes (9): Approach Summary / Goal, Files in Scope, Functional Requirements, Non-Functional Requirements, Open Questions / Blockers, Risks & Assumptions, Status, Task List (+1 more)
+Cohesion: 0.22
+Nodes (8): Files in Scope, Functional Requirements, Non-Functional Requirements, Open Questions / Blockers, Risks & Assumptions, Status, Task List, Title: Plan — History newest-first, many amounts in Add form, accent-free name search
 
 ### Community 23 - "Atomic Design"
 Cohesion: 0.22
@@ -341,24 +347,44 @@ Nodes (3): Step 6 — Test Report, Test Report Template, Usage Notes
 Cohesion: 0.67
 Nodes (3): Constraints, Step-by-Step Instructions, Web Test
 
+### Community 69 - "Vulnerable Package Watchlist"
+Cohesion: 0.22
+Nodes (9): Cargo, Go Modules, Maven / Gradle, npm, pip, Reporting Format, RubyGems, Triage Rules (+1 more)
+
+### Community 71 - "AI / LLM Security"
+Cohesion: 0.33
+Nodes (6): AI / LLM Security, Data Leakage via Prompts, Indirect Prompt Injection (RAG / Agentic), Insecure Tool Use, Model & Infrastructure Basics, Prompt Injection (CWE-1336)
+
+### Community 72 - "Report Format"
+Cohesion: 0.33
+Nodes (6): 1. Scan Summary, 2. Finding Cards, 3. Dependency Audit, 4. Secrets Scan, 5. Proposed Patches, Report Format
+
+### Community 73 - "Security Scanner"
+Cohesion: 0.40
+Nodes (5): Reference Files, Rules, Security Scanner, Severity Guide, When to Use
+
+### Community 74 - "Secret Patterns"
+Cohesion: 0.40
+Nodes (5): Detected Patterns, How to Fix, Running the Scanner, Secret Patterns, What the Script Cannot Find — Check by Hand
+
 ## Knowledge Gaps
-- **436 isolated node(s):** `$schema`, `PreToolUse`, `name`, `private`, `version` (+431 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 460 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **443 isolated node(s):** `$schema`, `PreToolUse`, `name`, `private`, `version` (+438 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 468 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Coding Conventions` connect `Coding Conventions` to `onboarding/SKILL.md`?**
-  _High betweenness centrality (0.245) - this node is a cross-community bridge._
-- **Why does `ErrorBoundary` connect `Coding Conventions` to `App.tsx`?**
-  _High betweenness centrality (0.140) - this node is a cross-community bridge._
+- **Why does `Coding Conventions` connect `Coding Conventions` to `App.tsx`, `onboarding/SKILL.md`?**
+  _High betweenness centrality (0.257) - this node is a cross-community bridge._
+- **Why does `React and State` connect `App.tsx` to `Coding Conventions`?**
+  _High betweenness centrality (0.136) - this node is a cross-community bridge._
 - **What connects `$schema`, `PreToolUse`, `name` to the rest of the system?**
-  _436 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _443 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.04983388704318937 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05110336817653891 - nodes in this community are weakly interconnected._
 - **Should `App.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.1036077705827937 - nodes in this community are weakly interconnected._
 - **Should `agile-planning/SKILL.md` be split into smaller, more focused modules?**
   _Cohesion score 0.045454545454545456 - nodes in this community are weakly interconnected._
 - **Should `compilerOptions` be split into smaller, more focused modules?**

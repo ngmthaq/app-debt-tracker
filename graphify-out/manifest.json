@@ -24,9 +24,9 @@
     "semantic_hash": ""
   },
   "src/App.tsx": {
-    "mtime": 1793143056.9220338,
-    "seen": 1793143067.927326,
-    "ast_hash": "4c7fdc53dcc0d3a81e80465e1c0b14f5",
+    "mtime": 1793143529.976787,
+    "seen": 1793143535.954069,
+    "ast_hash": "aacb099af8620fcebae8679bb695fbb1",
     "semantic_hash": ""
   },
   "src/components/AddTransactionModal.tsx": {
@@ -36,9 +36,9 @@
     "semantic_hash": ""
   },
   "src/components/DebtorDetailScreen.tsx": {
-    "mtime": 1793143056.9270484,
-    "seen": 1793143067.927328,
-    "ast_hash": "9b2020b1511416cd51737a882457261f",
+    "mtime": 1793143530.0045238,
+    "seen": 1793143535.954072,
+    "ast_hash": "68d8f04bf048057f41c4bc77481a8e97",
     "semantic_hash": ""
   },
   "src/components/EditTransactionModal.tsx": {
@@ -642,15 +642,15 @@
     "semantic_hash": ""
   },
   "src/configs/api.ts": {
-    "mtime": 1793143056.938422,
-    "seen": 1793143067.927335,
-    "ast_hash": "7d611c046fb67e5e0ef3fb7132bc394b",
+    "mtime": 1793143514.0906067,
+    "seen": 1793143535.954079,
+    "ast_hash": "9ab6b6c699a34fe04b0b4866fbfc583c",
     "semantic_hash": ""
   },
   "src/configs/appsScriptSource.ts": {
-    "mtime": 1793142769.21331,
-    "seen": 1793143067.927336,
-    "ast_hash": "fe702861cfb71fdd6660c35453121fb4",
+    "mtime": 1793143514.0903988,
+    "seen": 1793143535.95408,
+    "ast_hash": "1e56e87e7d9021d4ccbdaee94e7227f5",
     "semantic_hash": ""
   },
   "src/configs/types.ts": {
@@ -660,15 +660,21 @@
     "semantic_hash": ""
   },
   "src/hooks/useDebtStore.ts": {
-    "mtime": 1793142769.2136765,
-    "seen": 1793143067.927338,
-    "ast_hash": "80b4fb791cec10d698e14314623b3c33",
+    "mtime": 1793143514.0908659,
+    "seen": 1793143535.954083,
+    "ast_hash": "1ac7d1a7a346b64bbaf3965868245994",
     "semantic_hash": ""
   },
   "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md": {
     "mtime": 1793143037.6602335,
     "seen": 1793143067.927448,
     "ast_hash": "4d517c9e2c3dca7c45a498a4aac11160",
+    "semantic_hash": ""
+  },
+  "docs/2026-10-28-06-24-01-clear-history-keep-debt.md": {
+    "mtime": 1793143483.9752386,
+    "seen": 1793143535.9542022,
+    "ast_hash": "5f7dc063eeb4ddfbba6a7b01859dde53",
     "semantic_hash": ""
   }
 }

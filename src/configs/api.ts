@@ -245,16 +245,18 @@ export const api = {
   },
 
   /**
-   * Delete every transaction in the sheet in a single request.
-   *
-   * Throws an ApiError with code UNSUPPORTED_ACTION against a deployment that
-   * predates this action, which lets the caller fall back to per-row deletes.
+   * Replace a person's rows (or everyone's when no name is given) with a single
+   * row holding their current balance, in one request. Balances do not change.
    */
-  async clearAll(scriptUrl: string): Promise<{ deleted?: number }> {
+  async clearHistory(scriptUrl: string, name?: string): Promise<{ cleared?: number }> {
     try {
-      return await postJson(scriptUrl, { action: 'clearAll' }, 'Failed to clear records');
+      return await postJson(
+        scriptUrl,
+        { action: 'clearHistory', ...(name ? { name } : {}) },
+        'Failed to clear history'
+      );
     } catch (err: any) {
-      throw toApiError(err, 'Unable to clear the sheet.');
+      throw toApiError(err, 'Unable to clear history.');
     }
   },
 };

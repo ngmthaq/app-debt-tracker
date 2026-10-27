@@ -14,7 +14,7 @@
       "file_type": "code",
       "norm_label": "addtransactionmodalprops",
       "source_file": "src/components/AddTransactionModal.tsx",
-      "source_location": "L16"
+      "source_location": "L15"
     },
     {
       "id": "src_components_edittransactionmodal_edittransactionmodalprops",
@@ -182,7 +182,7 @@
       "file_type": "code",
       "norm_label": "app()",
       "source_file": "src/App.tsx",
-      "source_location": "L38"
+      "source_location": "L29"
     },
     {
       "id": "src_components_addtransactionmodal_addtransactionmodal",
@@ -194,7 +194,7 @@
       "file_type": "code",
       "norm_label": "addtransactionmodal()",
       "source_file": "src/components/AddTransactionModal.tsx",
-      "source_location": "L23"
+      "source_location": "L22"
     },
     {
       "id": "src_components_addtransactionmodal_addtransactionmodal_handleclickoutside",
@@ -206,7 +206,7 @@
       "file_type": "code",
       "norm_label": "handleclickoutside()",
       "source_file": "src/components/AddTransactionModal.tsx",
-      "source_location": "L58"
+      "source_location": "L57"
     },
     {
       "id": "src_components_debtordetailscreen_debtordetailscreen",
@@ -218,7 +218,7 @@
       "file_type": "code",
       "norm_label": "debtordetailscreen()",
       "source_file": "src/components/DebtorDetailScreen.tsx",
-      "source_location": "L18"
+      "source_location": "L17"
     },
     {
       "id": "src_components_edittransactionmodal_edittransactionmodal",
@@ -510,28 +510,6 @@
       "source_location": "L24"
     },
     {
-      "id": "package_devdependencies_autoprefixer",
-      "label": "autoprefixer",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "autoprefixer",
-      "source_file": "package.json",
-      "source_location": "L27"
-    },
-    {
-      "id": "package_devdependencies_esbuild",
-      "label": "esbuild",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "esbuild",
-      "source_file": "package.json",
-      "source_location": "L28"
-    },
-    {
       "id": "package_devdependencies_prettier",
       "label": "prettier",
       "_origin": "ast",
@@ -540,7 +518,7 @@
       "file_type": "code",
       "norm_label": "prettier",
       "source_file": "package.json",
-      "source_location": "L29"
+      "source_location": "L28"
     },
     {
       "id": "package_devdependencies_tailwindcss",
@@ -551,18 +529,7 @@
       "file_type": "code",
       "norm_label": "tailwindcss",
       "source_file": "package.json",
-      "source_location": "L30"
-    },
-    {
-      "id": "package_devdependencies_tsx",
-      "label": "tsx",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "tsx",
-      "source_file": "package.json",
-      "source_location": "L31"
+      "source_location": "L29"
     },
     {
       "id": "package_devdependencies_types_node",
@@ -587,6 +554,17 @@
       "source_location": "L26"
     },
     {
+      "id": "package_devdependencies_types_react_dom",
+      "label": "@types/react-dom",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "@types/react-dom",
+      "source_file": "package.json",
+      "source_location": "L27"
+    },
+    {
       "id": "package_devdependencies_typescript",
       "label": "typescript",
       "_origin": "ast",
@@ -595,7 +573,7 @@
       "file_type": "code",
       "norm_label": "typescript",
       "source_file": "package.json",
-      "source_location": "L32"
+      "source_location": "L30"
     },
     {
       "id": "package_devdependencies_vite",
@@ -606,7 +584,7 @@
       "file_type": "code",
       "norm_label": "vite",
       "source_file": "package.json",
-      "source_location": "L33"
+      "source_location": "L31"
     },
     {
       "id": "package_devdependencies_vite_plugin_pwa",
@@ -617,7 +595,7 @@
       "file_type": "code",
       "norm_label": "vite-plugin-pwa",
       "source_file": "package.json",
-      "source_location": "L34"
+      "source_location": "L32"
     },
     {
       "id": "package_name",
@@ -752,28 +730,6 @@
       "source_location": "L1"
     },
     {
-      "id": "ref_autoprefixer",
-      "label": "autoprefixer",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "autoprefixer",
-      "source_file": "package.json",
-      "source_location": "L27"
-    },
-    {
-      "id": "ref_esbuild",
-      "label": "esbuild",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "esbuild",
-      "source_file": "package.json",
-      "source_location": "L28"
-    },
-    {
       "id": "ref_prettier",
       "label": "prettier",
       "_origin": "ast",
@@ -782,7 +738,7 @@
       "file_type": "concept",
       "norm_label": "prettier",
       "source_file": "package.json",
-      "source_location": "L29"
+      "source_location": "L28"
     },
     {
       "id": "ref_react_dom",
@@ -804,7 +760,7 @@
       "file_type": "concept",
       "norm_label": "tailwindcss",
       "source_file": "package.json",
-      "source_location": "L30"
+      "source_location": "L29"
     },
     {
       "id": "ref_tailwindcss_vite",
@@ -816,17 +772,6 @@
       "norm_label": "@tailwindcss/vite",
       "source_file": "package.json",
       "source_location": "L15"
-    },
-    {
-      "id": "ref_tsx",
-      "label": "tsx",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "tsx",
-      "source_file": "package.json",
-      "source_location": "L31"
     },
     {
       "id": "ref_types_node",
@@ -851,6 +796,17 @@
       "source_location": "L26"
     },
     {
+      "id": "ref_types_react_dom",
+      "label": "@types/react-dom",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "@types/react-dom",
+      "source_file": "package.json",
+      "source_location": "L27"
+    },
+    {
       "id": "ref_typescript",
       "label": "typescript",
       "_origin": "ast",
@@ -859,7 +815,7 @@
       "file_type": "concept",
       "norm_label": "typescript",
       "source_file": "package.json",
-      "source_location": "L32"
+      "source_location": "L30"
     },
     {
       "id": "ref_vite",
@@ -881,7 +837,7 @@
       "file_type": "concept",
       "norm_label": "vite-plugin-pwa",
       "source_file": "package.json",
-      "source_location": "L34"
+      "source_location": "L32"
     },
     {
       "id": "ref_vitejs_plugin_react",
@@ -4426,7 +4382,7 @@
       "file_type": "code",
       "norm_label": "allowimportingtsextensions",
       "source_file": "tsconfig.json",
-      "source_location": "L23"
+      "source_location": "L18"
     },
     {
       "id": "tsconfig_compileroptions_allowjs",
@@ -4525,18 +4481,7 @@
       "file_type": "code",
       "norm_label": "noemit",
       "source_file": "tsconfig.json",
-      "source_location": "L24"
-    },
-    {
-      "id": "tsconfig_compileroptions_paths",
-      "label": "paths",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "paths",
-      "source_file": "tsconfig.json",
-      "source_location": "L18"
+      "source_location": "L19"
     },
     {
       "id": "tsconfig_compileroptions_skiplibcheck",
@@ -4630,18 +4575,6 @@
       "norm_label": "notes",
       "source_file": ".claude/references/PROJECT_OVERVIEW.md",
       "source_location": "L59"
-    },
-    {
-      "id": "claude_references_project_overview_project_overview",
-      "label": "PROJECT OVERVIEW",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "Additional Information",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "project overview",
-      "source_file": ".claude/references/PROJECT_OVERVIEW.md",
-      "source_location": "L1"
     },
     {
       "id": "claude_references_project_overview_two_storage_modes",
@@ -5124,279 +5057,11 @@
       "source_location": "L30"
     },
     {
-      "id": "claude_skills_web_test_skill",
-      "label": "web-test/SKILL.md",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "frontmatter": {
-        "name": "web-test",
-        "description": "Test a web app in a real browser. First check that the user allows the agent to open a browser, and that a browser tool is available. Then brainstorm with the user, write a test plan with test cases, and wait for the user to approve them. Then open the browser, run each test case, and report Pass / Fail / Blocked with evidence. Never changes code. Uses Claude in Chrome, the built-in Claude browser, or a Playwright MCP. Use when: test the web, test this page in the browser, run a browser test, check the UI, "
-      },
-      "node_kind": "page",
-      "norm_label": "web-test/skill.md",
-      "source_file": ".claude/skills/web-test/SKILL.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_1_check_browser_permission",
-      "label": "step-1-check-browser-permission.md",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "step-1-check-browser-permission.md",
-      "source_file": ".claude/skills/web-test/references/step-1-check-browser-permission.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_1_check_browser_permission_1_check_that_the_user_allows_the_browser",
-      "label": "1. Check that the user allows the browser",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "1. check that the user allows the browser",
-      "source_file": ".claude/skills/web-test/references/step-1-check-browser-permission.md",
-      "source_location": "L12"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_1_check_browser_permission_2_check_that_a_browser_tool_is_available",
-      "label": "2. Check that a browser tool is available",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "2. check that a browser tool is available",
-      "source_file": ".claude/skills/web-test/references/step-1-check-browser-permission.md",
-      "source_location": "L43"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_1_check_browser_permission_3_get_the_target",
-      "label": "3. Get the target",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "3. get the target",
-      "source_file": ".claude/skills/web-test/references/step-1-check-browser-permission.md",
-      "source_location": "L65"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_1_check_browser_permission_step_1_check_browser_permission",
-      "label": "Step 1 \u2014 Check Browser Permission",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "step 1 \u2014 check browser permission",
-      "source_file": ".claude/skills/web-test/references/step-1-check-browser-permission.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_2_brainstorming",
-      "label": "step-2-brainstorming.md",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "step-2-brainstorming.md",
-      "source_file": ".claude/skills/web-test/references/step-2-brainstorming.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_2_brainstorming_brainstorming_dialogue",
-      "label": "Brainstorming Dialogue",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "brainstorming dialogue",
-      "source_file": ".claude/skills/web-test/references/step-2-brainstorming.md",
-      "source_location": "L26"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_2_brainstorming_check_the_test_scope",
-      "label": "Check the Test Scope",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "check the test scope",
-      "source_file": ".claude/skills/web-test/references/step-2-brainstorming.md",
-      "source_location": "L20"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_2_brainstorming_classify_the_intent",
-      "label": "Classify the Intent",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "classify the intent",
-      "source_file": ".claude/skills/web-test/references/step-2-brainstorming.md",
-      "source_location": "L9"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_2_brainstorming_step_2_brainstorming",
-      "label": "Step 2 \u2014 Brainstorming",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "step 2 \u2014 brainstorming",
-      "source_file": ".claude/skills/web-test/references/step-2-brainstorming.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_2_brainstorming_usage_notes",
-      "label": "Usage Notes",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "usage notes",
-      "source_file": ".claude/skills/web-test/references/step-2-brainstorming.md",
-      "source_location": "L47"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_3_test_plan",
-      "label": "step-3-test-plan.md",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "step-3-test-plan.md",
-      "source_file": ".claude/skills/web-test/references/step-3-test-plan.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_3_test_plan_planning_rules",
-      "label": "Planning Rules",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "planning rules",
-      "source_file": ".claude/skills/web-test/references/step-3-test-plan.md",
-      "source_location": "L9"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_3_test_plan_step_3_test_plan",
-      "label": "Step 3 \u2014 Test Plan",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "step 3 \u2014 test plan",
-      "source_file": ".claude/skills/web-test/references/step-3-test-plan.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_3_test_plan_test_plan_template",
-      "label": "Test Plan Template",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "test plan template",
-      "source_file": ".claude/skills/web-test/references/step-3-test-plan.md",
-      "source_location": "L23"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_3_test_plan_usage_notes",
-      "label": "Usage Notes",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "usage notes",
-      "source_file": ".claude/skills/web-test/references/step-3-test-plan.md",
-      "source_location": "L86"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_4_approval_gate",
-      "label": "step-4-approval-gate.md",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "step-4-approval-gate.md",
-      "source_file": ".claude/skills/web-test/references/step-4-approval-gate.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_4_approval_gate_approved",
-      "label": "Approved",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "approved",
-      "source_file": ".claude/skills/web-test/references/step-4-approval-gate.md",
-      "source_location": "L7"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_4_approval_gate_cancels",
-      "label": "Cancels",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "cancels",
-      "source_file": ".claude/skills/web-test/references/step-4-approval-gate.md",
-      "source_location": "L23"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_4_approval_gate_requests_changes",
-      "label": "Requests Changes",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "requests changes",
-      "source_file": ".claude/skills/web-test/references/step-4-approval-gate.md",
-      "source_location": "L19"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_4_approval_gate_step_4_approval_gate",
-      "label": "Step 4 \u2014 Approval Gate",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "step 4 \u2014 approval gate",
-      "source_file": ".claude/skills/web-test/references/step-4-approval-gate.md",
-      "source_location": "L1"
-    },
-    {
       "id": "claude_skills_web_test_references_step_5_run_browser_tests",
       "label": "step-5-run-browser-tests.md",
       "_origin": "ast",
       "community": 38,
-      "community_name": "web-test/SKILL.md",
+      "community_name": "Step 5 \u2014 Run Tests in the Browser",
       "file_type": "document",
       "node_kind": "page",
       "norm_label": "step-5-run-browser-tests.md",
@@ -5408,7 +5073,7 @@
       "label": "1. Start the browser",
       "_origin": "ast",
       "community": 38,
-      "community_name": "web-test/SKILL.md",
+      "community_name": "Step 5 \u2014 Run Tests in the Browser",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "1. start the browser",
@@ -5420,7 +5085,7 @@
       "label": "2. Run each test case",
       "_origin": "ast",
       "community": 38,
-      "community_name": "web-test/SKILL.md",
+      "community_name": "Step 5 \u2014 Run Tests in the Browser",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "2. run each test case",
@@ -5432,7 +5097,7 @@
       "label": "3. Browser safety rules",
       "_origin": "ast",
       "community": 38,
-      "community_name": "web-test/SKILL.md",
+      "community_name": "Step 5 \u2014 Run Tests in the Browser",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "3. browser safety rules",
@@ -5444,7 +5109,7 @@
       "label": "4. Finish",
       "_origin": "ast",
       "community": 38,
-      "community_name": "web-test/SKILL.md",
+      "community_name": "Step 5 \u2014 Run Tests in the Browser",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "4. finish",
@@ -5456,96 +5121,12 @@
       "label": "Step 5 \u2014 Run Tests in the Browser",
       "_origin": "ast",
       "community": 38,
-      "community_name": "web-test/SKILL.md",
+      "community_name": "Step 5 \u2014 Run Tests in the Browser",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "step 5 \u2014 run tests in the browser",
       "source_file": ".claude/skills/web-test/references/step-5-run-browser-tests.md",
       "source_location": "L1"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_6_test_report",
-      "label": "step-6-test-report.md",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "step-6-test-report.md",
-      "source_file": ".claude/skills/web-test/references/step-6-test-report.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_6_test_report_step_6_test_report",
-      "label": "Step 6 \u2014 Test Report",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "step 6 \u2014 test report",
-      "source_file": ".claude/skills/web-test/references/step-6-test-report.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_6_test_report_test_report_template",
-      "label": "Test Report Template",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "test report template",
-      "source_file": ".claude/skills/web-test/references/step-6-test-report.md",
-      "source_location": "L12"
-    },
-    {
-      "id": "claude_skills_web_test_references_step_6_test_report_usage_notes",
-      "label": "Usage Notes",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "usage notes",
-      "source_file": ".claude/skills/web-test/references/step-6-test-report.md",
-      "source_location": "L66"
-    },
-    {
-      "id": "claude_skills_web_test_skill_constraints",
-      "label": "Constraints",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "constraints",
-      "source_file": ".claude/skills/web-test/SKILL.md",
-      "source_location": "L35"
-    },
-    {
-      "id": "claude_skills_web_test_skill_step_by_step_instructions",
-      "label": "Step-by-Step Instructions",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "step-by-step instructions",
-      "source_file": ".claude/skills/web-test/SKILL.md",
-      "source_location": "L22"
-    },
-    {
-      "id": "claude_skills_web_test_skill_web_test",
-      "label": "Web Test",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "web-test/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "web test",
-      "source_file": ".claude/skills/web-test/SKILL.md",
-      "source_location": "L6"
     },
     {
       "id": "claude_guides_clean_code_entry_point_clean_code",
@@ -6604,100 +6185,212 @@
       "source_location": "L14"
     },
     {
-      "id": "claude_skills_onboarding_references_setup_graphify",
-      "label": "setup-graphify.md",
+      "id": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports",
+      "label": "2026-10-28-06-16-49-remove-unused-code-and-imports.md",
       "_origin": "ast",
-      "community": 49,
-      "community_name": "Graphify Setup",
+      "community": 48,
+      "community_name": "Title: Plan \u2014 Remove unused code and imports",
       "file_type": "document",
       "node_kind": "page",
-      "norm_label": "setup-graphify.md",
-      "source_file": ".claude/skills/onboarding/references/setup-graphify.md",
+      "norm_label": "2026-10-28-06-16-49-remove-unused-code-and-imports.md",
+      "source_file": "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md",
       "source_location": "L1"
     },
     {
-      "id": "claude_skills_onboarding_references_setup_graphify_add_to_claude_code",
-      "label": "Add to Claude Code",
+      "id": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_approach_summary_goal",
+      "label": "Approach Summary / Goal",
       "_origin": "ast",
-      "community": 49,
-      "community_name": "Graphify Setup",
+      "community": 48,
+      "community_name": "Title: Plan \u2014 Remove unused code and imports",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "add to claude code",
-      "source_file": ".claude/skills/onboarding/references/setup-graphify.md",
-      "source_location": "L32"
+      "norm_label": "approach summary / goal",
+      "source_file": "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md",
+      "source_location": "L8"
     },
     {
-      "id": "claude_skills_onboarding_references_setup_graphify_build_the_graph",
-      "label": "Build the graph",
+      "id": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_files_in_scope",
+      "label": "Files in Scope",
       "_origin": "ast",
-      "community": 49,
-      "community_name": "Graphify Setup",
+      "community": 48,
+      "community_name": "Title: Plan \u2014 Remove unused code and imports",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "build the graph",
-      "source_file": ".claude/skills/onboarding/references/setup-graphify.md",
-      "source_location": "L47"
+      "norm_label": "files in scope",
+      "source_file": "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md",
+      "source_location": "L36"
     },
     {
-      "id": "claude_skills_onboarding_references_setup_graphify_graphify_setup",
-      "label": "Graphify Setup",
+      "id": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_functional_requirements",
+      "label": "Functional Requirements",
       "_origin": "ast",
-      "community": 49,
-      "community_name": "Graphify Setup",
+      "community": 48,
+      "community_name": "Title: Plan \u2014 Remove unused code and imports",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "graphify setup",
-      "source_file": ".claude/skills/onboarding/references/setup-graphify.md",
+      "norm_label": "functional requirements",
+      "source_file": "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md",
+      "source_location": "L14"
+    },
+    {
+      "id": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_non_functional_requirements",
+      "label": "Non-Functional Requirements",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Title: Plan \u2014 Remove unused code and imports",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "non-functional requirements",
+      "source_file": "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md",
+      "source_location": "L30"
+    },
+    {
+      "id": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_open_questions_blockers",
+      "label": "Open Questions / Blockers",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Title: Plan \u2014 Remove unused code and imports",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "open questions / blockers",
+      "source_file": "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md",
+      "source_location": "L50"
+    },
+    {
+      "id": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_risks_assumptions",
+      "label": "Risks & Assumptions",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Title: Plan \u2014 Remove unused code and imports",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "risks & assumptions",
+      "source_file": "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md",
+      "source_location": "L44"
+    },
+    {
+      "id": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_status",
+      "label": "Status",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Title: Plan \u2014 Remove unused code and imports",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "status",
+      "source_file": "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md",
+      "source_location": "L54"
+    },
+    {
+      "id": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_task_list",
+      "label": "Task List",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Title: Plan \u2014 Remove unused code and imports",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "task list",
+      "source_file": "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md",
+      "source_location": "L58"
+    },
+    {
+      "id": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_title_plan_remove_unused_code_and_imports",
+      "label": "Title: Plan \u2014 Remove unused code and imports",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Title: Plan \u2014 Remove unused code and imports",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "title: plan \u2014 remove unused code and imports",
+      "source_file": "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md",
       "source_location": "L1"
     },
     {
-      "id": "claude_skills_onboarding_references_setup_graphify_install",
-      "label": "Install",
+      "id": "claude_skills_web_test_skill",
+      "label": "web-test/SKILL.md",
       "_origin": "ast",
       "community": 49,
-      "community_name": "Graphify Setup",
+      "community_name": "web-test/SKILL.md",
       "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "install",
-      "source_file": ".claude/skills/onboarding/references/setup-graphify.md",
-      "source_location": "L10"
+      "frontmatter": {
+        "name": "web-test",
+        "description": "Test a web app in a real browser. First check that the user allows the agent to open a browser, and that a browser tool is available. Then brainstorm with the user, write a test plan with test cases, and wait for the user to approve them. Then open the browser, run each test case, and report Pass / Fail / Blocked with evidence. Never changes code. Uses Claude in Chrome, the built-in Claude browser, or a Playwright MCP. Use when: test the web, test this page in the browser, run a browser test, check the UI, "
+      },
+      "node_kind": "page",
+      "norm_label": "web-test/skill.md",
+      "source_file": ".claude/skills/web-test/SKILL.md",
+      "source_location": "L1"
     },
     {
-      "id": "claude_skills_onboarding_references_setup_graphify_keep_it_up_to_date_optional",
-      "label": "Keep it up to date (optional)",
+      "id": "claude_references_project_overview",
+      "label": "PROJECT_OVERVIEW.md",
       "_origin": "ast",
       "community": 49,
-      "community_name": "Graphify Setup",
+      "community_name": "web-test/SKILL.md",
       "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "keep it up to date (optional)",
-      "source_file": ".claude/skills/onboarding/references/setup-graphify.md",
-      "source_location": "L67"
+      "node_kind": "page",
+      "norm_label": "project_overview.md",
+      "source_file": ".claude/references/PROJECT_OVERVIEW.md",
+      "source_location": "L1"
     },
     {
-      "id": "claude_skills_onboarding_references_setup_graphify_search_the_graph",
-      "label": "Search the graph",
+      "id": "claude_references_project_overview_project_overview",
+      "label": "PROJECT OVERVIEW",
       "_origin": "ast",
       "community": 49,
-      "community_name": "Graphify Setup",
+      "community_name": "web-test/SKILL.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "search the graph",
-      "source_file": ".claude/skills/onboarding/references/setup-graphify.md",
-      "source_location": "L59"
+      "norm_label": "project overview",
+      "source_file": ".claude/references/PROJECT_OVERVIEW.md",
+      "source_location": "L1"
     },
     {
-      "id": "claude_skills_onboarding_references_setup_graphify_what_you_need",
-      "label": "What you need",
+      "id": "claude_skills_onboarding_references_step_1_research_project_overview",
+      "label": "step-1-research-project-overview.md",
       "_origin": "ast",
       "community": 49,
-      "community_name": "Graphify Setup",
+      "community_name": "web-test/SKILL.md",
       "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "what you need",
-      "source_file": ".claude/skills/onboarding/references/setup-graphify.md",
-      "source_location": "L5"
+      "node_kind": "page",
+      "norm_label": "step-1-research-project-overview.md",
+      "source_file": ".claude/skills/onboarding/references/step-1-research-project-overview.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_skills_web_test_references_step_2_brainstorming",
+      "label": "step-2-brainstorming.md",
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "web-test/SKILL.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "step-2-brainstorming.md",
+      "source_file": ".claude/skills/web-test/references/step-2-brainstorming.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_skills_web_test_references_step_3_test_plan",
+      "label": "step-3-test-plan.md",
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "web-test/SKILL.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "step-3-test-plan.md",
+      "source_file": ".claude/skills/web-test/references/step-3-test-plan.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_skills_web_test_references_step_4_approval_gate",
+      "label": "step-4-approval-gate.md",
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "web-test/SKILL.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "step-4-approval-gate.md",
+      "source_file": ".claude/skills/web-test/references/step-4-approval-gate.md",
+      "source_location": "L1"
     },
     {
       "id": "claude_skills_onboarding_skill",
@@ -6740,6 +6433,114 @@
       "source_location": "L1"
     },
     {
+      "id": "claude_claude_agent_rules",
+      "label": "AGENT RULES",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "agent rules",
+      "source_file": ".claude/CLAUDE.md",
+      "source_location": "L21"
+    },
+    {
+      "id": "claude_claude_claude",
+      "label": "CLAUDE",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "claude",
+      "source_file": ".claude/CLAUDE.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_claude_coding_conventions",
+      "label": "CODING CONVENTIONS",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "coding conventions",
+      "source_file": ".claude/CLAUDE.md",
+      "source_location": "L14"
+    },
+    {
+      "id": "claude_claude_graphify",
+      "label": "GRAPHIFY",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "graphify",
+      "source_file": ".claude/CLAUDE.md",
+      "source_location": "L29"
+    },
+    {
+      "id": "claude_claude_project_overview",
+      "label": "PROJECT OVERVIEW",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "project overview",
+      "source_file": ".claude/CLAUDE.md",
+      "source_location": "L7"
+    },
+    {
+      "id": "claude_references_agent_rules",
+      "label": "AGENT_RULES.md",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "agent_rules.md",
+      "source_file": ".claude/references/AGENT_RULES.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_references_agent_rules_agent_rules",
+      "label": "AGENT RULES",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "agent rules",
+      "source_file": ".claude/references/AGENT_RULES.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_references_agent_rules_do",
+      "label": "DO",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "do",
+      "source_file": ".claude/references/AGENT_RULES.md",
+      "source_location": "L5"
+    },
+    {
+      "id": "claude_references_agent_rules_do_not",
+      "label": "DO NOT",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "do not",
+      "source_file": ".claude/references/AGENT_RULES.md",
+      "source_location": "L24"
+    },
+    {
       "id": "claude_references_coding_conventions",
       "label": "CODING_CONVENTIONS.md",
       "_origin": "ast",
@@ -6752,27 +6553,183 @@
       "source_location": "L1"
     },
     {
-      "id": "claude_references_project_overview",
-      "label": "PROJECT_OVERVIEW.md",
+      "id": "claude_skills_onboarding_references_setup_graphify",
+      "label": "setup-graphify.md",
       "_origin": "ast",
       "community": 5,
       "community_name": "onboarding/SKILL.md",
       "file_type": "document",
       "node_kind": "page",
-      "norm_label": "project_overview.md",
-      "source_file": ".claude/references/PROJECT_OVERVIEW.md",
+      "norm_label": "setup-graphify.md",
+      "source_file": ".claude/skills/onboarding/references/setup-graphify.md",
       "source_location": "L1"
     },
     {
-      "id": "claude_skills_onboarding_references_step_1_research_project_overview",
-      "label": "step-1-research-project-overview.md",
+      "id": "claude_skills_onboarding_references_setup_graphify_add_to_claude_code",
+      "label": "Add to Claude Code",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "add to claude code",
+      "source_file": ".claude/skills/onboarding/references/setup-graphify.md",
+      "source_location": "L32"
+    },
+    {
+      "id": "claude_skills_onboarding_references_setup_graphify_build_the_graph",
+      "label": "Build the graph",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "build the graph",
+      "source_file": ".claude/skills/onboarding/references/setup-graphify.md",
+      "source_location": "L47"
+    },
+    {
+      "id": "claude_skills_onboarding_references_setup_graphify_graphify_setup",
+      "label": "Graphify Setup",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "graphify setup",
+      "source_file": ".claude/skills/onboarding/references/setup-graphify.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_skills_onboarding_references_setup_graphify_install",
+      "label": "Install",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "install",
+      "source_file": ".claude/skills/onboarding/references/setup-graphify.md",
+      "source_location": "L10"
+    },
+    {
+      "id": "claude_skills_onboarding_references_setup_graphify_keep_it_up_to_date_optional",
+      "label": "Keep it up to date (optional)",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "keep it up to date (optional)",
+      "source_file": ".claude/skills/onboarding/references/setup-graphify.md",
+      "source_location": "L67"
+    },
+    {
+      "id": "claude_skills_onboarding_references_setup_graphify_search_the_graph",
+      "label": "Search the graph",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "search the graph",
+      "source_file": ".claude/skills/onboarding/references/setup-graphify.md",
+      "source_location": "L59"
+    },
+    {
+      "id": "claude_skills_onboarding_references_setup_graphify_what_you_need",
+      "label": "What you need",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "what you need",
+      "source_file": ".claude/skills/onboarding/references/setup-graphify.md",
+      "source_location": "L5"
+    },
+    {
+      "id": "claude_skills_onboarding_references_setup_rtk",
+      "label": "setup-rtk.md",
       "_origin": "ast",
       "community": 5,
       "community_name": "onboarding/SKILL.md",
       "file_type": "document",
       "node_kind": "page",
-      "norm_label": "step-1-research-project-overview.md",
-      "source_file": ".claude/skills/onboarding/references/step-1-research-project-overview.md",
+      "norm_label": "setup-rtk.md",
+      "source_file": ".claude/skills/onboarding/references/setup-rtk.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_skills_onboarding_references_setup_rtk_add_to_claude_code",
+      "label": "Add to Claude Code",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "add to claude code",
+      "source_file": ".claude/skills/onboarding/references/setup-rtk.md",
+      "source_location": "L24"
+    },
+    {
+      "id": "claude_skills_onboarding_references_setup_rtk_check_savings",
+      "label": "Check savings",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "check savings",
+      "source_file": ".claude/skills/onboarding/references/setup-rtk.md",
+      "source_location": "L45"
+    },
+    {
+      "id": "claude_skills_onboarding_references_setup_rtk_common_commands",
+      "label": "Common commands",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "common commands",
+      "source_file": ".claude/skills/onboarding/references/setup-rtk.md",
+      "source_location": "L35"
+    },
+    {
+      "id": "claude_skills_onboarding_references_setup_rtk_install",
+      "label": "Install",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "install",
+      "source_file": ".claude/skills/onboarding/references/setup-rtk.md",
+      "source_location": "L5"
+    },
+    {
+      "id": "claude_skills_onboarding_references_setup_rtk_notes",
+      "label": "Notes",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "notes",
+      "source_file": ".claude/skills/onboarding/references/setup-rtk.md",
+      "source_location": "L53"
+    },
+    {
+      "id": "claude_skills_onboarding_references_setup_rtk_rtk_setup",
+      "label": "RTK Setup",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "rtk setup",
+      "source_file": ".claude/skills/onboarding/references/setup-rtk.md",
       "source_location": "L1"
     },
     {
@@ -6822,6 +6779,66 @@
       "norm_label": "step 3 \u2014 finish",
       "source_file": ".claude/skills/onboarding/references/step-3-completion.md",
       "source_location": "L1"
+    },
+    {
+      "id": "claude_skills_onboarding_skill_how_to_use_this_skill",
+      "label": "How to Use This Skill",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "how to use this skill",
+      "source_file": ".claude/skills/onboarding/SKILL.md",
+      "source_location": "L21"
+    },
+    {
+      "id": "claude_skills_onboarding_skill_onboarding_workflow",
+      "label": "Onboarding Workflow",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "onboarding workflow",
+      "source_file": ".claude/skills/onboarding/SKILL.md",
+      "source_location": "L29"
+    },
+    {
+      "id": "claude_skills_onboarding_skill_override_notice",
+      "label": "Override Notice",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "override notice",
+      "source_file": ".claude/skills/onboarding/SKILL.md",
+      "source_location": "L10"
+    },
+    {
+      "id": "claude_skills_onboarding_skill_project_onboarding",
+      "label": "Project Onboarding",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "project onboarding",
+      "source_file": ".claude/skills/onboarding/SKILL.md",
+      "source_location": "L6"
+    },
+    {
+      "id": "claude_skills_onboarding_skill_purpose",
+      "label": "Purpose",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "onboarding/SKILL.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "purpose",
+      "source_file": ".claude/skills/onboarding/SKILL.md",
+      "source_location": "L14"
     },
     {
       "id": "claude_skills_graphify_references_add_watch",
@@ -7016,88 +7033,172 @@
       "source_location": "L53"
     },
     {
-      "id": "claude_skills_onboarding_references_setup_rtk",
-      "label": "setup-rtk.md",
+      "id": "claude_skills_web_test_references_step_1_check_browser_permission",
+      "label": "step-1-check-browser-permission.md",
       "_origin": "ast",
       "community": 54,
-      "community_name": "RTK Setup",
+      "community_name": "Step 1 \u2014 Check Browser Permission",
       "file_type": "document",
       "node_kind": "page",
-      "norm_label": "setup-rtk.md",
-      "source_file": ".claude/skills/onboarding/references/setup-rtk.md",
+      "norm_label": "step-1-check-browser-permission.md",
+      "source_file": ".claude/skills/web-test/references/step-1-check-browser-permission.md",
       "source_location": "L1"
     },
     {
-      "id": "claude_skills_onboarding_references_setup_rtk_add_to_claude_code",
-      "label": "Add to Claude Code",
+      "id": "claude_skills_web_test_references_step_1_check_browser_permission_1_check_that_the_user_allows_the_browser",
+      "label": "1. Check that the user allows the browser",
       "_origin": "ast",
       "community": 54,
-      "community_name": "RTK Setup",
+      "community_name": "Step 1 \u2014 Check Browser Permission",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "add to claude code",
-      "source_file": ".claude/skills/onboarding/references/setup-rtk.md",
-      "source_location": "L24"
+      "norm_label": "1. check that the user allows the browser",
+      "source_file": ".claude/skills/web-test/references/step-1-check-browser-permission.md",
+      "source_location": "L12"
     },
     {
-      "id": "claude_skills_onboarding_references_setup_rtk_check_savings",
-      "label": "Check savings",
+      "id": "claude_skills_web_test_references_step_1_check_browser_permission_2_check_that_a_browser_tool_is_available",
+      "label": "2. Check that a browser tool is available",
       "_origin": "ast",
       "community": 54,
-      "community_name": "RTK Setup",
+      "community_name": "Step 1 \u2014 Check Browser Permission",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "check savings",
-      "source_file": ".claude/skills/onboarding/references/setup-rtk.md",
-      "source_location": "L45"
+      "norm_label": "2. check that a browser tool is available",
+      "source_file": ".claude/skills/web-test/references/step-1-check-browser-permission.md",
+      "source_location": "L43"
     },
     {
-      "id": "claude_skills_onboarding_references_setup_rtk_common_commands",
-      "label": "Common commands",
+      "id": "claude_skills_web_test_references_step_1_check_browser_permission_3_get_the_target",
+      "label": "3. Get the target",
       "_origin": "ast",
       "community": 54,
-      "community_name": "RTK Setup",
+      "community_name": "Step 1 \u2014 Check Browser Permission",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "common commands",
-      "source_file": ".claude/skills/onboarding/references/setup-rtk.md",
-      "source_location": "L35"
+      "norm_label": "3. get the target",
+      "source_file": ".claude/skills/web-test/references/step-1-check-browser-permission.md",
+      "source_location": "L65"
     },
     {
-      "id": "claude_skills_onboarding_references_setup_rtk_install",
-      "label": "Install",
+      "id": "claude_skills_web_test_references_step_1_check_browser_permission_step_1_check_browser_permission",
+      "label": "Step 1 \u2014 Check Browser Permission",
       "_origin": "ast",
       "community": 54,
-      "community_name": "RTK Setup",
+      "community_name": "Step 1 \u2014 Check Browser Permission",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "install",
-      "source_file": ".claude/skills/onboarding/references/setup-rtk.md",
-      "source_location": "L5"
-    },
-    {
-      "id": "claude_skills_onboarding_references_setup_rtk_notes",
-      "label": "Notes",
-      "_origin": "ast",
-      "community": 54,
-      "community_name": "RTK Setup",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "notes",
-      "source_file": ".claude/skills/onboarding/references/setup-rtk.md",
-      "source_location": "L53"
-    },
-    {
-      "id": "claude_skills_onboarding_references_setup_rtk_rtk_setup",
-      "label": "RTK Setup",
-      "_origin": "ast",
-      "community": 54,
-      "community_name": "RTK Setup",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "rtk setup",
-      "source_file": ".claude/skills/onboarding/references/setup-rtk.md",
+      "norm_label": "step 1 \u2014 check browser permission",
+      "source_file": ".claude/skills/web-test/references/step-1-check-browser-permission.md",
       "source_location": "L1"
+    },
+    {
+      "id": "claude_skills_web_test_references_step_2_brainstorming_brainstorming_dialogue",
+      "label": "Brainstorming Dialogue",
+      "_origin": "ast",
+      "community": 55,
+      "community_name": "Step 2 \u2014 Brainstorming",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "brainstorming dialogue",
+      "source_file": ".claude/skills/web-test/references/step-2-brainstorming.md",
+      "source_location": "L26"
+    },
+    {
+      "id": "claude_skills_web_test_references_step_2_brainstorming_check_the_test_scope",
+      "label": "Check the Test Scope",
+      "_origin": "ast",
+      "community": 55,
+      "community_name": "Step 2 \u2014 Brainstorming",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "check the test scope",
+      "source_file": ".claude/skills/web-test/references/step-2-brainstorming.md",
+      "source_location": "L20"
+    },
+    {
+      "id": "claude_skills_web_test_references_step_2_brainstorming_classify_the_intent",
+      "label": "Classify the Intent",
+      "_origin": "ast",
+      "community": 55,
+      "community_name": "Step 2 \u2014 Brainstorming",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "classify the intent",
+      "source_file": ".claude/skills/web-test/references/step-2-brainstorming.md",
+      "source_location": "L9"
+    },
+    {
+      "id": "claude_skills_web_test_references_step_2_brainstorming_step_2_brainstorming",
+      "label": "Step 2 \u2014 Brainstorming",
+      "_origin": "ast",
+      "community": 55,
+      "community_name": "Step 2 \u2014 Brainstorming",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "step 2 \u2014 brainstorming",
+      "source_file": ".claude/skills/web-test/references/step-2-brainstorming.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_skills_web_test_references_step_2_brainstorming_usage_notes",
+      "label": "Usage Notes",
+      "_origin": "ast",
+      "community": 55,
+      "community_name": "Step 2 \u2014 Brainstorming",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "usage notes",
+      "source_file": ".claude/skills/web-test/references/step-2-brainstorming.md",
+      "source_location": "L47"
+    },
+    {
+      "id": "claude_skills_web_test_references_step_3_test_plan_planning_rules",
+      "label": "Planning Rules",
+      "_origin": "ast",
+      "community": 56,
+      "community_name": "Step 3 \u2014 Test Plan",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "planning rules",
+      "source_file": ".claude/skills/web-test/references/step-3-test-plan.md",
+      "source_location": "L9"
+    },
+    {
+      "id": "claude_skills_web_test_references_step_3_test_plan_step_3_test_plan",
+      "label": "Step 3 \u2014 Test Plan",
+      "_origin": "ast",
+      "community": 56,
+      "community_name": "Step 3 \u2014 Test Plan",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "step 3 \u2014 test plan",
+      "source_file": ".claude/skills/web-test/references/step-3-test-plan.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_skills_web_test_references_step_3_test_plan_test_plan_template",
+      "label": "Test Plan Template",
+      "_origin": "ast",
+      "community": 56,
+      "community_name": "Step 3 \u2014 Test Plan",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "test plan template",
+      "source_file": ".claude/skills/web-test/references/step-3-test-plan.md",
+      "source_location": "L23"
+    },
+    {
+      "id": "claude_skills_web_test_references_step_3_test_plan_usage_notes",
+      "label": "Usage Notes",
+      "_origin": "ast",
+      "community": 56,
+      "community_name": "Step 3 \u2014 Test Plan",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "usage notes",
+      "source_file": ".claude/skills/web-test/references/step-3-test-plan.md",
+      "source_location": "L86"
     },
     {
       "id": "claude_guides_clean_code_dry",
@@ -7518,64 +7619,52 @@
       "source_location": "L13"
     },
     {
-      "id": "claude_claude_agent_rules",
-      "label": "AGENT RULES",
+      "id": "claude_skills_web_test_references_step_4_approval_gate_approved",
+      "label": "Approved",
       "_origin": "ast",
       "community": 64,
-      "community_name": "CLAUDE",
+      "community_name": "Step 4 \u2014 Approval Gate",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "agent rules",
-      "source_file": ".claude/CLAUDE.md",
-      "source_location": "L21"
-    },
-    {
-      "id": "claude_claude_claude",
-      "label": "CLAUDE",
-      "_origin": "ast",
-      "community": 64,
-      "community_name": "CLAUDE",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "claude",
-      "source_file": ".claude/CLAUDE.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "claude_claude_coding_conventions",
-      "label": "CODING CONVENTIONS",
-      "_origin": "ast",
-      "community": 64,
-      "community_name": "CLAUDE",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "coding conventions",
-      "source_file": ".claude/CLAUDE.md",
-      "source_location": "L14"
-    },
-    {
-      "id": "claude_claude_graphify",
-      "label": "GRAPHIFY",
-      "_origin": "ast",
-      "community": 64,
-      "community_name": "CLAUDE",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "graphify",
-      "source_file": ".claude/CLAUDE.md",
-      "source_location": "L29"
-    },
-    {
-      "id": "claude_claude_project_overview",
-      "label": "PROJECT OVERVIEW",
-      "_origin": "ast",
-      "community": 64,
-      "community_name": "CLAUDE",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "project overview",
-      "source_file": ".claude/CLAUDE.md",
+      "norm_label": "approved",
+      "source_file": ".claude/skills/web-test/references/step-4-approval-gate.md",
       "source_location": "L7"
+    },
+    {
+      "id": "claude_skills_web_test_references_step_4_approval_gate_cancels",
+      "label": "Cancels",
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "Step 4 \u2014 Approval Gate",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "cancels",
+      "source_file": ".claude/skills/web-test/references/step-4-approval-gate.md",
+      "source_location": "L23"
+    },
+    {
+      "id": "claude_skills_web_test_references_step_4_approval_gate_requests_changes",
+      "label": "Requests Changes",
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "Step 4 \u2014 Approval Gate",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "requests changes",
+      "source_file": ".claude/skills/web-test/references/step-4-approval-gate.md",
+      "source_location": "L19"
+    },
+    {
+      "id": "claude_skills_web_test_references_step_4_approval_gate_step_4_approval_gate",
+      "label": "Step 4 \u2014 Approval Gate",
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "Step 4 \u2014 Approval Gate",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "step 4 \u2014 approval gate",
+      "source_file": ".claude/skills/web-test/references/step-4-approval-gate.md",
+      "source_location": "L1"
     },
     {
       "id": "claude_skills_graphify_references_extraction_spec",
@@ -7602,112 +7691,88 @@
       "source_location": "L1"
     },
     {
-      "id": "claude_skills_onboarding_skill_how_to_use_this_skill",
-      "label": "How to Use This Skill",
+      "id": "claude_skills_web_test_references_step_6_test_report",
+      "label": "step-6-test-report.md",
       "_origin": "ast",
-      "community": 68,
-      "community_name": "Project Onboarding",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "how to use this skill",
-      "source_file": ".claude/skills/onboarding/SKILL.md",
-      "source_location": "L21"
-    },
-    {
-      "id": "claude_skills_onboarding_skill_onboarding_workflow",
-      "label": "Onboarding Workflow",
-      "_origin": "ast",
-      "community": 68,
-      "community_name": "Project Onboarding",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "onboarding workflow",
-      "source_file": ".claude/skills/onboarding/SKILL.md",
-      "source_location": "L29"
-    },
-    {
-      "id": "claude_skills_onboarding_skill_override_notice",
-      "label": "Override Notice",
-      "_origin": "ast",
-      "community": 68,
-      "community_name": "Project Onboarding",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "override notice",
-      "source_file": ".claude/skills/onboarding/SKILL.md",
-      "source_location": "L10"
-    },
-    {
-      "id": "claude_skills_onboarding_skill_project_onboarding",
-      "label": "Project Onboarding",
-      "_origin": "ast",
-      "community": 68,
-      "community_name": "Project Onboarding",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "project onboarding",
-      "source_file": ".claude/skills/onboarding/SKILL.md",
-      "source_location": "L6"
-    },
-    {
-      "id": "claude_skills_onboarding_skill_purpose",
-      "label": "Purpose",
-      "_origin": "ast",
-      "community": 68,
-      "community_name": "Project Onboarding",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "purpose",
-      "source_file": ".claude/skills/onboarding/SKILL.md",
-      "source_location": "L14"
-    },
-    {
-      "id": "claude_references_agent_rules",
-      "label": "AGENT_RULES.md",
-      "_origin": "ast",
-      "community": 69,
-      "community_name": "AGENT_RULES.md",
+      "community": 66,
+      "community_name": "step-6-test-report.md",
       "file_type": "document",
       "node_kind": "page",
-      "norm_label": "agent_rules.md",
-      "source_file": ".claude/references/AGENT_RULES.md",
+      "norm_label": "step-6-test-report.md",
+      "source_file": ".claude/skills/web-test/references/step-6-test-report.md",
       "source_location": "L1"
     },
     {
-      "id": "claude_references_agent_rules_agent_rules",
-      "label": "AGENT RULES",
+      "id": "claude_skills_web_test_references_step_6_test_report_step_6_test_report",
+      "label": "Step 6 \u2014 Test Report",
       "_origin": "ast",
-      "community": 69,
-      "community_name": "AGENT_RULES.md",
+      "community": 66,
+      "community_name": "step-6-test-report.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "agent rules",
-      "source_file": ".claude/references/AGENT_RULES.md",
+      "norm_label": "step 6 \u2014 test report",
+      "source_file": ".claude/skills/web-test/references/step-6-test-report.md",
       "source_location": "L1"
     },
     {
-      "id": "claude_references_agent_rules_do",
-      "label": "DO",
+      "id": "claude_skills_web_test_references_step_6_test_report_test_report_template",
+      "label": "Test Report Template",
       "_origin": "ast",
-      "community": 69,
-      "community_name": "AGENT_RULES.md",
+      "community": 66,
+      "community_name": "step-6-test-report.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "do",
-      "source_file": ".claude/references/AGENT_RULES.md",
-      "source_location": "L5"
+      "norm_label": "test report template",
+      "source_file": ".claude/skills/web-test/references/step-6-test-report.md",
+      "source_location": "L12"
     },
     {
-      "id": "claude_references_agent_rules_do_not",
-      "label": "DO NOT",
+      "id": "claude_skills_web_test_references_step_6_test_report_usage_notes",
+      "label": "Usage Notes",
       "_origin": "ast",
-      "community": 69,
-      "community_name": "AGENT_RULES.md",
+      "community": 66,
+      "community_name": "step-6-test-report.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "do not",
-      "source_file": ".claude/references/AGENT_RULES.md",
-      "source_location": "L24"
+      "norm_label": "usage notes",
+      "source_file": ".claude/skills/web-test/references/step-6-test-report.md",
+      "source_location": "L66"
+    },
+    {
+      "id": "claude_skills_web_test_skill_constraints",
+      "label": "Constraints",
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "Web Test",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "constraints",
+      "source_file": ".claude/skills/web-test/SKILL.md",
+      "source_location": "L35"
+    },
+    {
+      "id": "claude_skills_web_test_skill_step_by_step_instructions",
+      "label": "Step-by-Step Instructions",
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "Web Test",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "step-by-step instructions",
+      "source_file": ".claude/skills/web-test/SKILL.md",
+      "source_location": "L22"
+    },
+    {
+      "id": "claude_skills_web_test_skill_web_test",
+      "label": "Web Test",
+      "_origin": "ast",
+      "community": 67,
+      "community_name": "Web Test",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "web test",
+      "source_file": ".claude/skills/web-test/SKILL.md",
+      "source_location": "L6"
     },
     {
       "id": "claude_guides_security_scanner_scripts_scan_secrets",
@@ -8178,18 +8243,6 @@
       "source_location": "L2"
     },
     {
-      "id": "ref_path",
-      "label": "ref_path",
-      "_origin": "semantic",
-      "community": 0,
-      "community_name": "package.json",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_path",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "ref_virtual_pwa_register",
       "label": "ref_virtual_pwa_register",
       "_origin": "semantic",
@@ -8198,6 +8251,18 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_virtual_pwa_register",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "src_assets_css_index",
+      "label": "src_assets_css_index",
+      "_origin": "semantic",
+      "community": 1,
+      "community_name": "App.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_assets_css_index",
       "source_file": "",
       "type": "external"
     },
@@ -8214,13 +8279,14 @@
       "type": "external"
     },
     {
-      "id": "src_assets_css_index",
-      "label": "src_assets_css_index",
-      "community": 1,
-      "community_name": "App.tsx",
+      "id": "ref_path",
+      "label": "ref_path",
+      "_origin": "semantic",
+      "community": 68,
+      "community_name": "ref_path",
       "external": true,
       "file_type": "concept",
-      "norm_label": "src_assets_css_index",
+      "norm_label": "ref_path",
       "source_file": "",
       "type": "external"
     }
@@ -8319,7 +8385,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/App.tsx",
-      "source_location": "L132",
+      "source_location": "L123",
       "weight": 1.0
     },
     {
@@ -8331,7 +8397,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/App.tsx",
-      "source_location": "L39",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -8343,7 +8409,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/AddTransactionModal.tsx",
-      "source_location": "L29",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -8355,7 +8421,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/AddTransactionModal.tsx",
-      "source_location": "L78",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -8367,7 +8433,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/DebtorDetailScreen.tsx",
-      "source_location": "L19",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -8660,7 +8726,7 @@
     },
     {
       "source": "package",
-      "target": "ref_autoprefixer",
+      "target": "ref_types_react_dom",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8672,7 +8738,7 @@
     },
     {
       "source": "package",
-      "target": "ref_esbuild",
+      "target": "ref_prettier",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8684,7 +8750,7 @@
     },
     {
       "source": "package",
-      "target": "ref_prettier",
+      "target": "ref_tailwindcss",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8696,7 +8762,7 @@
     },
     {
       "source": "package",
-      "target": "ref_tailwindcss",
+      "target": "ref_typescript",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8708,7 +8774,7 @@
     },
     {
       "source": "package",
-      "target": "ref_tsx",
+      "target": "ref_vite",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8720,30 +8786,6 @@
     },
     {
       "source": "package",
-      "target": "ref_typescript",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "package.json",
-      "source_location": "L32",
-      "weight": 1.0
-    },
-    {
-      "source": "package",
-      "target": "ref_vite",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "package.json",
-      "source_location": "L33",
-      "weight": 1.0
-    },
-    {
-      "source": "package",
       "target": "ref_vite_plugin_pwa",
       "relation": "imports",
       "_origin": "ast",
@@ -8751,7 +8793,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L34",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -8775,7 +8817,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/App.tsx",
-      "source_location": "L31",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -8787,7 +8829,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/App.tsx",
-      "source_location": "L32",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -8799,7 +8841,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/App.tsx",
-      "source_location": "L33",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -8811,7 +8853,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/App.tsx",
-      "source_location": "L34",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -8823,7 +8865,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/App.tsx",
-      "source_location": "L35",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -8835,7 +8877,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/App.tsx",
-      "source_location": "L36",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -8847,7 +8889,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/AddTransactionModal.tsx",
-      "source_location": "L13",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -8871,7 +8913,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/DebtorDetailScreen.tsx",
-      "source_location": "L14",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -8883,7 +8925,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/DebtorDetailScreen.tsx",
-      "source_location": "L15",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -8968,18 +9010,6 @@
       "context": "import",
       "source_file": "src/components/StatusToast.tsx",
       "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_configs_api",
-      "target": "src_configs_types_debtor",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/configs/api.ts",
-      "source_location": "L1",
       "weight": 1.0
     },
     {
@@ -9092,6 +9122,18 @@
     },
     {
       "source": "src_app",
+      "target": "ref_motion",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/App.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app",
       "target": "src_hooks_usedebtstore",
       "relation": "imports_from",
       "_origin": "ast",
@@ -9104,14 +9146,74 @@
     },
     {
       "source": "src_app",
-      "target": "ref_motion",
+      "target": "src_components_statustoast",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/App.tsx",
-      "source_location": "L28",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app",
+      "target": "src_components_setupguidemodal",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/App.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app",
+      "target": "src_components_addtransactionmodal",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/App.tsx",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app",
+      "target": "src_components_debtordetailscreen",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/App.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app",
+      "target": "src_components_pwaupdatebanner",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/App.tsx",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app",
+      "target": "src_utils_normalizetext",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/App.tsx",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -9124,78 +9226,6 @@
       "context": "import",
       "source_file": "src/App.tsx",
       "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_app",
-      "target": "src_components_statustoast",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/App.tsx",
-      "source_location": "L31",
-      "weight": 1.0
-    },
-    {
-      "source": "src_app",
-      "target": "src_components_setupguidemodal",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/App.tsx",
-      "source_location": "L32",
-      "weight": 1.0
-    },
-    {
-      "source": "src_app",
-      "target": "src_components_addtransactionmodal",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/App.tsx",
-      "source_location": "L33",
-      "weight": 1.0
-    },
-    {
-      "source": "src_app",
-      "target": "src_components_debtordetailscreen",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/App.tsx",
-      "source_location": "L34",
-      "weight": 1.0
-    },
-    {
-      "source": "src_app",
-      "target": "src_components_pwaupdatebanner",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/App.tsx",
-      "source_location": "L35",
-      "weight": 1.0
-    },
-    {
-      "source": "src_app",
-      "target": "src_utils_normalizetext",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/App.tsx",
-      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -9219,7 +9249,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/AddTransactionModal.tsx",
-      "source_location": "L13",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -9231,7 +9261,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/AddTransactionModal.tsx",
-      "source_location": "L14",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -9279,7 +9309,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/DebtorDetailScreen.tsx",
-      "source_location": "L14",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -9291,7 +9321,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/DebtorDetailScreen.tsx",
-      "source_location": "L15",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -9303,7 +9333,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/DebtorDetailScreen.tsx",
-      "source_location": "L16",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -9704,7 +9734,7 @@
     },
     {
       "source": "vite_config",
-      "target": "ref_path",
+      "target": "ref_vite",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -9716,18 +9746,6 @@
     },
     {
       "source": "vite_config",
-      "target": "ref_vite",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "vite.config.ts",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "vite_config",
       "target": "ref_vite_plugin_pwa",
       "relation": "imports_from",
       "_origin": "ast",
@@ -9735,7 +9753,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "vite.config.ts",
-      "source_location": "L5",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -14689,6 +14707,105 @@
       "weight": 1.0
     },
     {
+      "source": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports",
+      "target": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_title_plan_remove_unused_code_and_imports",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_title_plan_remove_unused_code_and_imports",
+      "target": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_functional_requirements",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_title_plan_remove_unused_code_and_imports",
+      "target": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_non_functional_requirements",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_title_plan_remove_unused_code_and_imports",
+      "target": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_files_in_scope",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_title_plan_remove_unused_code_and_imports",
+      "target": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_risks_assumptions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_title_plan_remove_unused_code_and_imports",
+      "target": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_open_questions_blockers",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_title_plan_remove_unused_code_and_imports",
+      "target": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_status",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md",
+      "source_location": "L54",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_title_plan_remove_unused_code_and_imports",
+      "target": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_task_list",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_title_plan_remove_unused_code_and_imports",
+      "target": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_approach_summary_goal",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
       "source": "package",
       "target": "package_dependencies",
       "relation": "contains",
@@ -14877,7 +14994,7 @@
     },
     {
       "source": "package_devdependencies",
-      "target": "package_devdependencies_autoprefixer",
+      "target": "package_devdependencies_types_react_dom",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14888,7 +15005,7 @@
     },
     {
       "source": "package_devdependencies",
-      "target": "package_devdependencies_esbuild",
+      "target": "package_devdependencies_prettier",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14899,7 +15016,7 @@
     },
     {
       "source": "package_devdependencies",
-      "target": "package_devdependencies_prettier",
+      "target": "package_devdependencies_tailwindcss",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14910,7 +15027,7 @@
     },
     {
       "source": "package_devdependencies",
-      "target": "package_devdependencies_tailwindcss",
+      "target": "package_devdependencies_typescript",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14921,7 +15038,7 @@
     },
     {
       "source": "package_devdependencies",
-      "target": "package_devdependencies_tsx",
+      "target": "package_devdependencies_vite",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14932,35 +15049,13 @@
     },
     {
       "source": "package_devdependencies",
-      "target": "package_devdependencies_typescript",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "package.json",
-      "source_location": "L32",
-      "weight": 1.0
-    },
-    {
-      "source": "package_devdependencies",
-      "target": "package_devdependencies_vite",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "package.json",
-      "source_location": "L33",
-      "weight": 1.0
-    },
-    {
-      "source": "package_devdependencies",
       "target": "package_devdependencies_vite_plugin_pwa",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L34",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -15301,7 +15396,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.tsx",
-      "source_location": "L38",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -15312,7 +15407,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/AddTransactionModal.tsx",
-      "source_location": "L16",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -15323,7 +15418,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/AddTransactionModal.tsx",
-      "source_location": "L23",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -15334,7 +15429,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/DebtorDetailScreen.tsx",
-      "source_location": "L18",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -15702,7 +15797,7 @@
     },
     {
       "source": "tsconfig_compileroptions",
-      "target": "tsconfig_compileroptions_paths",
+      "target": "tsconfig_compileroptions_allowimportingtsextensions",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15713,24 +15808,13 @@
     },
     {
       "source": "tsconfig_compileroptions",
-      "target": "tsconfig_compileroptions_allowimportingtsextensions",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "tsconfig.json",
-      "source_location": "L23",
-      "weight": 1.0
-    },
-    {
-      "source": "tsconfig_compileroptions",
       "target": "tsconfig_compileroptions_noemit",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tsconfig.json",
-      "source_location": "L24",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -17150,7 +17234,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "src/components/AddTransactionModal.tsx",
-      "source_location": "L63",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -17163,6 +17247,30 @@
       "context": "ApiError",
       "source_file": ".claude/references/CODING_CONVENTIONS.md",
       "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_functional_requirements",
+      "target": "src_configs_types_debtor",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "context": "Debtor",
+      "source_file": "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_2026_10_28_06_16_49_remove_unused_code_and_imports_task_list",
+      "target": "src_configs_types_debtor",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "context": "Debtor",
+      "source_file": "docs/2026-10-28-06-16-49-remove-unused-code-and-imports.md",
+      "source_location": "L63",
       "weight": 1.0
     },
     {
@@ -17215,5 +17323,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "74f30acccae497c6d66c6fe2626035e965391dc2"
+  "built_at_commit": "6fe694159e478e60a9b579860998c3aa2c5e2b01"
 }

@@ -213,16 +213,53 @@ function doPost(e) {
       return jsonResponse({ success: true });
     }
     
-    if (action === "clearAll") {
-      // Wipe every record in one call. Deleting row by row over the network
-      // would cost one request per transaction, which Apps Script is far too
-      // slow to absorb. The header row is preserved.
-      var lastRow = sheet.getLastRow();
-      var removed = Math.max(0, lastRow - 1);
-      if (removed > 0) {
-        sheet.deleteRows(2, removed);
+    if (action === "clearHistory") {
+      // Replace each affected person's rows with one carried-over balance row.
+      // Everything is rebuilt in memory and written back with a single
+      // setValues call, because one request per row is far too slow here.
+      var target = params.name ? String(params.name).trim().toLowerCase() : "";
+      var rows = sheet.getDataRange().getValues().slice(1);
+      var people = {};
+      var order = [];
+      var kept = [];
+
+      for (var i = 0; i < rows.length; i++) {
+        var key = String(rows[i][1]).trim().toLowerCase();
+        if (!key || (target && key !== target)) {
+          kept.push(rows[i]);
+          continue;
+        }
+        if (!people[key]) {
+          people[key] = { name: String(rows[i][1]).trim(), borrows: 0, payments: 0 };
+          order.push(key);
+        }
+        var rowAmount = Number(rows[i][2]) || 0;
+        if (rows[i][4] === "BORROW") {
+          people[key].borrows += rowAmount;
+        } else if (rows[i][4] === "PAYMENT") {
+          people[key].payments += rowAmount;
+        }
       }
-      return jsonResponse({ success: true, deleted: removed });
+
+      if (order.length === 0) {
+        return jsonResponse({ error: target ? "No records found for this person" : "No records to clear" }, 404);
+      }
+
+      for (var j = 0; j < order.length; j++) {
+        var person = people[order[j]];
+        var balance = Number((person.borrows - person.payments).toFixed(2));
+        var carriedType = balance < 0 ? "PAYMENT" : "BORROW";
+        var carriedNote = balance === 0 ? "History cleared" : "Balance carried over";
+        kept.push([Utilities.getUuid(), person.name, Math.abs(balance), carriedNote, carriedType, now]);
+      }
+
+      var lastRow = sheet.getLastRow();
+      if (lastRow > 1) {
+        sheet.getRange(2, 1, lastRow - 1, 6).clearContent();
+      }
+      sheet.getRange(2, 1, kept.length, 6).setValues(kept);
+
+      return jsonResponse({ success: true, cleared: order.length });
     }
 
     if (action === "deleteTransaction") {

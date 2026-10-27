@@ -96,7 +96,7 @@ interface DebtTrackerState {
     note?: string
   ) => Promise<void>;
   deleteTransaction: (id: string) => Promise<void>;
-  clearAllRecords: () => Promise<void>;
+  clearHistory: (name?: string) => Promise<void>;
 
   // Import/Export helpers
   syncLocalToSheets: () => Promise<void>;
@@ -178,6 +178,45 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
         status: balance > 0 ? 'UNPAID' : 'PAID',
       };
     });
+  };
+
+  // Replaces the rows of one person (or everyone) with a single row carrying
+  // their balance. A zero balance still leaves a row so the name stays listed.
+  const collapseHistory = (
+    txs: Transaction[],
+    name?: string
+  ): { transactions: Transaction[]; cleared: number } => {
+    const target = name?.trim().toLowerCase();
+    const people = new Map<string, { name: string; borrows: number; payments: number }>();
+    const kept: Transaction[] = [];
+
+    txs.forEach((t) => {
+      const trimmed = t.name.trim();
+      const key = trimmed.toLowerCase();
+      if (!key || (target && key !== target)) {
+        kept.push(t);
+        return;
+      }
+      const person = people.get(key) ?? { name: trimmed, borrows: 0, payments: 0 };
+      if (t.type === 'BORROW') person.borrows += t.amount;
+      else if (t.type === 'PAYMENT') person.payments += t.amount;
+      people.set(key, person);
+    });
+
+    const now = new Date().toISOString();
+    const carried: Transaction[] = [...people.values()].map((p) => {
+      const balance = Number((p.borrows - p.payments).toFixed(2));
+      return {
+        id: 'local-' + Date.now() + '-' + Math.random().toString(36).substr(2, 4),
+        name: p.name,
+        amount: Math.abs(balance),
+        note: balance === 0 ? 'History cleared' : 'Balance carried over',
+        type: balance < 0 ? 'PAYMENT' : 'BORROW',
+        createdAt: now,
+      };
+    });
+
+    return { transactions: [...carried, ...kept], cleared: people.size };
   };
 
   return {
@@ -639,70 +678,57 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
     },
 
     // ----------------------------------------------------
-    // DELETE EVERY RECORD (DESTRUCTIVE, NOT UNDOABLE)
+    // CLEAR HISTORY (KEEPS EACH PERSON'S BALANCE)
     // ----------------------------------------------------
-    clearAllRecords: async () => {
-      const { settings } = get();
+    clearHistory: async (name?: string) => {
+      const { settings, activeDebtorName } = get();
       set({ isLoading: true });
+
+      const refresh = async () => {
+        await get().loadAllData();
+        if (activeDebtorName) {
+          await get().loadHistory(activeDebtorName);
+        }
+      };
 
       // Local ledger
       if (settings.useLocalFallback || !settings.scriptUrl) {
-        const removed = getLocalTransactions().length;
-        saveLocalTransactions([]);
-        set({ activeDebtorName: null, history: [] });
-        await get().loadAllData();
-        get().showToast(
-          `Cleared ${removed} record${removed === 1 ? '' : 's'} from local ledger`,
-          'success'
-        );
+        try {
+          const { transactions, cleared } = collapseHistory(getLocalTransactions(), name);
+          if (cleared === 0) {
+            set({ isLoading: false });
+            get().showToast('No records to clear', 'info');
+            return;
+          }
+          saveLocalTransactions(transactions);
+          await refresh();
+          get().showToast(
+            name
+              ? `Cleared history for ${name}. Balance kept.`
+              : `Cleared history for ${cleared} ${cleared === 1 ? 'person' : 'people'}. Balances kept.`,
+            'success'
+          );
+        } catch (err: any) {
+          set({ isLoading: false });
+          get().showToast(`Failed to clear history: ${err.message}`, 'error');
+        }
         return;
       }
 
       // Sheets mode
       try {
-        const result = await api.clearAll(settings.scriptUrl);
-        const removed = result?.deleted ?? sheetTransactions.length;
-        set({ activeDebtorName: null, history: [] });
-        await get().loadAllData();
+        const result = await api.clearHistory(settings.scriptUrl, name);
+        const cleared = result?.cleared ?? 0;
+        await refresh();
         get().showToast(
-          `Cleared ${removed} record${removed === 1 ? '' : 's'} from Google Sheet`,
+          name
+            ? `Cleared history for ${name}. Balance kept.`
+            : `Cleared history for ${cleared} ${cleared === 1 ? 'person' : 'people'}. Balances kept.`,
           'success'
         );
       } catch (err: any) {
-        // A deployment older than this client has no clearAll action. Falling
-        // back to per-row deletes keeps the button working without forcing a
-        // re-paste of the script, at the cost of one request per record.
-        if (err?.code !== 'UNSUPPORTED_ACTION') {
-          set({ isLoading: false });
-          get().showToast(`Failed to clear the sheet: ${err.message}`, 'error');
-          return;
-        }
-
-        const targets = [...sheetTransactions];
-        get().showToast(
-          `Your Apps Script predates one-shot clearing. Deleting ${targets.length} records one by one — this will take a while.`,
-          'info'
-        );
-
-        let deleted = 0;
-        let failed = 0;
-        for (const t of targets) {
-          try {
-            await api.deleteTransaction(settings.scriptUrl, t.id);
-            deleted++;
-          } catch {
-            failed++;
-          }
-        }
-
-        set({ activeDebtorName: null, history: [] });
-        await get().loadAllData();
-        get().showToast(
-          failed > 0
-            ? `Deleted ${deleted} records, ${failed} failed. Re-paste the Apps Script from Configs for reliable clearing.`
-            : `Cleared ${deleted} records. Re-paste the Apps Script from Configs to make this instant next time.`,
-          failed > 0 ? 'error' : 'success'
-        );
+        set({ isLoading: false });
+        get().showToast(`Failed to clear history: ${err.message}`, 'error');
       }
     },
 

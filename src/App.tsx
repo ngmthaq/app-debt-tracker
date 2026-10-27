@@ -38,7 +38,7 @@ export default function App() {
   const getStats = useDebtStore((state) => state.getStats);
   const showToast = useDebtStore((state) => state.showToast);
   const getRecordCount = useDebtStore((state) => state.getRecordCount);
-  const clearAllRecords = useDebtStore((state) => state.clearAllRecords);
+  const clearHistory = useDebtStore((state) => state.clearHistory);
 
   // Modal open states
   const [isSetupOpen, setIsSetupOpen] = useState(false);
@@ -594,8 +594,8 @@ export default function App() {
                     id="btn-clear-all"
                     onClick={() => setIsConfirmClearOpen(true)}
                     disabled={isLoading || recordCount === 0}
-                    title="Delete every record from the ledger"
-                    aria-label="Delete every record"
+                    title="Clear history for everyone (debt is kept)"
+                    aria-label="Clear history for everyone (debt is kept)"
                     className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-rose-200 bg-white text-rose-600 transition-all hover:bg-rose-50 hover:text-rose-700 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-white"
                   >
                     <Trash2 className="w-4 h-4" />
@@ -616,8 +616,8 @@ export default function App() {
           initialName={addModalPrefilledName}
         />
 
-        {/* Confirm Clear All dialog — irreversible, so it names the exact
-            number of rows and the backend they will disappear from. */}
+        {/* Confirm Clear History dialog — old rows are removed for good, so it
+            names the count and the backend, and says the debt is kept. */}
         <AnimatePresence>
           {isConfirmClearOpen && (
             <motion.div
@@ -640,7 +640,7 @@ export default function App() {
                   </div>
                   <div>
                     <h3 className="font-display font-bold text-slate-800 text-sm">
-                      Delete every record?
+                      Clear history for everyone?
                     </h3>
                     <p className="text-[11px] text-slate-500 mt-0.5 leading-relaxed">
                       This permanently removes{' '}
@@ -649,8 +649,9 @@ export default function App() {
                       </span>{' '}
                       {settings.useLocalFallback || !settings.scriptUrl
                         ? 'from your local ledger'
-                        : 'from your Google Sheet'}
-                      , across every debtor. This cannot be undone.
+                        : 'from your Google Sheet'}{' '}
+                      and keeps one row per person with their current balance. Nobody&apos;s debt
+                      changes, but the old entries cannot be recovered.
                     </p>
                   </div>
                 </div>
@@ -665,11 +666,11 @@ export default function App() {
                     id="btn-confirm-clear-all"
                     onClick={() => {
                       setIsConfirmClearOpen(false);
-                      clearAllRecords();
+                      clearHistory();
                     }}
                     className="flex-1 py-2.5 text-xs font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-xl transition-all"
                   >
-                    Delete All
+                    Clear History
                   </button>
                 </div>
               </motion.div>

@@ -9,6 +9,7 @@ import {
   ArrowUpRight,
   ArrowDownLeft,
   Edit3,
+  Eraser,
 } from 'lucide-react';
 import EditTransactionModal from './EditTransactionModal';
 import AddTransactionModal from './AddTransactionModal';
@@ -22,20 +23,22 @@ export default function DebtorDetailScreen() {
   const isLoadingHistory = useDebtStore((state) => state.isLoadingHistory);
   const debtors = useDebtStore((state) => state.debtors);
   const markFullyPaid = useDebtStore((state) => state.markFullyPaid);
+  const clearHistory = useDebtStore((state) => state.clearHistory);
   const isLoadingStore = useDebtStore((state) => state.isLoading);
 
   const [selectedTx, setSelectedTx] = useState<Transaction | null>(null);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isAddPaymentOpen, setIsAddPaymentOpen] = useState(false);
   const [isConfirmPaidOpen, setIsConfirmPaidOpen] = useState(false);
+  const [isConfirmClearOpen, setIsConfirmClearOpen] = useState(false);
 
   // Lock body scroll when confirm dialog is open
   useEffect(() => {
-    document.body.style.overflow = isConfirmPaidOpen ? 'hidden' : '';
+    document.body.style.overflow = isConfirmPaidOpen || isConfirmClearOpen ? 'hidden' : '';
     return () => {
       document.body.style.overflow = '';
     };
-  }, [isConfirmPaidOpen]);
+  }, [isConfirmPaidOpen, isConfirmClearOpen]);
 
   // Active debtor info from main debtors array
   const debtorInfo = debtors.find((d) => d.name.toLowerCase() === activeDebtorName?.toLowerCase());
@@ -162,6 +165,15 @@ export default function DebtorDetailScreen() {
             </button>
           </div>
         )}
+        <button
+          id="detail-action-clear-history"
+          onClick={() => setIsConfirmClearOpen(true)}
+          disabled={isLoadingStore || history.length === 0}
+          className="mt-3 px-3 py-1.5 text-[11px] font-semibold text-slate-500 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-all flex items-center gap-1.5 disabled:cursor-not-allowed disabled:opacity-40"
+        >
+          <Eraser className="w-3.5 h-3.5" />
+          Clear history
+        </button>
       </div>
 
       {/* Transaction History Section */}
@@ -335,6 +347,57 @@ export default function DebtorDetailScreen() {
                   className="px-4 py-2 text-xs font-semibold text-white bg-slate-800 hover:bg-slate-900 rounded-xl transition-all"
                 >
                   Confirm
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Confirm Clear History dialog */}
+      <AnimatePresence>
+        {isConfirmClearOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-6"
+            onClick={() => setIsConfirmClearOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              className="bg-white rounded-2xl shadow-xl p-6 w-full max-w-xs"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h3 className="text-sm font-bold text-slate-800 mb-2">Clear history?</h3>
+              <p className="text-xs text-slate-500 mb-5">
+                This replaces all entries for{' '}
+                <span className="font-semibold text-slate-700">{activeDebtorName}</span> with one
+                entry that keeps the current balance. The debt does not change, but the old entries
+                cannot be recovered.
+              </p>
+              <div className="flex gap-2 justify-end">
+                <button
+                  onClick={() => setIsConfirmClearOpen(false)}
+                  className="px-4 py-2 text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all"
+                >
+                  Cancel
+                </button>
+                <button
+                  id="detail-confirm-clear-history"
+                  onClick={() => {
+                    setIsConfirmClearOpen(false);
+                    if (activeDebtorName) {
+                      clearHistory(activeDebtorName);
+                    }
+                  }}
+                  disabled={isLoadingStore || !activeDebtorName}
+                  className="px-4 py-2 text-xs font-semibold text-white bg-rose-600 hover:bg-rose-700 rounded-xl transition-all"
+                >
+                  Clear History
                 </button>
               </div>
             </motion.div>

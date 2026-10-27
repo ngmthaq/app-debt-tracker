@@ -3,7 +3,7 @@
   "1": "App.tsx",
   "2": "agile-planning/SKILL.md",
   "3": "compilerOptions",
-  "4": "SECURITY_SCANNER/ENTRY_POINT.md",
+  "4": "Language & Framework Patterns",
   "5": "onboarding/SKILL.md",
   "6": "Coding Conventions",
   "7": "scan-secrets.sh",
@@ -67,5 +67,11 @@
   "65": "extraction-spec.md",
   "66": "step-6-test-report.md",
   "67": "Web Test",
-  "68": "ref_path"
+  "68": "ref_path",
+  "69": "Vulnerable Package Watchlist",
+  "70": "SECURITY_SCANNER/ENTRY_POINT.md",
+  "71": "AI / LLM Security",
+  "72": "Report Format",
+  "73": "Security Scanner",
+  "74": "Secret Patterns"
 }
