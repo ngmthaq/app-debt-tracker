@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useDebtStore } from '../store';
-import { Transaction } from '../types';
+import { useDebtStore } from '../hooks/useDebtStore';
+import { Transaction } from '../configs/types';
 import {
   ArrowLeft,
   Plus,
@@ -52,21 +52,19 @@ export default function DebtorDetailScreen() {
 
   // Calculate chronological running balances
   let runningTotal = 0;
-  const historyWithRunningBalance = [...history].map((tx) => {
-    if (tx.type === 'BORROW') {
-      runningTotal += tx.amount;
-    } else {
-      runningTotal -= tx.amount;
-    }
-    return {
-      ...tx,
-      runningBalance: Number(runningTotal.toFixed(2)),
-    };
-  });
-
-  // Reverse list for UI display (most recent transactions at the top) or keep chronologically sorted?
-  // Standard financial ledger display is chronological (to trace the running balance naturally from top to bottom)
-  // Let's render chronologically so the running balance logic flows naturally from first to latest transaction!
+  const historyWithRunningBalance = history
+    .map((tx) => {
+      if (tx.type === 'BORROW') {
+        runningTotal += tx.amount;
+      } else {
+        runningTotal -= tx.amount;
+      }
+      return {
+        ...tx,
+        runningBalance: Number(runningTotal.toFixed(2)),
+      };
+    })
+    .reverse();
 
   const formatDate = (isoString: string) => {
     try {

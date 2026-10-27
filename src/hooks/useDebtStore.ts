@@ -1,6 +1,6 @@
 import { create } from 'zustand';
-import { Transaction, Debtor, DashboardStats, ConnectionSettings } from './types';
-import { api } from './api';
+import { Transaction, Debtor, DashboardStats, ConnectionSettings } from '../configs/types';
+import { api } from '../configs/api';
 
 // Initial pre-populated transactions for a premium "out of the box" demo experience
 const INITIAL_DEMO_TRANSACTIONS: Transaction[] = [
@@ -316,14 +316,19 @@ export const useDebtStore = create<DebtTrackerState>((set, get) => {
       try {
         const payload = await api.getHistory(settings.scriptUrl, nameToLoad);
         // Map GAS response to Client Transaction
-        const debtorHistory: Transaction[] = payload.map((item: any) => ({
-          id: item.id || Math.random().toString(),
-          name: nameToLoad,
-          amount: Number(item.amount),
-          note: item.note || '',
-          type: item.type as 'BORROW' | 'PAYMENT',
-          createdAt: item.createdAt,
-        }));
+        const debtorHistory: Transaction[] = payload
+          .map((item: any) => ({
+            id: item.id || Math.random().toString(),
+            name: nameToLoad,
+            amount: Number(item.amount),
+            note: item.note || '',
+            type: item.type as 'BORROW' | 'PAYMENT',
+            createdAt: item.createdAt,
+          }))
+          .sort(
+            (a: Transaction, b: Transaction) =>
+              new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+          );
 
         set({
           history: debtorHistory,

@@ -59,7 +59,7 @@ The Sheets integration uses a Google Apps Script Web App as a lightweight REST b
 
 ### 3c. Paste the script
 
-Copy the full script from `src/appsScriptSource.ts` (the string inside `APPS_SCRIPT_CODE`), then paste it into the Apps Script editor and save (Ctrl+S / ⌘S).
+Copy the full script from `src/configs/appsScriptSource.ts` (the string inside `APPS_SCRIPT_CODE`), then paste it into the Apps Script editor and save (Ctrl+S / ⌘S).
 
 > The script automatically creates a `Transactions` sheet with the correct column headers (`ID`, `Name`, `Amount`, `Note`, `Type`, `CreatedAt`) on first run.
 
@@ -161,12 +161,16 @@ npm run build && firebase deploy --only hosting
 
 ```
 src/
-├── api.ts                  # Fetch wrappers for the Apps Script Web App
-├── appsScriptSource.ts     # Full Google Apps Script source (copy-paste into GAS editor)
-├── store.ts                # Zustand store — all business logic, local + Sheets modes
-├── types.ts                # Shared TypeScript interfaces
+├── configs/
+│   ├── api.ts              # Fetch wrappers for the Apps Script Web App
+│   ├── appsScriptSource.ts # Full Google Apps Script source (copy-paste into GAS editor)
+│   └── types.ts            # Shared TypeScript interfaces
+├── hooks/
+│   └── useDebtStore.ts     # Zustand store — all business logic, local + Sheets modes
+├── utils/
+│   └── normalizeText.ts    # Lowercase + strip Vietnamese accents for search
 ├── App.tsx                 # Root component + dashboard
-├── index.css               # Global styles + Tailwind theme
+├── assets/css/index.css    # Global styles + Tailwind theme
 └── components/
     ├── AddTransactionModal.tsx
     ├── DebtorDetailScreen.tsx

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useDebtStore } from './store';
+import { useDebtStore } from './hooks/useDebtStore';
 import {
   Plus,
   Search,
@@ -33,6 +33,7 @@ import SetupGuideModal from './components/SetupGuideModal';
 import AddTransactionModal from './components/AddTransactionModal';
 import DebtorDetailScreen from './components/DebtorDetailScreen';
 import PWAUpdateBanner from './components/PWAUpdateBanner';
+import { normalizeText } from './utils/normalizeText';
 
 export default function App() {
   const initStore = useDebtStore((state) => state.initStore);
@@ -128,7 +129,7 @@ export default function App() {
   const filteredDebtors = debtors
     .filter((d) => {
       // 1. Search Query filter (name matching case-insensitive)
-      const matchesSearch = d.name.toLowerCase().includes(searchQuery.toLowerCase().trim());
+      const matchesSearch = normalizeText(d.name).includes(normalizeText(searchQuery));
 
       // 2. Filter tabs
       if (activeFilter === 'UNPAID') return matchesSearch && d.balance > 0;

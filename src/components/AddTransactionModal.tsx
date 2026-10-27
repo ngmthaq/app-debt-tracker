@@ -1,6 +1,16 @@
 import { useState, useEffect, useRef, FormEvent } from 'react';
-import { useDebtStore } from '../store';
-import { Landmark, User, X, Check, ArrowDownLeft, ArrowUpRight, StickyNote } from 'lucide-react';
+import { useDebtStore } from '../hooks/useDebtStore';
+import {
+  Landmark,
+  User,
+  Plus,
+  X,
+  Check,
+  ArrowDownLeft,
+  ArrowUpRight,
+  StickyNote,
+} from 'lucide-react';
+import { normalizeText } from '../utils/normalizeText';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface AddTransactionModalProps {
@@ -23,7 +33,7 @@ export default function AddTransactionModal({
 
   const [type, setType] = useState<'BORROW' | 'PAYMENT'>(initialType);
   const [name, setName] = useState(initialName);
-  const [amount, setAmount] = useState('');
+  const [amounts, setAmounts] = useState<string[]>(['']);
   const [note, setNote] = useState('');
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -36,7 +46,7 @@ export default function AddTransactionModal({
     if (isOpen) {
       setType(initialType);
       setName(initialName);
-      setAmount('');
+      setAmounts(['']);
       setNote('');
       setValidationError(null);
       setShowSuggestions(false);
@@ -65,7 +75,7 @@ export default function AddTransactionModal({
     }
 
     const filtered = namesList.filter((nameItem) =>
-      nameItem.toLowerCase().includes(val.toLowerCase())
+      normalizeText(nameItem).includes(normalizeText(val))
     );
     setSuggestions(filtered);
     setShowSuggestions(filtered.length > 0);
@@ -81,14 +91,20 @@ export default function AddTransactionModal({
     setValidationError(null);
 
     const trimmedName = name.trim();
-    const parsedAmount = parseFloat(amount);
+    const filled = amounts.map((a) => a.trim()).filter(Boolean);
+    const parsedAmounts = filled.map((a) => Number(a));
+    const parsedAmount = parsedAmounts.reduce((sum, n) => sum + n, 0);
 
     if (!trimmedName) {
       setValidationError('Person name is required.');
       return;
     }
 
-    if (isNaN(parsedAmount) || parsedAmount <= 0) {
+    if (
+      parsedAmounts.length === 0 ||
+      parsedAmounts.some((n) => isNaN(n) || n <= 0) ||
+      parsedAmount <= 0
+    ) {
       setValidationError('Please enter a valid positive number higher than 0.');
       return;
     }
@@ -104,6 +120,11 @@ export default function AddTransactionModal({
       setValidationError(err.message || 'Synchronization failure. Action aborted.');
     }
   };
+
+  const amountsTotal = amounts.reduce((sum, a) => {
+    const n = Number(a);
+    return sum + (a.trim() && !isNaN(n) ? n : 0);
+  }, 0);
 
   if (!isOpen) return null;
 
@@ -220,30 +241,58 @@ export default function AddTransactionModal({
             </AnimatePresence>
           </div>
 
-          {/* Amount Input */}
+          {/* Amount Inputs */}
           <div className="space-y-1.5">
             <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
               Amount (₫)
             </label>
-            <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 font-mono text-sm">
-                ₫
+            {amounts.map((value, index) => (
+              <div key={index} className="flex items-center gap-2">
+                <div className="relative flex-1">
+                  <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 font-mono text-sm">
+                    ₫
+                  </span>
+                  <input
+                    id={index === 0 ? 'input-tx-amount' : `input-tx-amount-${index + 1}`}
+                    type="number"
+                    step="any"
+                    min="0.01"
+                    placeholder="0.00"
+                    value={value}
+                    onChange={(e) => {
+                      setAmounts((prev) => prev.map((a, i) => (i === index ? e.target.value : a)));
+                      setValidationError(null);
+                    }}
+                    className="w-full pl-8 pr-4 py-3 text-xs text-slate-800 bg-slate-50/50 border border-slate-200 rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 font-mono transition-all"
+                  />
+                </div>
+                {index > 0 && (
+                  <button
+                    id={`btn-remove-amount-${index + 1}`}
+                    type="button"
+                    aria-label="Remove amount"
+                    onClick={() => setAmounts((prev) => prev.filter((_, i) => i !== index))}
+                    className="p-2 text-slate-400 hover:text-rose-500 hover:bg-rose-50 rounded-full transition-colors"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+            ))}
+            <div className="flex items-center justify-between pt-1">
+              <button
+                id="btn-add-amount"
+                type="button"
+                onClick={() => setAmounts((prev) => [...prev, ''])}
+                className="flex items-center gap-1 text-xs font-semibold text-indigo-600 hover:text-indigo-700"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                Add amount
+              </button>
+              <span id="tx-amount-total" className="text-xs font-bold text-slate-700 font-mono">
+                Total:{' '}
+                {amountsTotal.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
               </span>
-              <input
-                id="input-tx-amount"
-                type="number"
-                step="any"
-                required
-                min="0.01"
-                placeholder="0.00"
-                value={amount}
-                onChange={(e) => {
-                  setAmount(e.target.value);
-                  setValidationError(null);
-                }}
-                className="w-full pl-8 pr-4 py-3 text-xs text-slate-800 bg-slate-50/50 border border-slate-200 rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 font-mono transition-all"
-                style={{ contentVisibility: 'auto' }}
-              />
             </div>
           </div>
 

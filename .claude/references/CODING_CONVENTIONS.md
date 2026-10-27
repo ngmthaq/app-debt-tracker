@@ -8,11 +8,14 @@
 src/
 ├── main.tsx              # entry, wraps App in ErrorBoundary
 ├── App.tsx               # root component + dashboard
-├── store.ts              # Zustand store: all business logic, local + Sheets modes
-├── api.ts                # fetch calls to the Apps Script Web App
-├── appsScriptSource.ts   # Apps Script backend code, kept as a string
-├── types.ts              # shared types
-├── index.css             # Tailwind import + @theme fonts + global styles
+├── assets/css/index.css  # Tailwind import + @theme fonts + global styles
+├── configs/
+│   ├── api.ts                # fetch calls to the Apps Script Web App
+│   ├── appsScriptSource.ts   # Apps Script backend code, kept as a string
+│   └── types.ts              # shared types
+├── hooks/
+│   └── useDebtStore.ts       # Zustand store: all business logic, local + Sheets modes
+├── utils/                # small pure helpers (e.g. normalizeText.ts)
 └── components/           # one component per file
 ```
 
@@ -25,7 +28,7 @@ src/
 ## Naming
 
 - Component files and components: PascalCase (`AddTransactionModal.tsx`).
-- Other files: camelCase (`store.ts`, `appsScriptSource.ts`).
+- Other files: camelCase (`useDebtStore.ts`, `appsScriptSource.ts`).
 - Variables and functions: camelCase. Constants: UPPER_SNAKE_CASE (`DEFAULT_TIMEOUT`).
 - Types: `interface` for objects, `type` for unions (`TransactionType`). No `I` prefix.
 - Booleans start with `is` or a clear verb (`isLoading`, `useLocalFallback`).
@@ -43,13 +46,13 @@ src/
 
 - Use function components. Only `ErrorBoundary` is a class.
 - Read the store with one selector per value: `useDebtStore((state) => state.x)`.
-- Put business logic in `store.ts`, not in components. Components call store actions.
+- Put business logic in `hooks/useDebtStore.ts`, not in components. Components call store actions.
 - Every store action must handle both modes: local (`useLocalFallback` or no `scriptUrl`) and Sheets.
 - Use local `useState` only for UI state (modal open, search text).
 
 ## Styling and UI
 
-- Use Tailwind classes inline. Theme fonts are in `@theme` in `index.css`.
+- Use Tailwind classes inline. Theme fonts are in `@theme` in `assets/css/index.css`.
 - Icons come from `lucide-react`. Animation uses `motion/react` with `AnimatePresence`.
 - Inputs keep `font-size: 16px`. This stops iOS Safari from zooming in.
 - The app is mobile-first, with tablet and desktop layouts. Content width is capped at 1200px.
@@ -66,7 +69,7 @@ src/
 
 - All network calls go through `api.ts`. Components never call `fetch`.
 - POST uses `Content-Type: text/plain` to avoid a CORS preflight.
-- If you change `appsScriptSource.ts`, tell the user to deploy a new Apps Script version.
+- If you change `configs/appsScriptSource.ts`, tell the user to deploy a new Apps Script version.
 
 ## Comments
 

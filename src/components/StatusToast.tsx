@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDebtStore } from '../store';
+import { useDebtStore } from '../hooks/useDebtStore';
 import { CheckCircle2, AlertTriangle, Info, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 

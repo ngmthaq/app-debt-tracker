@@ -4,7 +4,7 @@
 
 - **Project Name**: `Debt Tracker` (package name `app-debt-tracker`)
 - **Project Description**: `A mobile-first PWA to track money you lent to people and their payments. Data lives in Google Sheets (through a Google Apps Script backend) or offline in localStorage.`
-- **Programming Languages**: `TypeScript`, `CSS`, `JavaScript (Google Apps Script, kept as a string in src/appsScriptSource.ts)`
+- **Programming Languages**: `TypeScript`, `CSS`, `JavaScript (Google Apps Script, kept as a string in src/configs/appsScriptSource.ts)`
 - **Frameworks**: `React 19`, `Vite 6`, `Tailwind CSS v4`
 - **Package Managers**: `npm`
 - **Key Libraries**: `zustand`, `motion` (motion/react), `lucide-react`, `vite-plugin-pwa`
@@ -28,14 +28,14 @@
 | Mode                  | How it works                                                                                        |
 | --------------------- | --------------------------------------------------------------------------------------------------- |
 | Local (default, demo) | Data is in `localStorage` key `debt_tracker_local_transactions`. Demo data loads on first run.       |
-| Sheets                | `src/api.ts` calls the Apps Script Web App URL. The user sets the URL in the Configs screen.         |
+| Sheets                | `src/configs/api.ts` calls the Apps Script Web App URL. The user sets the URL in the Configs screen.         |
 
 - Settings are saved in `localStorage` keys `debt_tracker_script_url` and `debt_tracker_use_local`.
 - If Sheets fails to load, the store shows an error toast and falls back to local data.
 
 ### Apps Script backend
 
-- The backend code is the `APPS_SCRIPT_CODE` string in `src/appsScriptSource.ts`. The user copies it into the Apps Script editor by hand.
+- The backend code is the `APPS_SCRIPT_CODE` string in `src/configs/appsScriptSource.ts`. The user copies it into the Apps Script editor by hand.
 - Sheet `Transactions` columns: `ID`, `Name`, `Amount`, `Note`, `Type`, `CreatedAt`.
 - Apps Script always returns HTTP 200. Errors come back as `{ error: "..." }`.
 - Calls are slow (cold start can be 15s+). Timeout is 60s. GET retries once. POST never retries, so a write is not sent twice.
